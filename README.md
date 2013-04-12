@@ -5,10 +5,11 @@ Shoka - 浙大图书馆书目检索客户端
 
 ### Step 1 
 
-http://webpac.zju.edu.cn/X?op=find&base=zju01&code=wrd&request=[search_key]
+`http://webpac.zju.edu.cn/X?op=find&base=zju01&code=wrd&request=[search_key]`
 
 结果:
 
+```
 <?xml version = "1.0" encoding = "UTF-8"?>
 <find>
 <set_number>015901</set_number>
@@ -16,6 +17,7 @@ http://webpac.zju.edu.cn/X?op=find&base=zju01&code=wrd&request=[search_key]
 <no_entries>000000012</no_entries>
 <session-id>PELPJJ6T2SA4T3YEEVK7T8QGIV6IXAPHA39LAV3K7DT5YC2SQM</session-id>
 </find>
+```
 
 其中set_number是结果集合?(cache的?), no_entries是结果数量
 
@@ -27,10 +29,11 @@ http://webpac.zju.edu.cn/X?op=present&set_no=[set_number]&set_entry=[1,2,3等等
 
 ### Step 3
 
-http://webpac.zju.edu.cn/X?op=item-data&base=zju01&doc_number=[doc_number]
+`http://webpac.zju.edu.cn/X?op=item-data&base=zju01&doc_number=[doc_number]`
 
 查询单册信息
 
+```
 <item>
 <rec-key>000016487000020</rec-key>
 <barcode>000001272347</barcode>
@@ -56,6 +59,7 @@ http://webpac.zju.edu.cn/X?op=item-data&base=zju01&doc_number=[doc_number]
 <loan-due-date>20130409</loan-due-date> 应还日期
 <loan-due-hour>2359</loan-due-hour>
 </item>
+```
 
 ### CNMARC格式结构
 
