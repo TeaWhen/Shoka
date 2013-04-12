@@ -25,7 +25,7 @@ Shoka - 浙大图书馆书目检索客户端
 
 `http://webpac.zju.edu.cn/X?op=present&set_no=[set_number]&set_entry=[1,2,3等等需要显示的结果]&format=marc`
 
-每个`<record>`中的`<doc_number>`即为图书id, 可以用find-doc显示书籍信息(虽然跟present里面的显示的一样, `http://webpac.zju.edu.cn/X?op=find-doc&base=zju01&doc_number=000016487`)
+每个`<record>`中的`<doc_number>`即为图书id, 可以用find-doc显示书籍信息(虽然跟present里面的显示的一样, `http://webpac.zju.edu.cn/X?op=find-doc&base=zju01&doc_number=[doc_number]`)
 
 ### Step 3
 
