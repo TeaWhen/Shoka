@@ -9,7 +9,7 @@ Shoka - 浙大图书馆书目检索客户端
 
 结果:
 
-```
+```xml
 <?xml version = "1.0" encoding = "UTF-8"?>
 <find>
 <set_number>015901</set_number>
@@ -33,7 +33,7 @@ Shoka - 浙大图书馆书目检索客户端
 
 查询单册信息
 
-```
+```xml
 <item>
 <rec-key>000016487000020</rec-key>
 <barcode>000001272347</barcode>
