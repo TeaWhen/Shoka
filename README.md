@@ -1,13 +1,7 @@
 Shoka - 浙大图书馆书目检索客户端
 =====
 
-喵。
-
-等待文档
-
-预计时间3周-1个月 (嗯我就是求个push><)
-
-## 捉急的初代文档
+## 初代文档
 
 ### Step 1 
 
@@ -29,7 +23,7 @@ http://webpac.zju.edu.cn/X?op=find&base=zju01&code=wrd&request=[search_key]
 
 http://webpac.zju.edu.cn/X?op=present&set_no=[set_number]&set_entry=[1,2,3等等需要显示的结果]&format=marc
 
-每个<record>中的<doc_number>即为图书id, 可以用find-doc显示书籍信息(虽然跟present里面的显示的一样, http://webpac.zju.edu.cn/X?op=find-doc&base=zju01&doc_number=000016487)
+每个`<record>`中的`<doc_number>`即为图书id, 可以用find-doc显示书籍信息(虽然跟present里面的显示的一样, http://webpac.zju.edu.cn/X?op=find-doc&base=zju01&doc_number=000016487)
 
 ### Step 3
 
