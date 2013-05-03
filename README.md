@@ -7,6 +7,10 @@ Shoka - 浙大图书馆书目检索客户端
 
 ## 初代文档
 
+`base=zju01`为中文文献库
+
+`base=zju09`为西文文献库
+
 ### Step 1 
 
 `http://webpac.zju.edu.cn/X?op=find&base=zju01&code=wrd&request=[search_key]`
