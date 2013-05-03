@@ -1,810 +1,394 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-	<key>archiveVersion</key>
-	<string>1</string>
-	<key>classes</key>
-	<dict/>
-	<key>objectVersion</key>
-	<string>46</string>
-	<key>objects</key>
-	<dict>
-		<key>1902A431B61D44878DD752D8</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>inputPaths</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXShellScriptBuildPhase</string>
-			<key>name</key>
-			<string>Check Pods Manifest.lock</string>
-			<key>outputPaths</key>
-			<array/>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-			<key>shellPath</key>
-			<string>/bin/sh</string>
-			<key>shellScript</key>
-			<string>diff "${PODS_ROOT}/../Podfile.lock" "${PODS_ROOT}/Manifest.lock" &gt; /dev/null
-if [[ $? != 0 ]] ; then
-    cat &lt;&lt; EOM
-error: The sanbox is not in sync with the Podfile.lock. Run 'pod install'.
-EOM
-    exit 1
-fi
-</string>
-			<key>showEnvVarsInLog</key>
-			<string>1</string>
-		</dict>
-		<key>1F23A6CD8F5F45D8926F308C</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>inputPaths</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXShellScriptBuildPhase</string>
-			<key>name</key>
-			<string>Copy Pods Resources</string>
-			<key>outputPaths</key>
-			<array/>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-			<key>shellPath</key>
-			<string>/bin/sh</string>
-			<key>shellScript</key>
-			<string>"${SRCROOT}/Pods/Pods-resources.sh"
-</string>
-			<key>showEnvVarsInLog</key>
-			<string>1</string>
-		</dict>
-		<key>2E4C1733057E47428147FE57</key>
-		<dict>
-			<key>fileRef</key>
-			<string>591146B6C9BF46D6B930A9A0</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict/>
-		</dict>
-		<key>4FEDF52C1717B8F300C2CC75</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>4FEDF53E1717B8F300C2CC75</string>
-				<string>4FEDF5371717B8F300C2CC75</string>
-				<string>4FEDF5361717B8F300C2CC75</string>
-				<string>68C59F1202C041A0917BEDBA</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>4FEDF52D1717B8F300C2CC75</key>
-		<dict>
-			<key>attributes</key>
-			<dict>
-				<key>CLASSPREFIX</key>
-				<string>Shoka</string>
-				<key>LastUpgradeCheck</key>
-				<string>0460</string>
-				<key>ORGANIZATIONNAME</key>
-				<string>Team.TeaWhen</string>
-			</dict>
-			<key>buildConfigurationList</key>
-			<string>4FEDF5301717B8F300C2CC75</string>
-			<key>compatibilityVersion</key>
-			<string>Xcode 3.2</string>
-			<key>developmentRegion</key>
-			<string>English</string>
-			<key>hasScannedForEncodings</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXProject</string>
-			<key>knownRegions</key>
-			<array>
-				<string>en</string>
-			</array>
-			<key>mainGroup</key>
-			<string>4FEDF52C1717B8F300C2CC75</string>
-			<key>productRefGroup</key>
-			<string>4FEDF5361717B8F300C2CC75</string>
-			<key>projectDirPath</key>
-			<string></string>
-			<key>projectReferences</key>
-			<array/>
-			<key>projectRoot</key>
-			<string></string>
-			<key>targets</key>
-			<array>
-				<string>4FEDF5341717B8F300C2CC75</string>
-			</array>
-		</dict>
-		<key>4FEDF5301717B8F300C2CC75</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>4FEDF5591717B8F400C2CC75</string>
-				<string>4FEDF55A1717B8F400C2CC75</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>4FEDF5311717B8F300C2CC75</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>4FEDF5451717B8F300C2CC75</string>
-				<string>4FEDF5491717B8F300C2CC75</string>
-				<string>4FEDF5581717B8F400C2CC75</string>
-			</array>
-			<key>isa</key>
-			<string>PBXSourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>4FEDF5321717B8F300C2CC75</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>4FEDF5391717B8F300C2CC75</string>
-				<string>4FEDF53B1717B8F300C2CC75</string>
-				<string>4FEDF53D1717B8F300C2CC75</string>
-				<string>2E4C1733057E47428147FE57</string>
-			</array>
-			<key>isa</key>
-			<string>PBXFrameworksBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>4FEDF5331717B8F300C2CC75</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>4FEDF5431717B8F300C2CC75</string>
-				<string>4FEDF54B1717B8F300C2CC75</string>
-				<string>4FEDF54D1717B8F300C2CC75</string>
-				<string>4FEDF54F1717B8F300C2CC75</string>
-				<string>4FEDF5521717B8F400C2CC75</string>
-				<string>4FEDF5551717B8F400C2CC75</string>
-			</array>
-			<key>isa</key>
-			<string>PBXResourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>4FEDF5341717B8F300C2CC75</key>
-		<dict>
-			<key>buildConfigurationList</key>
-			<string>4FEDF55B1717B8F400C2CC75</string>
-			<key>buildPhases</key>
-			<array>
-				<string>1902A431B61D44878DD752D8</string>
-				<string>4FEDF5311717B8F300C2CC75</string>
-				<string>4FEDF5321717B8F300C2CC75</string>
-				<string>4FEDF5331717B8F300C2CC75</string>
-				<string>1F23A6CD8F5F45D8926F308C</string>
-			</array>
-			<key>buildRules</key>
-			<array/>
-			<key>dependencies</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXNativeTarget</string>
-			<key>name</key>
-			<string>Shoka</string>
-			<key>productName</key>
-			<string>Shoka</string>
-			<key>productReference</key>
-			<string>4FEDF5351717B8F300C2CC75</string>
-			<key>productType</key>
-			<string>com.apple.product-type.application</string>
-		</dict>
-		<key>4FEDF5351717B8F300C2CC75</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>wrapper.application</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>Shoka.app</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>4FEDF5361717B8F300C2CC75</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>4FEDF5351717B8F300C2CC75</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Products</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>4FEDF5371717B8F300C2CC75</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>4FEDF5381717B8F300C2CC75</string>
-				<string>4FEDF53A1717B8F300C2CC75</string>
-				<string>4FEDF53C1717B8F300C2CC75</string>
-				<string>591146B6C9BF46D6B930A9A0</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Frameworks</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>4FEDF5381717B8F300C2CC75</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>UIKit.framework</string>
-			<key>path</key>
-			<string>System/Library/Frameworks/UIKit.framework</string>
-			<key>sourceTree</key>
-			<string>SDKROOT</string>
-		</dict>
-		<key>4FEDF5391717B8F300C2CC75</key>
-		<dict>
-			<key>fileRef</key>
-			<string>4FEDF5381717B8F300C2CC75</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>4FEDF53A1717B8F300C2CC75</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>Foundation.framework</string>
-			<key>path</key>
-			<string>System/Library/Frameworks/Foundation.framework</string>
-			<key>sourceTree</key>
-			<string>SDKROOT</string>
-		</dict>
-		<key>4FEDF53B1717B8F300C2CC75</key>
-		<dict>
-			<key>fileRef</key>
-			<string>4FEDF53A1717B8F300C2CC75</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>4FEDF53C1717B8F300C2CC75</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>CoreGraphics.framework</string>
-			<key>path</key>
-			<string>System/Library/Frameworks/CoreGraphics.framework</string>
-			<key>sourceTree</key>
-			<string>SDKROOT</string>
-		</dict>
-		<key>4FEDF53D1717B8F300C2CC75</key>
-		<dict>
-			<key>fileRef</key>
-			<string>4FEDF53C1717B8F300C2CC75</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>4FEDF53E1717B8F300C2CC75</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>4FEDF5471717B8F300C2CC75</string>
-				<string>4FEDF5481717B8F300C2CC75</string>
-				<string>4FEDF5501717B8F400C2CC75</string>
-				<string>4FEDF5531717B8F400C2CC75</string>
-				<string>4FEDF5561717B8F400C2CC75</string>
-				<string>4FEDF5571717B8F400C2CC75</string>
-				<string>4FEDF53F1717B8F300C2CC75</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>Shoka</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>4FEDF53F1717B8F300C2CC75</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>4FEDF5401717B8F300C2CC75</string>
-				<string>4FEDF5411717B8F300C2CC75</string>
-				<string>4FEDF5441717B8F300C2CC75</string>
-				<string>4FEDF5461717B8F300C2CC75</string>
-				<string>4FEDF54A1717B8F300C2CC75</string>
-				<string>4FEDF54C1717B8F300C2CC75</string>
-				<string>4FEDF54E1717B8F300C2CC75</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Supporting Files</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>4FEDF5401717B8F300C2CC75</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>Shoka-Info.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>4FEDF5411717B8F300C2CC75</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>4FEDF5421717B8F300C2CC75</string>
-			</array>
-			<key>isa</key>
-			<string>PBXVariantGroup</string>
-			<key>name</key>
-			<string>InfoPlist.strings</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>4FEDF5421717B8F300C2CC75</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.strings</string>
-			<key>name</key>
-			<string>en</string>
-			<key>path</key>
-			<string>en.lproj/InfoPlist.strings</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>4FEDF5431717B8F300C2CC75</key>
-		<dict>
-			<key>fileRef</key>
-			<string>4FEDF5411717B8F300C2CC75</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>4FEDF5441717B8F300C2CC75</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>main.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>4FEDF5451717B8F300C2CC75</key>
-		<dict>
-			<key>fileRef</key>
-			<string>4FEDF5441717B8F300C2CC75</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>4FEDF5461717B8F300C2CC75</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>Shoka-Prefix.pch</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>4FEDF5471717B8F300C2CC75</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>ShokaAppDelegate.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>4FEDF5481717B8F300C2CC75</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>ShokaAppDelegate.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>4FEDF5491717B8F300C2CC75</key>
-		<dict>
-			<key>fileRef</key>
-			<string>4FEDF5481717B8F300C2CC75</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>4FEDF54A1717B8F300C2CC75</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>image.png</string>
-			<key>path</key>
-			<string>Default.png</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>4FEDF54B1717B8F300C2CC75</key>
-		<dict>
-			<key>fileRef</key>
-			<string>4FEDF54A1717B8F300C2CC75</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>4FEDF54C1717B8F300C2CC75</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>image.png</string>
-			<key>path</key>
-			<string>Default@2x.png</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>4FEDF54D1717B8F300C2CC75</key>
-		<dict>
-			<key>fileRef</key>
-			<string>4FEDF54C1717B8F300C2CC75</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>4FEDF54E1717B8F300C2CC75</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>image.png</string>
-			<key>path</key>
-			<string>Default-568h@2x.png</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>4FEDF54F1717B8F300C2CC75</key>
-		<dict>
-			<key>fileRef</key>
-			<string>4FEDF54E1717B8F300C2CC75</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>4FEDF5501717B8F400C2CC75</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>4FEDF5511717B8F400C2CC75</string>
-			</array>
-			<key>isa</key>
-			<string>PBXVariantGroup</string>
-			<key>name</key>
-			<string>MainStoryboard_iPhone.storyboard</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>4FEDF5511717B8F400C2CC75</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.storyboard</string>
-			<key>name</key>
-			<string>en</string>
-			<key>path</key>
-			<string>en.lproj/MainStoryboard_iPhone.storyboard</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>4FEDF5521717B8F400C2CC75</key>
-		<dict>
-			<key>fileRef</key>
-			<string>4FEDF5501717B8F400C2CC75</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>4FEDF5531717B8F400C2CC75</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>4FEDF5541717B8F400C2CC75</string>
-			</array>
-			<key>isa</key>
-			<string>PBXVariantGroup</string>
-			<key>name</key>
-			<string>MainStoryboard_iPad.storyboard</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>4FEDF5541717B8F400C2CC75</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.storyboard</string>
-			<key>name</key>
-			<string>en</string>
-			<key>path</key>
-			<string>en.lproj/MainStoryboard_iPad.storyboard</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>4FEDF5551717B8F400C2CC75</key>
-		<dict>
-			<key>fileRef</key>
-			<string>4FEDF5531717B8F400C2CC75</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>4FEDF5561717B8F400C2CC75</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>ShokaViewController.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>4FEDF5571717B8F400C2CC75</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>ShokaViewController.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>4FEDF5581717B8F400C2CC75</key>
-		<dict>
-			<key>fileRef</key>
-			<string>4FEDF5571717B8F400C2CC75</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>4FEDF5591717B8F400C2CC75</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>ALWAYS_SEARCH_USER_PATHS</key>
-				<string>NO</string>
-				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
-				<string>gnu++0x</string>
-				<key>CLANG_CXX_LIBRARY</key>
-				<string>libc++</string>
-				<key>CLANG_ENABLE_OBJC_ARC</key>
-				<string>YES</string>
-				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_EMPTY_BODY</key>
-				<string>YES</string>
-				<key>CLANG_WARN_ENUM_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_INT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
-				<string>YES</string>
-				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
-				<string>iPhone Developer</string>
-				<key>COPY_PHASE_STRIP</key>
-				<string>NO</string>
-				<key>GCC_C_LANGUAGE_STANDARD</key>
-				<string>gnu99</string>
-				<key>GCC_DYNAMIC_NO_PIC</key>
-				<string>NO</string>
-				<key>GCC_OPTIMIZATION_LEVEL</key>
-				<string>0</string>
-				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
-				<array>
-					<string>DEBUG=1</string>
-					<string>$(inherited)</string>
-				</array>
-				<key>GCC_SYMBOLS_PRIVATE_EXTERN</key>
-				<string>NO</string>
-				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_VARIABLE</key>
-				<string>YES</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>6.1</string>
-				<key>ONLY_ACTIVE_ARCH</key>
-				<string>YES</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>TARGETED_DEVICE_FAMILY</key>
-				<string>1,2</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>4FEDF55A1717B8F400C2CC75</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>ALWAYS_SEARCH_USER_PATHS</key>
-				<string>NO</string>
-				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
-				<string>gnu++0x</string>
-				<key>CLANG_CXX_LIBRARY</key>
-				<string>libc++</string>
-				<key>CLANG_ENABLE_OBJC_ARC</key>
-				<string>YES</string>
-				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_EMPTY_BODY</key>
-				<string>YES</string>
-				<key>CLANG_WARN_ENUM_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_INT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
-				<string>YES</string>
-				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
-				<string>iPhone Developer</string>
-				<key>COPY_PHASE_STRIP</key>
-				<string>YES</string>
-				<key>GCC_C_LANGUAGE_STANDARD</key>
-				<string>gnu99</string>
-				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_VARIABLE</key>
-				<string>YES</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>6.1</string>
-				<key>OTHER_CFLAGS</key>
-				<string>-DNS_BLOCK_ASSERTIONS=1</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>TARGETED_DEVICE_FAMILY</key>
-				<string>1,2</string>
-				<key>VALIDATE_PRODUCT</key>
-				<string>YES</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>4FEDF55B1717B8F400C2CC75</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>4FEDF55C1717B8F400C2CC75</string>
-				<string>4FEDF55D1717B8F400C2CC75</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>4FEDF55C1717B8F400C2CC75</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>68C59F1202C041A0917BEDBA</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
-				<string>YES</string>
-				<key>GCC_PREFIX_HEADER</key>
-				<string>Shoka/Shoka-Prefix.pch</string>
-				<key>INFOPLIST_FILE</key>
-				<string>Shoka/Shoka-Info.plist</string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>WRAPPER_EXTENSION</key>
-				<string>app</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>4FEDF55D1717B8F400C2CC75</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>68C59F1202C041A0917BEDBA</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
-				<string>YES</string>
-				<key>GCC_PREFIX_HEADER</key>
-				<string>Shoka/Shoka-Prefix.pch</string>
-				<key>INFOPLIST_FILE</key>
-				<string>Shoka/Shoka-Info.plist</string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>WRAPPER_EXTENSION</key>
-				<string>app</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>591146B6C9BF46D6B930A9A0</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>archive.ar</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>libPods.a</string>
-			<key>path</key>
-			<string>libPods.a</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>68C59F1202C041A0917BEDBA</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>name</key>
-			<string>Pods.xcconfig</string>
-			<key>path</key>
-			<string>Pods/Pods.xcconfig</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-	</dict>
-	<key>rootObject</key>
-	<string>4FEDF52D1717B8F300C2CC75</string>
-</dict>
-</plist>
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1A6508B4173404F000F0100C /* ShokaFavorites.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6508B3173404F000F0100C /* ShokaFavorites.m */; };
+		1A6508B81734053600F0100C /* ShokaResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6508B71734053600F0100C /* ShokaResult.m */; };
+		1A6508BB1734054D00F0100C /* ShokaBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6508BA1734054D00F0100C /* ShokaBook.m */; };
+		1A6508BE1734057A00F0100C /* ShokaNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6508BD1734057A00F0100C /* ShokaNetworking.m */; };
+		2E4C1733057E47428147FE57 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 591146B6C9BF46D6B930A9A0 /* libPods.a */; };
+		4FEDF5391717B8F300C2CC75 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FEDF5381717B8F300C2CC75 /* UIKit.framework */; };
+		4FEDF53B1717B8F300C2CC75 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FEDF53A1717B8F300C2CC75 /* Foundation.framework */; };
+		4FEDF53D1717B8F300C2CC75 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FEDF53C1717B8F300C2CC75 /* CoreGraphics.framework */; };
+		4FEDF5431717B8F300C2CC75 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4FEDF5411717B8F300C2CC75 /* InfoPlist.strings */; };
+		4FEDF5451717B8F300C2CC75 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FEDF5441717B8F300C2CC75 /* main.m */; };
+		4FEDF5491717B8F300C2CC75 /* ShokaAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FEDF5481717B8F300C2CC75 /* ShokaAppDelegate.m */; };
+		4FEDF54B1717B8F300C2CC75 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FEDF54A1717B8F300C2CC75 /* Default.png */; };
+		4FEDF54D1717B8F300C2CC75 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FEDF54C1717B8F300C2CC75 /* Default@2x.png */; };
+		4FEDF54F1717B8F300C2CC75 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FEDF54E1717B8F300C2CC75 /* Default-568h@2x.png */; };
+		4FEDF5521717B8F400C2CC75 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FEDF5501717B8F400C2CC75 /* MainStoryboard_iPhone.storyboard */; };
+		4FEDF5551717B8F400C2CC75 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FEDF5531717B8F400C2CC75 /* MainStoryboard_iPad.storyboard */; };
+		4FEDF5581717B8F400C2CC75 /* ShokaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FEDF5571717B8F400C2CC75 /* ShokaViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1A6508B2173404F000F0100C /* ShokaFavorites.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShokaFavorites.h; sourceTree = "<group>"; };
+		1A6508B3173404F000F0100C /* ShokaFavorites.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShokaFavorites.m; sourceTree = "<group>"; };
+		1A6508B61734053600F0100C /* ShokaResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShokaResult.h; sourceTree = "<group>"; };
+		1A6508B71734053600F0100C /* ShokaResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShokaResult.m; sourceTree = "<group>"; };
+		1A6508B91734054D00F0100C /* ShokaBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShokaBook.h; sourceTree = "<group>"; };
+		1A6508BA1734054D00F0100C /* ShokaBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShokaBook.m; sourceTree = "<group>"; };
+		1A6508BC1734057A00F0100C /* ShokaNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShokaNetworking.h; sourceTree = "<group>"; };
+		1A6508BD1734057A00F0100C /* ShokaNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShokaNetworking.m; sourceTree = "<group>"; };
+		4FEDF5351717B8F300C2CC75 /* Shoka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shoka.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4FEDF5381717B8F300C2CC75 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		4FEDF53A1717B8F300C2CC75 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		4FEDF53C1717B8F300C2CC75 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		4FEDF5401717B8F300C2CC75 /* Shoka-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Shoka-Info.plist"; sourceTree = "<group>"; };
+		4FEDF5421717B8F300C2CC75 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4FEDF5441717B8F300C2CC75 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4FEDF5461717B8F300C2CC75 /* Shoka-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Shoka-Prefix.pch"; sourceTree = "<group>"; };
+		4FEDF5471717B8F300C2CC75 /* ShokaAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShokaAppDelegate.h; sourceTree = "<group>"; };
+		4FEDF5481717B8F300C2CC75 /* ShokaAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShokaAppDelegate.m; sourceTree = "<group>"; };
+		4FEDF54A1717B8F300C2CC75 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		4FEDF54C1717B8F300C2CC75 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		4FEDF54E1717B8F300C2CC75 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		4FEDF5511717B8F400C2CC75 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		4FEDF5541717B8F400C2CC75 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		4FEDF5561717B8F400C2CC75 /* ShokaViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShokaViewController.h; sourceTree = "<group>"; };
+		4FEDF5571717B8F400C2CC75 /* ShokaViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShokaViewController.m; sourceTree = "<group>"; };
+		591146B6C9BF46D6B930A9A0 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		68C59F1202C041A0917BEDBA /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4FEDF5321717B8F300C2CC75 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4FEDF5391717B8F300C2CC75 /* UIKit.framework in Frameworks */,
+				4FEDF53B1717B8F300C2CC75 /* Foundation.framework in Frameworks */,
+				4FEDF53D1717B8F300C2CC75 /* CoreGraphics.framework in Frameworks */,
+				2E4C1733057E47428147FE57 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1A6508B51734051800F0100C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1A6508B2173404F000F0100C /* ShokaFavorites.h */,
+				1A6508B3173404F000F0100C /* ShokaFavorites.m */,
+				1A6508B61734053600F0100C /* ShokaResult.h */,
+				1A6508B71734053600F0100C /* ShokaResult.m */,
+				1A6508B91734054D00F0100C /* ShokaBook.h */,
+				1A6508BA1734054D00F0100C /* ShokaBook.m */,
+				1A6508BC1734057A00F0100C /* ShokaNetworking.h */,
+				1A6508BD1734057A00F0100C /* ShokaNetworking.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		4FEDF52C1717B8F300C2CC75 = {
+			isa = PBXGroup;
+			children = (
+				4FEDF53E1717B8F300C2CC75 /* Shoka */,
+				4FEDF5371717B8F300C2CC75 /* Frameworks */,
+				4FEDF5361717B8F300C2CC75 /* Products */,
+				68C59F1202C041A0917BEDBA /* Pods.xcconfig */,
+			);
+			sourceTree = "<group>";
+		};
+		4FEDF5361717B8F300C2CC75 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4FEDF5351717B8F300C2CC75 /* Shoka.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4FEDF5371717B8F300C2CC75 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4FEDF5381717B8F300C2CC75 /* UIKit.framework */,
+				4FEDF53A1717B8F300C2CC75 /* Foundation.framework */,
+				4FEDF53C1717B8F300C2CC75 /* CoreGraphics.framework */,
+				591146B6C9BF46D6B930A9A0 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4FEDF53E1717B8F300C2CC75 /* Shoka */ = {
+			isa = PBXGroup;
+			children = (
+				1A6508B51734051800F0100C /* Model */,
+				4FEDF5471717B8F300C2CC75 /* ShokaAppDelegate.h */,
+				4FEDF5481717B8F300C2CC75 /* ShokaAppDelegate.m */,
+				4FEDF5501717B8F400C2CC75 /* MainStoryboard_iPhone.storyboard */,
+				4FEDF5531717B8F400C2CC75 /* MainStoryboard_iPad.storyboard */,
+				4FEDF5561717B8F400C2CC75 /* ShokaViewController.h */,
+				4FEDF5571717B8F400C2CC75 /* ShokaViewController.m */,
+				4FEDF53F1717B8F300C2CC75 /* Supporting Files */,
+			);
+			path = Shoka;
+			sourceTree = "<group>";
+		};
+		4FEDF53F1717B8F300C2CC75 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4FEDF5401717B8F300C2CC75 /* Shoka-Info.plist */,
+				4FEDF5411717B8F300C2CC75 /* InfoPlist.strings */,
+				4FEDF5441717B8F300C2CC75 /* main.m */,
+				4FEDF5461717B8F300C2CC75 /* Shoka-Prefix.pch */,
+				4FEDF54A1717B8F300C2CC75 /* Default.png */,
+				4FEDF54C1717B8F300C2CC75 /* Default@2x.png */,
+				4FEDF54E1717B8F300C2CC75 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4FEDF5341717B8F300C2CC75 /* Shoka */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4FEDF55B1717B8F400C2CC75 /* Build configuration list for PBXNativeTarget "Shoka" */;
+			buildPhases = (
+				1902A431B61D44878DD752D8 /* Check Pods Manifest.lock */,
+				4FEDF5311717B8F300C2CC75 /* Sources */,
+				4FEDF5321717B8F300C2CC75 /* Frameworks */,
+				4FEDF5331717B8F300C2CC75 /* Resources */,
+				1F23A6CD8F5F45D8926F308C /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Shoka;
+			productName = Shoka;
+			productReference = 4FEDF5351717B8F300C2CC75 /* Shoka.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4FEDF52D1717B8F300C2CC75 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = Shoka;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = Team.TeaWhen;
+			};
+			buildConfigurationList = 4FEDF5301717B8F300C2CC75 /* Build configuration list for PBXProject "Shoka" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 4FEDF52C1717B8F300C2CC75;
+			productRefGroup = 4FEDF5361717B8F300C2CC75 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4FEDF5341717B8F300C2CC75 /* Shoka */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4FEDF5331717B8F300C2CC75 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4FEDF5431717B8F300C2CC75 /* InfoPlist.strings in Resources */,
+				4FEDF54B1717B8F300C2CC75 /* Default.png in Resources */,
+				4FEDF54D1717B8F300C2CC75 /* Default@2x.png in Resources */,
+				4FEDF54F1717B8F300C2CC75 /* Default-568h@2x.png in Resources */,
+				4FEDF5521717B8F400C2CC75 /* MainStoryboard_iPhone.storyboard in Resources */,
+				4FEDF5551717B8F400C2CC75 /* MainStoryboard_iPad.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1902A431B61D44878DD752D8 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sanbox is not in sync with the Podfile.lock. Run 'pod install'.\nEOM\n    exit 1\nfi\n";
+		};
+		1F23A6CD8F5F45D8926F308C /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4FEDF5311717B8F300C2CC75 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4FEDF5451717B8F300C2CC75 /* main.m in Sources */,
+				4FEDF5491717B8F300C2CC75 /* ShokaAppDelegate.m in Sources */,
+				4FEDF5581717B8F400C2CC75 /* ShokaViewController.m in Sources */,
+				1A6508B4173404F000F0100C /* ShokaFavorites.m in Sources */,
+				1A6508B81734053600F0100C /* ShokaResult.m in Sources */,
+				1A6508BB1734054D00F0100C /* ShokaBook.m in Sources */,
+				1A6508BE1734057A00F0100C /* ShokaNetworking.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		4FEDF5411717B8F300C2CC75 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4FEDF5421717B8F300C2CC75 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		4FEDF5501717B8F400C2CC75 /* MainStoryboard_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4FEDF5511717B8F400C2CC75 /* en */,
+			);
+			name = MainStoryboard_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		4FEDF5531717B8F400C2CC75 /* MainStoryboard_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4FEDF5541717B8F400C2CC75 /* en */,
+			);
+			name = MainStoryboard_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4FEDF5591717B8F400C2CC75 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4FEDF55A1717B8F400C2CC75 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4FEDF55C1717B8F400C2CC75 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 68C59F1202C041A0917BEDBA /* Pods.xcconfig */;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Shoka/Shoka-Prefix.pch";
+				INFOPLIST_FILE = "Shoka/Shoka-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		4FEDF55D1717B8F400C2CC75 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 68C59F1202C041A0917BEDBA /* Pods.xcconfig */;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Shoka/Shoka-Prefix.pch";
+				INFOPLIST_FILE = "Shoka/Shoka-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4FEDF5301717B8F300C2CC75 /* Build configuration list for PBXProject "Shoka" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4FEDF5591717B8F400C2CC75 /* Debug */,
+				4FEDF55A1717B8F400C2CC75 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4FEDF55B1717B8F400C2CC75 /* Build configuration list for PBXNativeTarget "Shoka" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4FEDF55C1717B8F400C2CC75 /* Debug */,
+				4FEDF55D1717B8F400C2CC75 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4FEDF52D1717B8F300C2CC75 /* Project object */;
+}
