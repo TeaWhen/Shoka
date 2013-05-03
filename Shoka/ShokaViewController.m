@@ -7,8 +7,14 @@
 //
 
 #import "ShokaViewController.h"
+#import "ShokaResult.h"
 
-@interface ShokaViewController ()
+@interface ShokaViewController () <UITableViewDataSource, UITableViewDelegate>
+
+@property ShokaResult *result;
+
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -18,6 +24,30 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    self.result = [ShokaResult new];
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 5;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] init];
+    }
+    
+    cell.textLabel.text = @"miaow";
+    
+	return cell;
 }
 
 - (void)didReceiveMemoryWarning
