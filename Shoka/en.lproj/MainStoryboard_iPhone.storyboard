@@ -7,7 +7,7 @@
         <!--Navigation Controller - Item-->
         <scene sceneID="G8z-gv-5zn">
             <objects>
-                <navigationController definesPresentationContext="YES" navigationBarHidden="YES" id="MxO-IV-ZXm" sceneMemberID="viewController">
+                <navigationController definesPresentationContext="YES" id="MxO-IV-ZXm" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="mF9-Cm-eH7"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="eDb-Wc-jjA">
                         <autoresizingMask key="autoresizingMask"/>
@@ -39,9 +39,6 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <connections>
-                                            <segue destination="Nrd-u9-s9U" kind="push" id="JBx-wJ-ZSY"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -49,7 +46,7 @@
                                     <outlet property="delegate" destination="kNI-rg-laD" id="awV-Ox-xdp"/>
                                 </connections>
                             </tableView>
-                            <searchBar contentMode="redraw" barStyle="blackOpaque" translatesAutoresizingMaskIntoConstraints="NO" id="UIP-b9-gZL">
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="UIP-b9-gZL">
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                         </subviews>
@@ -69,6 +66,7 @@
                     <connections>
                         <outlet property="searchBar" destination="UIP-b9-gZL" id="WGa-4j-iAk"/>
                         <outlet property="tableView" destination="nFg-Fa-iN1" id="EZQ-n7-L8v"/>
+                        <segue destination="Nrd-u9-s9U" kind="push" identifier="book" id="Kup-Kg-dZu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iAL-E1-Y0U" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -85,6 +83,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="qey-kg-snv"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dR3-Yh-tao" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -186,6 +185,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="JYY-8U-79e"/>
+        <segue reference="Kup-Kg-dZu"/>
     </inferredMetricsTieBreakers>
 </document>
