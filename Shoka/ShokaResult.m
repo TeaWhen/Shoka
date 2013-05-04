@@ -8,6 +8,17 @@
 
 #import "ShokaResult.h"
 
+@interface ShokaResult ()
+
+@property (strong, nonatomic) NSMutableArray *result;
+
+@end
+
 @implementation ShokaResult
+
+- (void)addBook:(ShokaBook *)book
+{
+    
+}
 
 @end

@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ShokaBook.h"
 
 @interface ShokaResult : NSObject
+
+- (void)addBook:(ShokaBook *) book;
 
 @end

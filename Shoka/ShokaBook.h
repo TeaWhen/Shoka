@@ -10,4 +10,7 @@
 
 @interface ShokaBook : NSObject
 
+@property (strong, nonatomic) NSString *title;
+@property (strong, nonatomic) NSMutableSet *rawData;
+
 @end

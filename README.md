@@ -1,6 +1,8 @@
 Shoka - 浙大图书馆书目检索客户端
 =====
 
+[![Build Status](https://travis-ci.org/TeaWhen/shoka.png?branch=master)](https://travis-ci.org/TeaWhen/shoka)
+
 ## ideas
 
 整合豆瓣评价/评论/网上书店售价信息
