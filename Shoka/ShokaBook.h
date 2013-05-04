@@ -11,6 +11,8 @@
 @interface ShokaBook : NSObject
 
 @property (strong, nonatomic) NSString *title;
-@property (strong, nonatomic) NSMutableSet *rawData;
+@property (strong, nonatomic) NSString *isbn;
+@property (strong, nonatomic) NSString *publisher;
+@property (strong, nonatomic) NSDictionary *rawData;
 
 @end

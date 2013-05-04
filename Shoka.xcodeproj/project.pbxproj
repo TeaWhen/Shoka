@@ -34,10 +34,10 @@
 		1A6508B71734053600F0100C /* ShokaResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShokaResult.m; sourceTree = "<group>"; };
 		1A6508B91734054D00F0100C /* ShokaBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShokaBook.h; sourceTree = "<group>"; };
 		1A6508BA1734054D00F0100C /* ShokaBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShokaBook.m; sourceTree = "<group>"; };
-		4F2D96AB173417F90026EE80 /* ShokaWebpacAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShokaWebpacAPI.h; sourceTree = "<group>"; };
-		4F2D96AC173417F90026EE80 /* ShokaWebpacAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShokaWebpacAPI.m; sourceTree = "<group>"; };
-		4F2D96AE1734182F0026EE80 /* ShokaDoubanAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShokaDoubanAPI.h; sourceTree = "<group>"; };
-		4F2D96AF1734182F0026EE80 /* ShokaDoubanAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShokaDoubanAPI.m; sourceTree = "<group>"; };
+		4F2D96AB173417F90026EE80 /* ShokaWebpacAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShokaWebpacAPI.h; path = API/ShokaWebpacAPI.h; sourceTree = "<group>"; };
+		4F2D96AC173417F90026EE80 /* ShokaWebpacAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShokaWebpacAPI.m; path = API/ShokaWebpacAPI.m; sourceTree = "<group>"; };
+		4F2D96AE1734182F0026EE80 /* ShokaDoubanAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShokaDoubanAPI.h; path = API/ShokaDoubanAPI.h; sourceTree = "<group>"; };
+		4F2D96AF1734182F0026EE80 /* ShokaDoubanAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShokaDoubanAPI.m; path = API/ShokaDoubanAPI.m; sourceTree = "<group>"; };
 		4FEDF5351717B8F300C2CC75 /* Shoka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shoka.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FEDF5381717B8F300C2CC75 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4FEDF53A1717B8F300C2CC75 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
