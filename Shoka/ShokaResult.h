@@ -11,9 +11,9 @@
 
 @interface ShokaResult : NSObject
 
-- (void)addBook:(ShokaBook *) book;
+- (void)addObject:(id)book;
 - (NSInteger)count;
-- (ShokaBook *)bookAtIndex:(NSInteger)index;
+- (id)objectAtIndex:(NSInteger)index;
 - (void)clear;
 
 @end

@@ -71,15 +71,12 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] init];
-    }
     
     ShokaBook *bk;
     if (indexPath.section == 0)
-        bk = [self.cn_result bookAtIndex:indexPath.row];
+        bk = [self.cn_result objectAtIndex:indexPath.row];
     else
-        bk = [self.en_result bookAtIndex:indexPath.row];
+        bk = [self.en_result objectAtIndex:indexPath.row];
     
     cell.textLabel.text = bk.title;
     
@@ -107,9 +104,9 @@
     if ([segue.identifier isEqualToString:@"book"]) {
         NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
         if (indexPath.section == 0)
-            [segue.destinationViewController setBook:[self.cn_result bookAtIndex:indexPath.row]];
+            [segue.destinationViewController setBook:[self.cn_result objectAtIndex:indexPath.row]];
         else
-            [segue.destinationViewController setBook:[self.en_result bookAtIndex:indexPath.row]];
+            [segue.destinationViewController setBook:[self.en_result objectAtIndex:indexPath.row]];
         
         [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     }

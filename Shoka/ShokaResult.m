@@ -21,11 +21,11 @@
     if (!_result) _result = [NSMutableArray new];
     
     return _result;
-}
+};
 
-- (void)addBook:(ShokaBook *)book
+- (void)addObject:(id)obj
 {
-    [self.result addObject:book];
+    [self.result addObject:obj];
 }
 
 - (NSInteger)count
@@ -33,7 +33,7 @@
     return [self.result count];
 }
 
-- (ShokaBook *)bookAtIndex:(NSInteger)index
+- (id)objectAtIndex:(NSInteger)index
 {
     return [self.result objectAtIndex:index];
 }
