@@ -44,7 +44,6 @@
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    NSLog(@"clicked");
     [ShokaWebpacAPI searchChineseDepositoryWithKey:searchBar.text success:^(ShokaResult *result) {
         self.cn_result = result;
         [self.tableView reloadData];
@@ -64,7 +63,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 1) return [self.cn_result count];
+    if (section == 0) return [self.cn_result count];
     else return [self.en_result count];
 }
 
@@ -76,7 +75,7 @@
     }
     
     ShokaBook *bk;
-    if (indexPath.section == 1)
+    if (indexPath.section == 0)
         bk = [self.cn_result bookAtIndex:indexPath.row];
     else
         bk = [self.en_result bookAtIndex:indexPath.row];
@@ -88,13 +87,17 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    if (section == 1) return @"中文文献库";
+    if (section == 0) return @"中文文献库";
     else return @"西文文献库";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [self performSegueWithIdentifier:@"book" sender:self];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];ShokaBook *bk;
+    if (indexPath.section == 0)
+        bk = [self.cn_result bookAtIndex:indexPath.row];
+    else
+        bk = [self.en_result bookAtIndex:indexPath.row];
+    [self performSegueWithIdentifier:@"book" sender:bk];
 }
 
 - (void)didReceiveMemoryWarning
