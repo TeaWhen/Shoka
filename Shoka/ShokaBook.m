@@ -10,4 +10,16 @@
 
 @implementation ShokaBook
 
+- (NSMutableDictionary *)extraInfo
+{
+    if (!_extraInfo) _extraInfo = [NSMutableDictionary new];
+    
+    return _extraInfo;
+}
+
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"｢%@｣ _%@_", self.title, [self.extraInfo valueForKey:@"webpac_docNumber"]];
+}
+
 @end

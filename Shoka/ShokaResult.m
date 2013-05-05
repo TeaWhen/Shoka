@@ -16,9 +16,31 @@
 
 @implementation ShokaResult
 
+- (NSMutableArray *)result
+{
+    if (!_result) _result = [NSMutableArray new];
+    
+    return _result;
+}
+
 - (void)addBook:(ShokaBook *)book
 {
-    
+    [self.result addObject:book];
+}
+
+- (NSInteger)count
+{
+    return [self.result count];
+}
+
+- (ShokaBook *)bookAtIndex:(NSInteger)index
+{
+    return [self.result objectAtIndex:index];
+}
+
+- (void)clear
+{
+    [self.result removeAllObjects];
 }
 
 @end

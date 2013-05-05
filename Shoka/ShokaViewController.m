@@ -44,7 +44,11 @@
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     NSLog(@"clicked");
-    [ShokaWebpacAPI searchChineseDepositoryWithKey:searchBar.text success:nil failure:nil];
+    [ShokaWebpacAPI searchChineseDepositoryWithKey:searchBar.text success:^(ShokaResult *result) {
+        self.result = result;
+        [self.tableView reloadData];
+    } failure:^(NSError *error) {
+    }];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -54,7 +58,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return [self.result count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -64,7 +68,9 @@
         cell = [[UITableViewCell alloc] init];
     }
     
-    cell.textLabel.text = @"miaow";
+    ShokaBook *bk = [self.result bookAtIndex:indexPath.row];
+    
+    cell.textLabel.text = bk.title;
     
 	return cell;
 }

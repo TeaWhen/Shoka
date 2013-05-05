@@ -13,6 +13,6 @@
 @property (strong, nonatomic) NSString *title;
 @property (strong, nonatomic) NSString *isbn;
 @property (strong, nonatomic) NSString *publisher;
-@property (strong, nonatomic) NSDictionary *rawData;
+@property (strong, nonatomic) NSMutableDictionary *extraInfo;
 
 @end
