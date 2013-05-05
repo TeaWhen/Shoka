@@ -13,6 +13,7 @@
 		2E4C1733057E47428147FE57 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 591146B6C9BF46D6B930A9A0 /* libPods.a */; };
 		4F2D96AD173417F90026EE80 /* ShokaWebpacAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D96AC173417F90026EE80 /* ShokaWebpacAPI.m */; };
 		4F2D96B01734182F0026EE80 /* ShokaDoubanAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D96AF1734182F0026EE80 /* ShokaDoubanAPI.m */; };
+		4FBD69C417366D3900DB98B7 /* ShokaBookDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FBD69C317366D3900DB98B7 /* ShokaBookDetailViewController.m */; };
 		4FEDF5391717B8F300C2CC75 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FEDF5381717B8F300C2CC75 /* UIKit.framework */; };
 		4FEDF53B1717B8F300C2CC75 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FEDF53A1717B8F300C2CC75 /* Foundation.framework */; };
 		4FEDF53D1717B8F300C2CC75 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FEDF53C1717B8F300C2CC75 /* CoreGraphics.framework */; };
@@ -38,6 +39,8 @@
 		4F2D96AC173417F90026EE80 /* ShokaWebpacAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShokaWebpacAPI.m; path = API/ShokaWebpacAPI.m; sourceTree = "<group>"; };
 		4F2D96AE1734182F0026EE80 /* ShokaDoubanAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShokaDoubanAPI.h; path = API/ShokaDoubanAPI.h; sourceTree = "<group>"; };
 		4F2D96AF1734182F0026EE80 /* ShokaDoubanAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShokaDoubanAPI.m; path = API/ShokaDoubanAPI.m; sourceTree = "<group>"; };
+		4FBD69C217366D3900DB98B7 /* ShokaBookDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShokaBookDetailViewController.h; sourceTree = "<group>"; };
+		4FBD69C317366D3900DB98B7 /* ShokaBookDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShokaBookDetailViewController.m; sourceTree = "<group>"; };
 		4FEDF5351717B8F300C2CC75 /* Shoka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shoka.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FEDF5381717B8F300C2CC75 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4FEDF53A1717B8F300C2CC75 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -138,6 +141,8 @@
 				4FEDF5531717B8F400C2CC75 /* MainStoryboard_iPad.storyboard */,
 				4FEDF5561717B8F400C2CC75 /* ShokaViewController.h */,
 				4FEDF5571717B8F400C2CC75 /* ShokaViewController.m */,
+				4FBD69C217366D3900DB98B7 /* ShokaBookDetailViewController.h */,
+				4FBD69C317366D3900DB98B7 /* ShokaBookDetailViewController.m */,
 				4FEDF53F1717B8F300C2CC75 /* Supporting Files */,
 			);
 			path = Shoka;
@@ -266,6 +271,7 @@
 				1A6508BB1734054D00F0100C /* ShokaBook.m in Sources */,
 				4F2D96AD173417F90026EE80 /* ShokaWebpacAPI.m in Sources */,
 				4F2D96B01734182F0026EE80 /* ShokaDoubanAPI.m in Sources */,
+				4FBD69C417366D3900DB98B7 /* ShokaBookDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

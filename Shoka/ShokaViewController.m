@@ -9,6 +9,7 @@
 #import "ShokaViewController.h"
 #import "ShokaResult.h"
 #import "ShokaWebpacAPI.h"
+#import "ShokaBookDetailViewController.h"
 
 @interface ShokaViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
@@ -92,18 +93,26 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];ShokaBook *bk;
-    if (indexPath.section == 0)
-        bk = [self.cn_result bookAtIndex:indexPath.row];
-    else
-        bk = [self.en_result bookAtIndex:indexPath.row];
-    [self performSegueWithIdentifier:@"book" sender:bk];
+    [self performSegueWithIdentifier:@"book" sender:self];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"book"]) {
+        NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
+        if (indexPath.section == 0)
+            [segue.destinationViewController setBook:[self.cn_result bookAtIndex:indexPath.row]];
+        else
+            [segue.destinationViewController setBook:[self.en_result bookAtIndex:indexPath.row]];
+        
+        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    }
 }
 
 @end
