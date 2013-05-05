@@ -8,8 +8,9 @@
 
 #import "ShokaViewController.h"
 #import "ShokaResult.h"
+#import "ShokaWebpacAPI.h"
 
-@interface ShokaViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface ShokaViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
 @property ShokaResult *result;
 
@@ -38,6 +39,12 @@
 {
     [self.navigationController setNavigationBarHidden:NO animated:animated];
     [super viewWillDisappear:animated];
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    NSLog(@"clicked");
+    [ShokaWebpacAPI searchChineseDepositoryWithKey:searchBar.text success:nil failure:nil];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
