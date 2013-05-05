@@ -21,10 +21,12 @@
 {
     NSURLRequest *detectRequest = [NSURLRequest requestWithURL: [NSURL URLWithString:@"http://10.10.16.94/X?op=find&base=zju01&code=wrd&request=teawhen"] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:1];
     AFHTTPRequestOperation *detectOP = [[AFHTTPRequestOperation alloc] initWithRequest:detectRequest];
-    [detectOP setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [detectOP setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
+    {
         NSLog(@"in zju");
         func([NSURL URLWithString:@"http://10.10.16.94"]);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error)
+    {
         NSLog(@"out zju");
         func([NSURL URLWithString:@"http://webpac.zju.edu.cn"]);
     }];
@@ -35,24 +37,30 @@
 + (void)searchChineseDepositoryWithKey:(NSString *)searchKey success:(void (^)(ShokaResult *))success failure:(void (^)(NSError *))failure
 {
     ShokaResult *result = [ShokaResult new];
-    [ShokaWebpacAPI detectBaseURLFor:^(NSURL *baseURL) {
+    [ShokaWebpacAPI detectBaseURLFor:^(NSURL *baseURL)
+    {
         NSString *requestString = [[NSString stringWithFormat:@"/X?op=find&base=zju01&code=wrd&request=%@", searchKey] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         AFHTTPRequestOperation *searchOP = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:requestString relativeToURL:baseURL]]];
-        [searchOP setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [searchOP setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
+        {
             // First get set_number
             RXMLElement *rootXML = [RXMLElement elementFromXMLData:responseObject];
             NSString *searchSetString = [[NSString stringWithFormat:@"/X?op=present&set_no=%@&set_entry=%@&format=marc", [rootXML child:@"set_number"].text, SETENTRY] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
             AFHTTPRequestOperation *searchSetOP = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:searchSetString relativeToURL:baseURL]]];
-            [searchSetOP setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [searchSetOP setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
+            {
                 RXMLElement *recordsRootXML = [RXMLElement elementFromXMLData:responseObject];
-                [recordsRootXML iterate:@"record" usingBlock:^(RXMLElement *record) {
+                [recordsRootXML iterate:@"record" usingBlock:^(RXMLElement *record)
+                {
                     ShokaBook *bk = [ShokaBook new];
                     [bk.extraInfo setValue:record forKey:@"webpac_rawData"];
                     [bk.extraInfo setValue:[record child:@"doc_number"] forKey:@"webpac_docNumber"];
                     [bk.extraInfo setValue:@"zju01" forKey:@"webpac_base"];
-                    [record iterate:@"metadata.oai_marc.varfield" usingBlock:^(RXMLElement *vf) {
+                    [record iterate:@"metadata.oai_marc.varfield" usingBlock:^(RXMLElement *vf)
+                    {
                         if ([[vf attribute:@"id"] isEqualToString:@"200"]) {
-                            [vf iterate:@"subfield" usingBlock:^(RXMLElement *sf) {
+                            [vf iterate:@"subfield" usingBlock:^(RXMLElement *sf)
+                            {
                                 if ([[sf attribute:@"label"] isEqualToString:@"a"]) {
                                     bk.title = sf.text;
                                 }
@@ -62,12 +70,14 @@
                     [result addObject:bk];
                 }];
                 success(result);
-            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            } failure:^(AFHTTPRequestOperation *operation, NSError *error)
+            {
                 NSLog(@"failure while querying records");
             }];
             
             [searchSetOP start];
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error)
+        {
             NSLog(@"failure while querying set_number");
         }];
 
@@ -78,24 +88,30 @@
 + (void)searchForeignDepositoryWithKey:(NSString *)searchKey success:(void (^)(ShokaResult *))success failure:(void (^)(NSError *))failure
 {
     ShokaResult *result = [ShokaResult new];
-    [ShokaWebpacAPI detectBaseURLFor:^(NSURL *baseURL) {
+    [ShokaWebpacAPI detectBaseURLFor:^(NSURL *baseURL)
+    {
         NSString *requestString = [[NSString stringWithFormat:@"/X?op=find&base=zju09&code=wrd&request=%@", searchKey] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         AFHTTPRequestOperation *searchOP = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:requestString relativeToURL:baseURL]]];
-        [searchOP setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [searchOP setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
+        {
             // First get set_number
             RXMLElement *rootXML = [RXMLElement elementFromXMLData:responseObject];
             NSString *searchSetString = [[NSString stringWithFormat:@"/X?op=present&set_no=%@&set_entry=%@&format=marc", [rootXML child:@"set_number"].text, SETENTRY] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
             AFHTTPRequestOperation *searchSetOP = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:searchSetString relativeToURL:baseURL]]];
-            [searchSetOP setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [searchSetOP setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
+            {
                 RXMLElement *recordsRootXML = [RXMLElement elementFromXMLData:responseObject];
-                [recordsRootXML iterate:@"record" usingBlock:^(RXMLElement *record) {
+                [recordsRootXML iterate:@"record" usingBlock:^(RXMLElement *record)
+                {
                     ShokaBook *bk = [ShokaBook new];
                     [bk.extraInfo setValue:record forKey:@"webpac_rawData"];
                     [bk.extraInfo setValue:[record child:@"doc_number"] forKey:@"webpac_docNumber"];
                     [bk.extraInfo setValue:@"zju09" forKey:@"webpac_base"];
-                    [record iterate:@"metadata.oai_marc.varfield" usingBlock:^(RXMLElement *vf) {
+                    [record iterate:@"metadata.oai_marc.varfield" usingBlock:^(RXMLElement *vf)
+                    {
                         if ([[vf attribute:@"id"] isEqualToString:@"245"]) {
-                            [vf iterate:@"subfield" usingBlock:^(RXMLElement *sf) {
+                            [vf iterate:@"subfield" usingBlock:^(RXMLElement *sf)
+                            {
                                 if ([[sf attribute:@"label"] isEqualToString:@"a"]) {
                                     bk.title = [ShokaWebpacAPI cleanupTitle:sf.text];
                                 }
@@ -105,12 +121,14 @@
                     [result addObject:bk];
                 }];
                 success(result);
-            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            } failure:^(AFHTTPRequestOperation *operation, NSError *error)
+            {
                 NSLog(@"failure while querying records");
             }];
             
             [searchSetOP start];
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error)
+        {
             NSLog(@"failure while querying set_number");
         }];
         
@@ -128,14 +146,17 @@
     [ShokaWebpacAPI detectBaseURLFor:^(NSURL *baseURL) {
         NSString *requestString = [[NSString stringWithFormat:@"http://webpac.zju.edu.cn/X?op=item-data&base=%@&doc_number=%@", base, docNumber] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:requestString relativeToURL:baseURL]]];
-        [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
+        {
             RXMLElement *itemData = [RXMLElement elementFromXMLData:responseObject];
-            [itemData iterate:@"item" usingBlock:^(RXMLElement *item) {
+            [itemData iterate:@"item" usingBlock:^(RXMLElement *item)
+            {
                 ShokaItem *itm = [ShokaItem new];
                 NSString *dueDate = [item child:@"loan-due-date"].text;
                 if (dueDate) {
                     itm.status = [NSString stringWithFormat:@"已借出, %@", dueDate];
-                } else {
+                }
+                else {
                     if ([[item child:@"item-status"].text isEqualToString:@"12"]) {
                         itm.status = @"普通外借";
                     } else {
@@ -147,7 +168,8 @@
                 [result addObject:itm];
             }];
             success(result);
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error)
+        {
             NSLog(@"failure when fetching item data");
         }];
         
