@@ -8,7 +8,6 @@
 
 #import "ShokaWebpacAPI.h"
 #import "AFNetworking.h"
-#import "AFKissXMLRequestOperation.h"
 #import "RXMLElement.h"
 
 #import "ShokaBook.h"

@@ -55,17 +55,30 @@
         [self.tableView reloadData];
     } failure:^(NSError *error) {
     }];
+    [searchBar resignFirstResponder];
+}
+
+- (void)searchBar:(UISearchBar *)searchBar selectedScopeButtonIndexDidChange:(NSInteger)selectedScope
+{
+    [self.tableView reloadData];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 1;
 }
+
+enum Language {
+    cn = 0,
+    en
+};
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 0) return [self.cn_result count];
-    else return [self.en_result count];
+    if (self.searchBar.selectedScopeButtonIndex == cn)
+        return [self.cn_result count];
+    else
+        return [self.en_result count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -73,7 +86,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     
     ShokaBook *bk;
-    if (indexPath.section == 0)
+    if (self.searchBar.selectedScopeButtonIndex == cn)
         bk = [self.cn_result objectAtIndex:indexPath.row];
     else
         bk = [self.en_result objectAtIndex:indexPath.row];
@@ -81,12 +94,6 @@
     cell.textLabel.text = bk.title;
     
 	return cell;
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    if (section == 0) return @"中文文献库";
-    else return @"西文文献库";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
