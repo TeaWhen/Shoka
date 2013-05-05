@@ -69,13 +69,13 @@
 }
 
 enum Language {
-    cn = 0,
-    en
+    Chinese = 0,
+    Western
 };
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (self.searchBar.selectedScopeButtonIndex == cn)
+    if (self.searchBar.selectedScopeButtonIndex == Chinese)
         return [self.cn_result count];
     else
         return [self.en_result count];
@@ -86,7 +86,7 @@ enum Language {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     
     ShokaBook *bk;
-    if (self.searchBar.selectedScopeButtonIndex == cn)
+    if (self.searchBar.selectedScopeButtonIndex == Chinese)
         bk = [self.cn_result objectAtIndex:indexPath.row];
     else
         bk = [self.en_result objectAtIndex:indexPath.row];
@@ -110,7 +110,7 @@ enum Language {
 {
     if ([segue.identifier isEqualToString:@"book"]) {
         NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
-        if (indexPath.section == 0)
+        if (self.searchBar.selectedScopeButtonIndex == Chinese)
             [segue.destinationViewController setBook:[self.cn_result objectAtIndex:indexPath.row]];
         else
             [segue.destinationViewController setBook:[self.en_result objectAtIndex:indexPath.row]];
