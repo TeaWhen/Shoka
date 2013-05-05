@@ -12,7 +12,7 @@
 
 @interface ShokaViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
-@property ShokaResult *result;
+@property ShokaResult *cn_result, *en_result;
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -26,7 +26,8 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    self.result = [ShokaResult new];
+    self.cn_result = [ShokaResult new];
+    self.en_result = [ShokaResult new];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -45,7 +46,12 @@
 {
     NSLog(@"clicked");
     [ShokaWebpacAPI searchChineseDepositoryWithKey:searchBar.text success:^(ShokaResult *result) {
-        self.result = result;
+        self.cn_result = result;
+        [self.tableView reloadData];
+    } failure:^(NSError *error) {
+    }];
+    [ShokaWebpacAPI searchForeignDepositoryWithKey:searchBar.text success:^(ShokaResult *result) {
+        self.en_result = result;
         [self.tableView reloadData];
     } failure:^(NSError *error) {
     }];
@@ -53,12 +59,13 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.result count];
+    if (section == 1) return [self.cn_result count];
+    else return [self.en_result count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -68,11 +75,21 @@
         cell = [[UITableViewCell alloc] init];
     }
     
-    ShokaBook *bk = [self.result bookAtIndex:indexPath.row];
+    ShokaBook *bk;
+    if (indexPath.section == 1)
+        bk = [self.cn_result bookAtIndex:indexPath.row];
+    else
+        bk = [self.en_result bookAtIndex:indexPath.row];
     
     cell.textLabel.text = bk.title;
     
 	return cell;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if (section == 1) return @"中文文献库";
+    else return @"西文文献库";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

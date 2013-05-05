@@ -19,7 +19,7 @@
 
 + (void)detectBaseURLFor: (void (^)(NSURL *baseURL))func
 {
-    NSURLRequest *detectRequest = [NSURLRequest requestWithURL: [NSURL URLWithString:@"http://10.10.16.94/X?op=find&base=zju01&code=wrd&request=teawhen"]];
+    NSURLRequest *detectRequest = [NSURLRequest requestWithURL: [NSURL URLWithString:@"http://10.10.16.94/X?op=find&base=zju01&code=wrd&request=teawhen"] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:1];
     AFHTTPRequestOperation *detectOP = [[AFHTTPRequestOperation alloc] initWithRequest:detectRequest];
     [detectOP setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"in zju");
@@ -41,7 +41,6 @@
         [searchOP setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
             // First get set_number
             RXMLElement *rootXML = [RXMLElement elementFromXMLData:responseObject];
-            NSLog(@"set_number: %@\nno_records: %@", [rootXML child:@"set_number"].text, [rootXML child:@"no_records"].text);
             NSString *searchSetString = [[NSString stringWithFormat:@"/X?op=present&set_no=%@&set_entry=%@&format=marc", [rootXML child:@"set_number"].text, SETENTRY] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
             AFHTTPRequestOperation *searchSetOP = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:searchSetString relativeToURL:baseURL]]];
             [searchSetOP setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -75,17 +74,55 @@
     }];
 }
 
-+ (void)searchForeignDepositoryWithKey:(NSString *)searchKey success:(void (^)(ShokaResult *))data failure:(void (^)(NSError *))error
++ (void)searchForeignDepositoryWithKey:(NSString *)searchKey success:(void (^)(ShokaResult *))success failure:(void (^)(NSError *))failure
+{
+    ShokaResult *result = [ShokaResult new];
+    [ShokaWebpacAPI detectBaseURLFor:^(NSURL *baseURL) {
+        NSString *requestString = [[NSString stringWithFormat:@"/X?op=find&base=zju09&code=wrd&request=%@", searchKey] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        AFHTTPRequestOperation *searchOP = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:requestString relativeToURL:baseURL]]];
+        [searchOP setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+            // First get set_number
+            RXMLElement *rootXML = [RXMLElement elementFromXMLData:responseObject];
+            NSString *searchSetString = [[NSString stringWithFormat:@"/X?op=present&set_no=%@&set_entry=%@&format=marc", [rootXML child:@"set_number"].text, SETENTRY] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            AFHTTPRequestOperation *searchSetOP = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:searchSetString relativeToURL:baseURL]]];
+            [searchSetOP setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+                RXMLElement *recordsRootXML = [RXMLElement elementFromXMLData:responseObject];
+                [recordsRootXML iterate:@"record" usingBlock:^(RXMLElement *record) {
+                    ShokaBook *bk = [ShokaBook new];
+                    [bk.extraInfo setValue:record forKey:@"webpac_rawData"];
+                    [bk.extraInfo setValue:[record child:@"doc_number"] forKey:@"webpac_docNumber"];
+                    [record iterate:@"metadata.oai_marc.varfield" usingBlock:^(RXMLElement *vf) {
+                        if ([[vf attribute:@"id"] isEqualToString:@"245"]) {
+                            [vf iterate:@"subfield" usingBlock:^(RXMLElement *sf) {
+                                if ([[sf attribute:@"label"] isEqualToString:@"a"]) {
+                                    bk.title = [ShokaWebpacAPI cleanupTitle:sf.text];
+                                }
+                            }];
+                        }
+                    }];
+                    [result addBook:bk];
+                }];
+                success(result);
+            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                NSLog(@"failure while querying records");
+            }];
+            
+            [searchSetOP start];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"failure while querying set_number");
+        }];
+        
+        [searchOP start];
+    }];
+}
+
++ (void)searchDepositoryWithKey:(NSString *)searchKey success:(void (^)(ShokaResult *))success failure:(void (^)(NSError *))failure
 {
 }
 
-+ (void)searchDepositoryWithKey:(NSString *)searchKey success:(void (^)(ShokaResult *))data failure:(void (^)(NSError *))error
++ (NSString *)cleanupTitle:(NSString *)origin
 {
-}
-
-+ (void)cleanupTitle:(NSString *)origin
-{
-    
+    return [origin stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"=/"]];
 }
 
 @end
