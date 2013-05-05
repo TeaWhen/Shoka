@@ -37,6 +37,140 @@ Shoka - 浙大图书馆书目检索客户端
 
 每个`<record>`中的`<doc_number>`即为图书id, 可以用find-doc显示书籍信息(虽然跟present里面的显示的一样, `http://webpac.zju.edu.cn/X?op=find-doc&base=zju01&doc_number=[doc_number]`)
 
+结果：
+```xml
+<find-doc>
+  <script/>
+  <record>
+    <metadata>
+      <oai_marc>
+        <fixfield id="FMT">BK</fixfield>
+        <fixfield id="LDR">^^^^^nam0^2200313^^^450^</fixfield>
+        <fixfield id="001">LCL52000381189</fixfield>
+        <fixfield id="005">20130219134024.4</fixfield>
+        <varfield id="010" i1=" " i2=" ">
+          <subfield label="a">978-7-121-18659-2</subfield>
+          <subfield label="d">CNY89.00</subfield>
+        </varfield>
+        <varfield id="092" i1=" " i2=" ">
+          <subfield label="a">CN</subfield>
+          <subfield label="b">WHSX961-0859</subfield>
+        </varfield>
+        <varfield id="100" i1=" " i2=" ">
+          <subfield label="a">20130219d2013^^^^em^y0chiy0121^^^^ea</subfield>
+        </varfield>
+        <varfield id="101" i1="1" i2=" ">
+          <subfield label="a">chi</subfield>
+          <subfield label="c">eng</subfield>
+        </varfield>
+        <varfield id="102" i1=" " i2=" ">
+          <subfield label="a">CN</subfield>
+          <subfield label="b">110000</subfield>
+        </varfield>
+        <varfield id="105" i1=" " i2=" ">
+          <subfield label="a">a^^^z^^^001yy</subfield>
+        </varfield>
+        <varfield id="106" i1=" " i2=" ">
+          <subfield label="a">r</subfield>
+        </varfield>
+        <varfield id="200" i1="1" i2=" ">
+          <subfield label="a">真实世界的Python仪器监控</subfield>
+          <subfield label="A">zhen shi shi jie de Pythonyi qi jian kong</subfield>
+          <subfield label="d">= Real world instrumentation with Python</subfield>
+          <subfield label="e">数据采集与控制系统自动化</subfield>
+          <subfield label="f">J.M. Hughes著</subfield>
+          <subfield label="g">OBP Group译</subfield>
+          <subfield label="z">eng</subfield>
+        </varfield>
+        <varfield id="210" i1=" " i2=" ">
+          <subfield label="a">北京</subfield>
+          <subfield label="c">电子工业出版社</subfield>
+          <subfield label="d">2013.1</subfield>
+        </varfield>
+        <varfield id="215" i1=" " i2=" ">
+          <subfield label="a">xxvii, 571页</subfield>
+          <subfield label="c">图</subfield>
+          <subfield label="d">24cm</subfield>
+        </varfield>
+        <varfield id="306" i1=" " i2=" ">
+          <subfield label="a">本书简体中文版专有出版权由O'Reilly Media, Inc.授予电子工业出版社</subfield>
+        </varfield>
+        <varfield id="314" i1=" " i2=" ">
+          <subfield label="a">责任者规范汉译姓: 休斯</subfield>
+        </varfield>
+        <varfield id="320" i1=" " i2=" ">
+          <subfield label="a">有索引</subfield>
+        </varfield>
+        <varfield id="330" i1=" " i2=" ">
+          <subfield label="a">
+            本书主要探讨如何运用Python快速构建自动化仪器控制系统, 帮助读者了解如何通过自行开发应用程序来监视或者控制仪器硬件。本书内容涵盖了从接线到建立接口, 直到完成可用软件的整个过程。
+          </subfield>
+        </varfield>
+        <varfield id="333" i1=" " i2=" ">
+          <subfield label="a">本书适合需要进行仪表控制、机器人、数据采集、过程控制等相关工作的读者阅读参考</subfield>
+        </varfield>
+        <varfield id="510" i1="1" i2=" ">
+          <subfield label="a">Real world instrumentation with Python</subfield>
+          <subfield label="z">eng</subfield>
+        </varfield>
+        <varfield id="517" i1="1" i2=" ">
+          <subfield label="a">数据采集与控制系统自动化</subfield>
+          <subfield label="A">shu ju cai ji yu kong zhi xi tong zi dong hua</subfield>
+        </varfield>
+        <varfield id="606" i1="0" i2=" ">
+          <subfield label="a">软件工具</subfield>
+          <subfield label="A">ruan jian gong ju</subfield>
+          <subfield label="x">程序设计</subfield>
+        </varfield>
+        <varfield id="690" i1=" " i2=" ">
+          <subfield label="a">TP311.56</subfield>
+          <subfield label="v">5</subfield>
+        </varfield>
+        <varfield id="701" i1=" " i2="1">
+          <subfield label="a">休斯</subfield>
+          <subfield label="A">xiu si</subfield>
+          <subfield label="g">(Hughes, John M.)</subfield>
+          <subfield label="4">著</subfield>
+        </varfield>
+        <varfield id="712" i1="0" i2="2">
+          <subfield label="a">OBP Group</subfield>
+          <subfield label="4">译</subfield>
+        </varfield>
+        <varfield id="801" i1=" " i2="0">
+          <subfield label="a">CN</subfield>
+          <subfield label="b">三新书业</subfield>
+          <subfield label="c">20130222</subfield>
+        </varfield>
+        <varfield id="CAT" i1=" " i2=" ">
+          <subfield label="c">20130313</subfield>
+          <subfield label="l">LCL52</subfield>
+          <subfield label="h">1337</subfield>
+        </varfield>
+        <varfield id="CAT" i1=" " i2=" ">
+          <subfield label="a">BATCH</subfield>
+          <subfield label="b">00</subfield>
+          <subfield label="c">20130313</subfield>
+          <subfield label="l">LCL52</subfield>
+          <subfield label="h">1337</subfield>
+        </varfield>
+        <varfield id="CAT" i1=" " i2=" ">
+          <subfield label="a">ACQ0101</subfield>
+          <subfield label="b">00</subfield>
+          <subfield label="c">20130314</subfield>
+          <subfield label="l">ZJU01</subfield>
+          <subfield label="h">1346</subfield>
+        </varfield>
+        <varfield id="LEV" i1=" " i2=" ">
+          <subfield label="a">ACQ</subfield>
+        </varfield>
+      </oai_marc>
+    </metadata>
+  </record>
+  <session-id>Q3QEB8PU4LI9EGMH584EVM1PXXAYGCQRHC8C2YIV4MSBT523JI</session-id>
+</find-doc>
+```
+
+
 ### Step 3
 
 `http://webpac.zju.edu.cn/X?op=item-data&base=zju01&doc_number=[doc_number]`
