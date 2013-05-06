@@ -165,6 +165,7 @@
                 }
                 itm.library = [item child:@"sub-library"].text;
                 itm.callNo = [item child:@"call-no-1"].text;
+                itm.rawData = item;
                 [result addObject:itm];
             }];
             success(result);

@@ -7,12 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "RXMLElement.h"
 
 @interface ShokaItem : NSObject
 
 @property (strong, nonatomic) NSString *library;
 @property (strong, nonatomic) NSString *status;
 @property (strong, nonatomic) NSString *callNo;
-@property (strong, nonatomic) NSData *rawData;
+@property (strong, nonatomic) RXMLElement *rawData;
 
 @end
