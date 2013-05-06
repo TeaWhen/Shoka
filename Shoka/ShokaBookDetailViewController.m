@@ -14,7 +14,6 @@
 @interface ShokaBookDetailViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) ShokaResult *result;
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -26,59 +25,105 @@
     return _result;
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     self.title = self.book.title;
+    
     [ShokaWebpacAPI fetchItemDataOfDocNumber:[self.book.extraInfo valueForKey:@"webpac_docNumber"] inBase:[self.book.extraInfo valueForKey:@"webpac_base"] success:^(ShokaResult *api_result) {
         self.result = api_result;
-        [self.tableView reloadData];
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:itemsSection] withRowAnimation:UITableViewRowAnimationAutomatic];
     } failure:^(NSError *err) {
     }];
 }
 
+enum section {
+    basicInfoSection = 0,
+    moreInfoSection,
+    itemsSection,
+    numOfSections
+};
+
+enum rowInBasic {
+    authorRow = 0,
+    publisherRow,
+    ISBNRow,
+    numOfRowsInBasic
+};
+
+enum rowInMore {
+    subjectRow = 0,
+    summaryRow,
+    numOfRowsInMore
+};
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return [self.result count];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BookDetail"];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] init];
-    }
-    
-    ShokaItem *item = [self.result objectAtIndex:indexPath.row];
-    
-    cell.textLabel.text = item.library;
-    cell.detailTextLabel.text = item.status;
-    
-	return cell;
+    return numOfSections;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    if ([self.result count] > 0) {
-        ShokaItem *item = [self.result objectAtIndex:0];
-        return item.callNo;
+    if (section == itemsSection) {
+        return @"单册";
     }
     return @"";
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if (section == basicInfoSection) {
+        return numOfRowsInBasic;
+    }
+    else if (section == moreInfoSection) {
+        return numOfRowsInMore;
+    }
+    else if (section == itemsSection) {
+        return [self.result count];
+    }
+    
+    return 0;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell;
+    
+    if (indexPath.section == basicInfoSection) {
+        if (indexPath.row == authorRow) {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"Author"];
+            cell.detailTextLabel.text = self.book.author;
+        }
+        else if (indexPath.row == publisherRow) {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"Publisher"];
+            cell.detailTextLabel.text = self.book.publisher;
+        }
+        else if (indexPath.row == ISBNRow) {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"ISBN"];
+            cell.detailTextLabel.text = self.book.ISBN;
+        }
+    }
+    else if (indexPath.section == moreInfoSection) {
+        if (indexPath.row == subjectRow) {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"Subject"];
+            cell.detailTextLabel.text = self.book.subject;
+        }
+        else if (indexPath.row == summaryRow) {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"Summary"];
+            cell.detailTextLabel.text = self.book.summary;
+        }
+    }
+    else if (indexPath.section == itemsSection) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"ItemDetail"];
+        
+        ShokaItem *item = [self.result objectAtIndex:indexPath.row];
+        
+        cell.textLabel.text = item.library;
+        cell.detailTextLabel.text = item.status;
+    }
+    
+	return cell;
 }
 
 - (void)didReceiveMemoryWarning

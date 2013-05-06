@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ShokaBook.h"
 
-@interface ShokaBookDetailViewController : UIViewController
+@interface ShokaBookDetailViewController : UITableViewController
 
 @property (strong, nonatomic) ShokaBook *book;
 
