@@ -181,7 +181,7 @@
 
 + (NSString *)cleanupTitle:(NSString *)origin
 {
-    return [origin stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"=/"]];
+    return [origin stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"=/:"]];
 }
 
 @end
