@@ -19,7 +19,7 @@
 
 @property (strong, nonatomic) NSArray *authors;
 @property (strong, nonatomic) NSArray *translators;
-@property (strong, nonatomic) NSArray *subject;
+@property (strong, nonatomic) NSArray *subjects;
 
 @property (strong, nonatomic) NSMutableDictionary *extraInfo;
 

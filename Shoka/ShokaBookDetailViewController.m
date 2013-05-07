@@ -29,8 +29,6 @@
 {
     [super viewDidLoad];
     
-    NSLog(@"%@", self.book);
-    
     self.title = self.book.title;
     
     [ShokaWebpacAPI fetchItemDataOfDocNumber:[self.book.extraInfo valueForKey:@"webpac_docNumber"] inBase:[self.book.extraInfo valueForKey:@"webpac_base"] success:^(ShokaResult *api_result) {
@@ -95,7 +93,7 @@ enum rowInMore {
     if (indexPath.section == basicInfoSection) {
         if (indexPath.row == authorRow) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"Author"];
-            cell.detailTextLabel.text = self.book.author;
+            cell.detailTextLabel.text = [self.book.authors objectAtIndex:0];
         }
         else if (indexPath.row == publisherRow) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"Publisher"];
@@ -109,7 +107,7 @@ enum rowInMore {
     else if (indexPath.section == moreInfoSection) {
         if (indexPath.row == subjectRow) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"Subject"];
-            cell.detailTextLabel.text = self.book.subject;
+            cell.detailTextLabel.text = [self.book.subjects objectAtIndex:0];
         }
         else if (indexPath.row == summaryRow) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"Summary"];
