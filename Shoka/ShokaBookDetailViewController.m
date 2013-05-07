@@ -109,7 +109,7 @@ enum rowInMore {
     else if (indexPath.section == moreInfoSection) {
         if (indexPath.row == subjectRow) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"Subject"];
-            cell.detailTextLabel.text = [self.book.subjects objectAtIndex:0];
+            cell.detailTextLabel.text = self.book.subject;
         }
         else if (indexPath.row == summaryRow) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"Summary"];

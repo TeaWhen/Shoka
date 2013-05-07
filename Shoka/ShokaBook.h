@@ -18,6 +18,7 @@
 @property (strong, nonatomic) NSString *summary;
 @property (strong, nonatomic) NSString *author;
 @property (strong, nonatomic) NSString *translator;
+@property (strong, nonatomic) NSString *subject;
 
 @property (strong, nonatomic) NSArray *authors;
 @property (strong, nonatomic) NSArray *translators;

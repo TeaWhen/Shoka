@@ -57,6 +57,7 @@
                     NSMutableArray *authors = [NSMutableArray new];
                     NSMutableArray *translators = [NSMutableArray new];
                     NSMutableArray *subjects = [NSMutableArray new];
+                    NSMutableString *subject = [NSMutableString stringWithString:@""];
                     
                     [record iterate:@"metadata.oai_marc.varfield" usingBlock:^(RXMLElement *vf)
                     {
@@ -99,6 +100,8 @@
                             } else if ([vf_id isEqualToString:@"606"]) {
                                 if ([sf_label isEqualToString:@"a"]) {
                                     [tmpa appendString:sf.text];
+                                } else if ([sf_label isEqualToString:@"x"]) {
+                                    [tmpb appendString:[NSString stringWithFormat:@" - %@", sf.text]];
                                 }
                             } else if ([vf_id isEqualToString:@"701"]) {
                                 if ([sf_label isEqualToString:@"a"]) {
@@ -116,6 +119,11 @@
                         if ([vf_id isEqualToString:@"701"]) {
                             [authors addObject:[NSString stringWithFormat:@"%@%@", tmpa, tmpb]];
                         } else if ([vf_id isEqualToString:@"606"]) {
+                            if ([subjects count] == 0) {
+                                [subject appendString:[NSString stringWithFormat:@"%@%@", tmpa, tmpb]];
+                            } else {
+                                [subject appendString:[NSString stringWithFormat:@"; %@%@", tmpa, tmpb]];
+                            }
                             [subjects addObject:[NSString stringWithFormat:@"%@%@", tmpa, tmpb]];
                         } else if ([vf_id isEqualToString:@"712"]) {
                             [translators addObject:[NSString stringWithFormat:@"%@%@", tmpa, tmpb]];
@@ -124,6 +132,7 @@
                     bk.authors = [authors copy];
                     bk.translators = [translators copy];
                     bk.subjects = [subjects copy];
+                    bk.subject = [subject copy];
                     [bk.extraInfo setValue:record forKey:@"webpac_rawData"];
                     [bk.extraInfo setValue:[record child:@"doc_number"] forKey:@"webpac_docNumber"];
                     [bk.extraInfo setValue:@"zju01" forKey:@"webpac_base"];
@@ -168,6 +177,7 @@
                     NSMutableArray *authors = [NSMutableArray new];
                     NSMutableArray *translators = [NSMutableArray new];
                     NSMutableArray *subjects = [NSMutableArray new];
+                    NSMutableString *subject = [NSMutableString stringWithString:@""];
                     
                     [record iterate:@"metadata.oai_marc.varfield" usingBlock:^(RXMLElement *vf)
                      {
@@ -225,6 +235,11 @@
                          if ([vf_id isEqualToString:@"100"]) {
                              [authors addObject:[NSString stringWithFormat:@"%@%@", tmpa, tmpb]];
                          } else if ([vf_id isEqualToString:@"650"]) {
+                             if ([subjects count] == 0) {
+                                 [subject appendString:[NSString stringWithFormat:@"%@%@", tmpa, tmpb]];
+                             } else {
+                                 [subject appendString:[NSString stringWithFormat:@"; %@%@", tmpa, tmpb]];
+                             }
                              [subjects addObject:[NSString stringWithFormat:@"%@%@", tmpa, tmpb]];
                          } else if ([vf_id isEqualToString:@"712"]) {
                              [translators addObject:[NSString stringWithFormat:@"%@%@", tmpa, tmpb]];
@@ -233,6 +248,7 @@
                     bk.authors = [authors copy];
                     bk.translators = [translators copy];
                     bk.subjects = [subjects copy];
+                    bk.subject = [subject copy];
                     [bk.extraInfo setValue:record forKey:@"webpac_rawData"];
                     [bk.extraInfo setValue:[record child:@"doc_number"] forKey:@"webpac_docNumber"];
                     [bk.extraInfo setValue:@"zju09" forKey:@"webpac_base"];
