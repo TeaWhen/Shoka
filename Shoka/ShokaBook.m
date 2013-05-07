@@ -19,7 +19,7 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"｢%@｣ _%@_", self.title, [self.extraInfo valueForKey:@"webpac_docNumber"]];
+    return [NSString stringWithFormat:@"%@ | %@", self.title, [self.extraInfo valueForKey:@"webpac_docNumber"]];
 }
 
 @end

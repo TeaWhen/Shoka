@@ -160,20 +160,76 @@
                 [recordsRootXML iterate:@"record" usingBlock:^(RXMLElement *record)
                 {
                     ShokaBook *bk = [ShokaBook new];
+                    
+                    NSMutableArray *authors = [NSMutableArray new];
+                    NSMutableArray *translators = [NSMutableArray new];
+                    NSMutableArray *subjects = [NSMutableArray new];
+                    
+                    [record iterate:@"metadata.oai_marc.varfield" usingBlock:^(RXMLElement *vf)
+                     {
+                         NSString *vf_id = [vf attribute:@"id"];
+                         
+                         NSMutableString *tmpa = [NSMutableString stringWithString:@""];
+                         NSMutableString *tmpb = [NSMutableString stringWithString:@""];
+                         
+                         [vf iterate:@"subfield" usingBlock:^(RXMLElement *sf)
+                          {
+                              
+                              NSString *sf_label = [sf attribute:@"label"];
+                              
+                              if ([vf_id isEqualToString:@"020"]) {
+                                  if ([sf_label isEqualToString:@"a"]) {
+                                      bk.ISBN = sf.text;
+                                  }
+                              } else if ([vf_id isEqualToString:@"245"]) {
+                                  if ([sf_label isEqualToString:@"a"]) {
+                                      bk.title = [ShokaWebpacAPI cleanupTitle:sf.text];
+                                  }
+                              } else if ([vf_id isEqualToString:@"260"]) {
+                                  if ([sf_label isEqualToString:@"b"]) {
+                                      bk.publisher = sf.text;
+                                  } else if ([sf_label isEqualToString:@"c"]) {
+                                      bk.publishDate = sf.text;
+                                  }
+                              } else if ([vf_id isEqualToString:@"300"]) {
+                                  if ([sf_label isEqualToString:@"a"]) {
+                                      bk.pages = sf.text;
+                                  }
+                              } else if ([vf_id isEqualToString:@"520"]) {
+                                  if ([sf_label isEqualToString:@"a"]) {
+                                      bk.summary = sf.text;
+                                  }
+                              } else if ([vf_id isEqualToString:@"650"]) {
+                                  if ([sf_label isEqualToString:@"a"]) {
+                                      [tmpa appendString:sf.text];
+                                  }
+                              } else if ([vf_id isEqualToString:@"100"]) {
+                                  if ([sf_label isEqualToString:@"a"]) {
+                                      [tmpa appendString:sf.text];
+                                  }
+                                  if ([sf_label isEqualToString:@"g"]) {
+                                      [tmpb appendString:sf.text];
+                                  }
+                              } else if ([vf_id isEqualToString:@"712"]) {
+                                  if ([sf_label isEqualToString:@"a"]) {
+                                      [tmpa appendString:sf.text];
+                                  }
+                              }
+                          }];
+                         if ([vf_id isEqualToString:@"100"]) {
+                             [authors addObject:[NSString stringWithFormat:@"%@%@", tmpa, tmpb]];
+                         } else if ([vf_id isEqualToString:@"650"]) {
+                             [subjects addObject:[NSString stringWithFormat:@"%@%@", tmpa, tmpb]];
+                         } else if ([vf_id isEqualToString:@"712"]) {
+                             [translators addObject:[NSString stringWithFormat:@"%@%@", tmpa, tmpb]];
+                         }
+                     }];
+                    bk.authors = [authors copy];
+                    bk.translators = [translators copy];
+                    bk.subjects = [subjects copy];
                     [bk.extraInfo setValue:record forKey:@"webpac_rawData"];
                     [bk.extraInfo setValue:[record child:@"doc_number"] forKey:@"webpac_docNumber"];
                     [bk.extraInfo setValue:@"zju09" forKey:@"webpac_base"];
-                    [record iterate:@"metadata.oai_marc.varfield" usingBlock:^(RXMLElement *vf)
-                    {
-                        if ([[vf attribute:@"id"] isEqualToString:@"245"]) {
-                            [vf iterate:@"subfield" usingBlock:^(RXMLElement *sf)
-                            {
-                                if ([[sf attribute:@"label"] isEqualToString:@"a"]) {
-                                    bk.title = [ShokaWebpacAPI cleanupTitle:sf.text];
-                                }
-                            }];
-                        }
-                    }];
                     [result addObject:bk];
                 }];
                 success(result);
@@ -237,7 +293,7 @@
 
 + (NSString *)cleanupTitle:(NSString *)origin
 {
-    return [origin stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"=/:"]];
+    return [origin stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"=/: "]];
 }
 
 @end

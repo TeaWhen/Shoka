@@ -29,6 +29,8 @@
 {
     [super viewDidLoad];
     
+    NSLog(@"view detail: %@", self.book);
+    
     self.title = self.book.title;
     
     [ShokaWebpacAPI fetchItemDataOfDocNumber:[self.book.extraInfo valueForKey:@"webpac_docNumber"] inBase:[self.book.extraInfo valueForKey:@"webpac_base"] success:^(ShokaResult *api_result) {
