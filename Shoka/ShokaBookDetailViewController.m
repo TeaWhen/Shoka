@@ -14,6 +14,9 @@
 @interface ShokaBookDetailViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) ShokaResult *result;
+@property NSArray *rowsInBasic;
+@property NSMutableArray *availableRowsInBasic;
+@property NSArray *rowsInMore;
 
 @end
 
@@ -28,6 +31,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.rowsInBasic = @[@"author", @"translator", @"publisher", @"ISBN"];
+    self.rowsInMore = @[@"subject", @"summary"];
     
     NSLog(@"view detail: %@", self.book);
     
@@ -47,19 +53,6 @@ enum section {
     numOfSections
 };
 
-enum rowInBasic {
-    authorRow = 0,
-    publisherRow,
-    ISBNRow,
-    numOfRowsInBasic
-};
-
-enum rowInMore {
-    subjectRow = 0,
-    summaryRow,
-    numOfRowsInMore
-};
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return numOfSections;
@@ -76,10 +69,16 @@ enum rowInMore {
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == basicInfoSection) {
-        return numOfRowsInBasic;
+        self.availableRowsInBasic = [NSMutableArray new];
+        for (NSString *rowName in self.rowsInBasic) {
+            if ([self.book valueForKey:rowName]) {
+                [self.availableRowsInBasic addObject:rowName];
+            }
+        }
+        return self.availableRowsInBasic.count;
     }
     else if (section == moreInfoSection) {
-        return numOfRowsInMore;
+        return self.rowsInMore.count;
     }
     else if (section == itemsSection) {
         return [self.result count];
@@ -93,28 +92,14 @@ enum rowInMore {
     UITableViewCell *cell;
     
     if (indexPath.section == basicInfoSection) {
-        if (indexPath.row == authorRow) {
-            cell = [tableView dequeueReusableCellWithIdentifier:@"Author"];
-            cell.detailTextLabel.text = self.book.author;
-        }
-        else if (indexPath.row == publisherRow) {
-            cell = [tableView dequeueReusableCellWithIdentifier:@"Publisher"];
-            cell.detailTextLabel.text = self.book.publisher;
-        }
-        else if (indexPath.row == ISBNRow) {
-            cell = [tableView dequeueReusableCellWithIdentifier:@"ISBN"];
-            cell.detailTextLabel.text = self.book.ISBN;
-        }
+        NSString *rowName = self.availableRowsInBasic[indexPath.row];
+        cell = [tableView dequeueReusableCellWithIdentifier:rowName];
+        cell.detailTextLabel.text = [self.book valueForKey:rowName];
     }
     else if (indexPath.section == moreInfoSection) {
-        if (indexPath.row == subjectRow) {
-            cell = [tableView dequeueReusableCellWithIdentifier:@"Subject"];
-            cell.detailTextLabel.text = self.book.subject;
-        }
-        else if (indexPath.row == summaryRow) {
-            cell = [tableView dequeueReusableCellWithIdentifier:@"Summary"];
-            cell.detailTextLabel.text = self.book.summary;
-        }
+        NSString *rowName = self.rowsInMore[indexPath.row];
+        cell = [tableView dequeueReusableCellWithIdentifier:rowName];
+        cell.detailTextLabel.text = [self.book valueForKey:rowName];
     }
     else if (indexPath.section == itemsSection) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"ItemDetail"];
