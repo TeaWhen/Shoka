@@ -77,6 +77,10 @@
                             } else if ([vf_id isEqualToString:@"200"]) {
                                 if ([sf_label isEqualToString:@"a"]) {
                                     bk.title = sf.text;
+                                } else if ([sf_label isEqualToString:@"f"]) {
+                                    bk.author = sf.text;
+                                } else if ([sf_label isEqualToString:@"g"]) {
+                                    bk.translator = sf.text;
                                 }
                             } else if ([vf_id isEqualToString:@"210"]) {
                                 if ([sf_label isEqualToString:@"c"]) {
@@ -184,6 +188,8 @@
                               } else if ([vf_id isEqualToString:@"245"]) {
                                   if ([sf_label isEqualToString:@"a"]) {
                                       bk.title = [ShokaWebpacAPI cleanupTitle:sf.text];
+                                  } else if ([sf_label isEqualToString:@"c"]) {
+                                      bk.author = sf.text;
                                   }
                               } else if ([vf_id isEqualToString:@"260"]) {
                                   if ([sf_label isEqualToString:@"b"]) {

@@ -95,7 +95,7 @@ enum rowInMore {
     if (indexPath.section == basicInfoSection) {
         if (indexPath.row == authorRow) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"Author"];
-            cell.detailTextLabel.text = [self.book.authors objectAtIndex:0];
+            cell.detailTextLabel.text = self.book.author;
         }
         else if (indexPath.row == publisherRow) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"Publisher"];
