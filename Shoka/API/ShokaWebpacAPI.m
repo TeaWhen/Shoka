@@ -19,7 +19,7 @@
 
 + (void)detectBaseURLFor: (void (^)(NSURL *baseURL))func
 {
-    NSURLRequest *detectRequest = [NSURLRequest requestWithURL: [NSURL URLWithString:@"http://10.10.16.94/X?op=find&base=zju01&code=wrd&request=teawhen"] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:1];
+    NSURLRequest *detectRequest = [NSURLRequest requestWithURL: [NSURL URLWithString:@"http://10.10.16.94/X?op=find&base=zju01&code=wrd&request=teawhen"] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:0.5];
     AFHTTPRequestOperation *detectOP = [[AFHTTPRequestOperation alloc] initWithRequest:detectRequest];
     [detectOP setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
     {
@@ -53,20 +53,68 @@
                 [recordsRootXML iterate:@"record" usingBlock:^(RXMLElement *record)
                 {
                     ShokaBook *bk = [ShokaBook new];
+                    
+                    NSMutableArray *authors = [NSMutableArray new];
+                    NSMutableArray *translators = [NSMutableArray new];
+                    
+                    [record iterate:@"metadata.oai_marc.varfield" usingBlock:^(RXMLElement *vf)
+                    {
+                        NSString *vf_id = [vf attribute:@"id"];
+                        
+                        NSMutableString *tmpa = [NSMutableString stringWithString:@""];
+                        NSMutableString *tmpb = [NSMutableString stringWithString:@""];
+                        
+                        [vf iterate:@"subfield" usingBlock:^(RXMLElement *sf)
+                        {
+                            
+                            NSString *sf_label = [sf attribute:@"label"];
+
+                            if ([vf_id isEqualToString:@"010"]) {
+                                if ([sf_label isEqualToString:@"a"]) {
+                                    bk.ISBN = sf.text;
+                                }
+                            } else if ([vf_id isEqualToString:@"200"]) {
+                                if ([sf_label isEqualToString:@"a"]) {
+                                    bk.title = sf.text;
+                                }
+                            } else if ([vf_id isEqualToString:@"210"]) {
+                                if ([sf_label isEqualToString:@"c"]) {
+                                    bk.publisher = sf.text;
+                                } else if ([sf_label isEqualToString:@"d"]) {
+                                    bk.publishDate = sf.text;
+                                }
+                            } else if ([vf_id isEqualToString:@"215"]) {
+                                if ([sf_label isEqualToString:@"a"]) {
+                                    bk.pages = sf.text;
+                                }
+                            } else if ([vf_id isEqualToString:@"330"]) {
+                                if ([sf_label isEqualToString:@"a"]) {
+                                    bk.summary = sf.text;
+                                }
+                            } else if ([vf_id isEqualToString:@"701"]) {
+                                if ([sf_label isEqualToString:@"a"]) {
+                                    [tmpa appendString:sf.text];
+                                }
+                                if ([sf_label isEqualToString:@"g"]) {
+                                    [tmpb appendString:sf.text];
+                                }
+                            } else if ([vf_id isEqualToString:@"712"]) {
+                                if ([sf_label isEqualToString:@"a"]) {
+                                    [tmpa appendString:sf.text];
+                                }
+                            }
+                        }];
+                        if ([vf_id isEqualToString:@"701"]) {
+                            [authors addObject:[NSString stringWithFormat:@"%@%@", tmpa, tmpb]];
+                        } else if ([vf_id isEqualToString:@"712"]) {
+                            [translators addObject:[NSString stringWithFormat:@"%@%@", tmpa, tmpb]];
+                        }
+                    }];
+                    bk.authors = [authors copy];
+                    bk.translators = [translators copy];
                     [bk.extraInfo setValue:record forKey:@"webpac_rawData"];
                     [bk.extraInfo setValue:[record child:@"doc_number"] forKey:@"webpac_docNumber"];
                     [bk.extraInfo setValue:@"zju01" forKey:@"webpac_base"];
-                    [record iterate:@"metadata.oai_marc.varfield" usingBlock:^(RXMLElement *vf)
-                    {
-                        if ([[vf attribute:@"id"] isEqualToString:@"200"]) {
-                            [vf iterate:@"subfield" usingBlock:^(RXMLElement *sf)
-                            {
-                                if ([[sf attribute:@"label"] isEqualToString:@"a"]) {
-                                    bk.title = sf.text;
-                                }
-                            }];
-                        }
-                    }];
                     [result addObject:bk];
                 }];
                 success(result);
@@ -144,7 +192,7 @@
 {
     ShokaResult *result = [ShokaResult new];
     [ShokaWebpacAPI detectBaseURLFor:^(NSURL *baseURL) {
-        NSString *requestString = [[NSString stringWithFormat:@"http://webpac.zju.edu.cn/X?op=item-data&base=%@&doc_number=%@", base, docNumber] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSString *requestString = [[NSString stringWithFormat:@"/X?op=item-data&base=%@&doc_number=%@", base, docNumber] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:requestString relativeToURL:baseURL]]];
         [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
         {
