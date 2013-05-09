@@ -18,6 +18,7 @@
 @property NSArray *rowsInBasic;
 @property NSMutableArray *availableRowsInBasic;
 @property NSArray *rowsInMore;
+@property NSMutableArray *availableRowsInMore;
 
 @end
 
@@ -72,14 +73,20 @@ enum section {
     if (section == basicInfoSection) {
         self.availableRowsInBasic = [NSMutableArray new];
         for (NSString *rowName in self.rowsInBasic) {
-            if ([self.book valueForKey:rowName]) {
+            if ([[self.book valueForKey:rowName] length] > 0) {
                 [self.availableRowsInBasic addObject:rowName];
             }
         }
         return self.availableRowsInBasic.count;
     }
     else if (section == moreInfoSection) {
-        return self.rowsInMore.count;
+        self.availableRowsInMore = [NSMutableArray new];
+        for (NSString *rowName in self.rowsInMore) {
+            if ([[self.book valueForKey:rowName] length] > 0) {
+                [self.availableRowsInMore addObject:rowName];
+            }
+        }
+        return self.availableRowsInMore.count;
     }
     else if (section == itemsSection) {
         return [self.result count];
@@ -112,7 +119,7 @@ enum section {
         cell.detailTextLabel.text = [self.book valueForKey:rowName];
     }
     else if (indexPath.section == moreInfoSection) {
-        NSString *rowName = self.rowsInMore[indexPath.row];
+        NSString *rowName = self.availableRowsInMore[indexPath.row];
         cell = [tableView dequeueReusableCellWithIdentifier:rowName];
         cell.detailTextLabel.text = [self.book valueForKey:rowName];
     }
