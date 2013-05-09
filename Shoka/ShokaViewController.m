@@ -49,13 +49,19 @@
     [ShokaWebpacAPI searchChineseDepositoryWithKey:searchKey success:^(ShokaResult *result) {
         [result sortUsingKeyword:searchKey];
         self.cn_result = result;
-        [self.tableView reloadData];
+        if (self.searchBar.selectedScopeButtonIndex == Chinese) {
+            [self.tableView reloadData];
+            [self.tableView setContentOffset:CGPointZero];
+        }
     } failure:^(NSError *error) {
     }];
     [ShokaWebpacAPI searchForeignDepositoryWithKey:searchKey success:^(ShokaResult *result) {
         [result sortUsingKeyword:searchKey];
         self.en_result = result;
-        [self.tableView reloadData];
+        if (self.searchBar.selectedScopeButtonIndex == Western) {
+            [self.tableView reloadData];
+            [self.tableView setContentOffset:CGPointZero];
+        }
     } failure:^(NSError *error) {
     }];
     [searchBar resignFirstResponder];
