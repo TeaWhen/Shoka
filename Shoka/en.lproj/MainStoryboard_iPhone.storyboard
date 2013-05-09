@@ -8,7 +8,7 @@
         <scene sceneID="G8z-gv-5zn">
             <objects>
                 <navigationController definesPresentationContext="YES" id="MxO-IV-ZXm" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="检索" id="mF9-Cm-eH7"/>
+                    <tabBarItem key="tabBarItem" title="检索" image="magnify.png" id="mF9-Cm-eH7"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="eDb-Wc-jjA">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -99,7 +99,7 @@
         <scene sceneID="mYO-dW-fYW">
             <objects>
                 <navigationController definesPresentationContext="YES" id="6PK-MU-AhI" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="收藏" id="3GK-2Z-4iu"/>
+                    <tabBarItem key="tabBarItem" title="收藏" image="heart.png" id="3GK-2Z-4iu"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="LG8-m1-Qi4">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -379,6 +379,10 @@
             <point key="canvasLocation" x="-249" y="137"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="heart.png" width="24" height="21"/>
+        <image name="magnify.png" width="24" height="24"/>
+    </resources>
     <classes>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>

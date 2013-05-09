@@ -10,6 +10,10 @@
 		1A6508B4173404F000F0100C /* ShokaFavorites.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6508B3173404F000F0100C /* ShokaFavorites.m */; };
 		1A6508B81734053600F0100C /* ShokaResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6508B71734053600F0100C /* ShokaResult.m */; };
 		1A6508BB1734054D00F0100C /* ShokaBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6508BA1734054D00F0100C /* ShokaBook.m */; };
+		1AC8A1E6173BAF6A00A512A0 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AC8A1E0173BAF6A00A512A0 /* heart.png */; };
+		1AC8A1E7173BAF6A00A512A0 /* heart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AC8A1E1173BAF6A00A512A0 /* heart@2x.png */; };
+		1AC8A1EA173BAF6A00A512A0 /* magnify.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AC8A1E4173BAF6A00A512A0 /* magnify.png */; };
+		1AC8A1EB173BAF6A00A512A0 /* magnify@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AC8A1E5173BAF6A00A512A0 /* magnify@2x.png */; };
 		2E4C1733057E47428147FE57 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 591146B6C9BF46D6B930A9A0 /* libPods.a */; };
 		4F2D96AD173417F90026EE80 /* ShokaWebpacAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D96AC173417F90026EE80 /* ShokaWebpacAPI.m */; };
 		4F2D96B01734182F0026EE80 /* ShokaDoubanAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D96AF1734182F0026EE80 /* ShokaDoubanAPI.m */; };
@@ -38,6 +42,10 @@
 		1A6508B71734053600F0100C /* ShokaResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShokaResult.m; sourceTree = "<group>"; };
 		1A6508B91734054D00F0100C /* ShokaBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShokaBook.h; sourceTree = "<group>"; };
 		1A6508BA1734054D00F0100C /* ShokaBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShokaBook.m; sourceTree = "<group>"; };
+		1AC8A1E0173BAF6A00A512A0 /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
+		1AC8A1E1173BAF6A00A512A0 /* heart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heart@2x.png"; sourceTree = "<group>"; };
+		1AC8A1E4173BAF6A00A512A0 /* magnify.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = magnify.png; sourceTree = "<group>"; };
+		1AC8A1E5173BAF6A00A512A0 /* magnify@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "magnify@2x.png"; sourceTree = "<group>"; };
 		4F2D96AB173417F90026EE80 /* ShokaWebpacAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShokaWebpacAPI.h; path = API/ShokaWebpacAPI.h; sourceTree = "<group>"; };
 		4F2D96AC173417F90026EE80 /* ShokaWebpacAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShokaWebpacAPI.m; path = API/ShokaWebpacAPI.m; sourceTree = "<group>"; };
 		4F2D96AE1734182F0026EE80 /* ShokaDoubanAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShokaDoubanAPI.h; path = API/ShokaDoubanAPI.h; sourceTree = "<group>"; };
@@ -101,6 +109,17 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		1AC8A1DF173BAF6A00A512A0 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1AC8A1E0173BAF6A00A512A0 /* heart.png */,
+				1AC8A1E1173BAF6A00A512A0 /* heart@2x.png */,
+				1AC8A1E4173BAF6A00A512A0 /* magnify.png */,
+				1AC8A1E5173BAF6A00A512A0 /* magnify@2x.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		4F2D96AA173415BE0026EE80 /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,6 +175,7 @@
 				4FEDF5571717B8F400C2CC75 /* ShokaViewController.m */,
 				4FBD69C217366D3900DB98B7 /* ShokaBookDetailViewController.h */,
 				4FBD69C317366D3900DB98B7 /* ShokaBookDetailViewController.m */,
+				1AC8A1DF173BAF6A00A512A0 /* Resources */,
 				4FEDF53F1717B8F300C2CC75 /* Supporting Files */,
 			);
 			path = Shoka;
@@ -235,6 +255,10 @@
 				4FEDF54F1717B8F300C2CC75 /* Default-568h@2x.png in Resources */,
 				4FEDF5521717B8F400C2CC75 /* MainStoryboard_iPhone.storyboard in Resources */,
 				4FEDF5551717B8F400C2CC75 /* MainStoryboard_iPad.storyboard in Resources */,
+				1AC8A1E6173BAF6A00A512A0 /* heart.png in Resources */,
+				1AC8A1E7173BAF6A00A512A0 /* heart@2x.png in Resources */,
+				1AC8A1EA173BAF6A00A512A0 /* magnify.png in Resources */,
+				1AC8A1EB173BAF6A00A512A0 /* magnify@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
