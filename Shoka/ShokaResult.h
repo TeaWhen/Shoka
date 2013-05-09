@@ -15,5 +15,6 @@
 - (NSInteger)count;
 - (id)objectAtIndex:(NSInteger)index;
 - (void)clear;
+- (void)sortUsingKeyword:(NSString *)keyword;
 
 @end

@@ -138,6 +138,7 @@
                     [bk.extraInfo setValue:@"zju01" forKey:@"webpac_base"];
                     [result addObject:bk];
                 }];
+                [result sortUsingKeyword:searchKey];
                 success(result);
             } failure:^(AFHTTPRequestOperation *operation, NSError *error)
             {
@@ -180,15 +181,14 @@
                     NSMutableString *subject = [NSMutableString stringWithString:@""];
                     
                     [record iterate:@"metadata.oai_marc.varfield" usingBlock:^(RXMLElement *vf)
-                     {
+                    {
                          NSString *vf_id = [vf attribute:@"id"];
                          
                          NSMutableString *tmpa = [NSMutableString stringWithString:@""];
                          NSMutableString *tmpb = [NSMutableString stringWithString:@""];
                          
                          [vf iterate:@"subfield" usingBlock:^(RXMLElement *sf)
-                          {
-                              
+                         {
                               NSString *sf_label = [sf attribute:@"label"];
                               
                               if ([vf_id isEqualToString:@"020"]) {
@@ -254,6 +254,7 @@
                     [bk.extraInfo setValue:@"zju09" forKey:@"webpac_base"];
                     [result addObject:bk];
                 }];
+                [result sortUsingKeyword:searchKey];
                 success(result);
             } failure:^(AFHTTPRequestOperation *operation, NSError *error)
             {

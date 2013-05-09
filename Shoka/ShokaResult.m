@@ -7,6 +7,9 @@
 //
 
 #import "ShokaResult.h"
+#import "NSString+Score.h"
+
+#define FUZZINESS @0.5
 
 @interface ShokaResult ()
 
@@ -41,6 +44,16 @@
 - (void)clear
 {
     [self.result removeAllObjects];
+}
+
+- (void)sortUsingKeyword:(NSString *)keyword
+{
+    self.result = [[self.result sortedArrayUsingComparator:^NSComparisonResult(ShokaBook *a, ShokaBook *b) {
+        NSString *firstTitle = a.title;
+        NSString *secondTitle = b.title;
+        return [[NSNumber numberWithFloat:[secondTitle scoreAgainst:keyword fuzziness:FUZZINESS]] compare:
+                [NSNumber numberWithFloat:[firstTitle scoreAgainst:keyword fuzziness:FUZZINESS]]];
+    }] mutableCopy];
 }
 
 @end
