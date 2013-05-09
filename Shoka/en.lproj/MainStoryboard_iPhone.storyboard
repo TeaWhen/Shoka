@@ -68,16 +68,27 @@
                                     <navigationItem title="Title" id="6cU-Hs-Ok0"/>
                                 </items>
                             </navigationBar>
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bmq-VX-1cm" customClass="ShokaGrayView">
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Qrv-2p-TLg" appends="YES" id="Jvw-ET-01q"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="nFg-Fa-iN1" firstAttribute="leading" secondItem="Aju-mb-lPV" secondAttribute="leading" type="default" id="8t4-K0-84U"/>
+                            <constraint firstItem="nFg-Fa-iN1" firstAttribute="top" secondItem="bmq-VX-1cm" secondAttribute="top" type="default" id="BJo-kn-xUw"/>
                             <constraint firstItem="nFg-Fa-iN1" firstAttribute="bottom" secondItem="Aju-mb-lPV" secondAttribute="bottom" type="default" id="IQV-DM-syS"/>
                             <constraint firstItem="WsK-ym-gqL" firstAttribute="top" secondItem="Aju-mb-lPV" secondAttribute="top" type="default" id="IZf-7O-B3e"/>
                             <constraint firstItem="nFg-Fa-iN1" firstAttribute="trailing" secondItem="Aju-mb-lPV" secondAttribute="trailing" type="default" id="Ltv-te-U6P"/>
                             <constraint firstItem="UIP-b9-gZL" firstAttribute="leading" secondItem="Aju-mb-lPV" secondAttribute="leading" type="default" id="O3L-Tv-8g0"/>
                             <constraint firstItem="UIP-b9-gZL" firstAttribute="trailing" secondItem="Aju-mb-lPV" secondAttribute="trailing" type="default" id="RaO-bb-XH2"/>
+                            <constraint firstItem="bmq-VX-1cm" firstAttribute="leading" secondItem="Aju-mb-lPV" secondAttribute="leading" type="default" id="Rnq-xF-pWq"/>
                             <constraint firstItem="WsK-ym-gqL" firstAttribute="trailing" secondItem="Aju-mb-lPV" secondAttribute="trailing" type="default" id="ka3-gw-eHx"/>
+                            <constraint firstItem="bmq-VX-1cm" firstAttribute="bottom" secondItem="Aju-mb-lPV" secondAttribute="bottom" type="default" id="nsd-WI-qFZ"/>
+                            <constraint firstItem="bmq-VX-1cm" firstAttribute="trailing" secondItem="Aju-mb-lPV" secondAttribute="trailing" type="default" id="pNh-KK-PvJ"/>
                             <constraint firstItem="WsK-ym-gqL" firstAttribute="leading" secondItem="Aju-mb-lPV" secondAttribute="leading" type="default" id="qBt-tg-WYD"/>
                             <constraint firstItem="nFg-Fa-iN1" firstAttribute="top" secondItem="UIP-b9-gZL" secondAttribute="bottom" type="user" id="rdj-dB-jkl"/>
                             <constraint firstItem="UIP-b9-gZL" firstAttribute="top" secondItem="Aju-mb-lPV" secondAttribute="top" type="default" id="wMq-g3-CDY"/>
@@ -86,12 +97,18 @@
                     <navigationItem key="navigationItem" id="zlb-Fa-V9G"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="grayView" destination="bmq-VX-1cm" id="wlk-l5-woJ"/>
                         <outlet property="searchBar" destination="UIP-b9-gZL" id="WGa-4j-iAk"/>
                         <outlet property="tableView" destination="nFg-Fa-iN1" id="EZQ-n7-L8v"/>
                         <segue destination="0d9-VL-UdF" kind="push" identifier="book" id="C1a-qC-Q0E"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iAL-E1-Y0U" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Qrv-2p-TLg">
+                    <connections>
+                        <action selector="grayViewTouched:" destination="kNI-rg-laD" id="iYu-dG-SY8"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="708" y="-247"/>
         </scene>
@@ -390,9 +407,14 @@
         <class className="ShokaBookDetailViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ShokaBookDetailViewController.h"/>
         </class>
+        <class className="ShokaGrayView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ShokaGrayView.h"/>
+        </class>
         <class className="ShokaViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ShokaViewController.h"/>
             <relationships>
+                <relationship kind="action" name="grayViewTouched:" candidateClass="UITapGestureRecognizer"/>
+                <relationship kind="outlet" name="grayView" candidateClass="ShokaGrayView"/>
                 <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
             </relationships>

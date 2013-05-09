@@ -10,6 +10,7 @@
 #import "ShokaResult.h"
 #import "ShokaWebpacAPI.h"
 #import "ShokaBookDetailViewController.h"
+#import "ShokaGrayView.h"
 
 @interface ShokaViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
@@ -17,6 +18,11 @@
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet ShokaGrayView *grayView;
+
+- (void)keyboardWillShow:(NSNotification*)notification;
+- (void)keyboardWillHide:(NSNotification*)notification;
+- (NSTimeInterval)keyboardAnimationDurationForNotification:(NSNotification*)notification;
 
 @end
 
@@ -29,6 +35,14 @@
     
     self.cn_result = [ShokaResult new];
     self.en_result = [ShokaResult new];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -41,6 +55,29 @@
 {
     [self.navigationController setNavigationBarHidden:NO animated:animated];
     [super viewWillDisappear:animated];
+}
+
+- (void)keyboardWillShow:(NSNotification*)notification
+{
+    [self.grayView setGray:YES withDuration:[self keyboardAnimationDurationForNotification:notification]];
+}
+
+- (void)keyboardWillHide:(NSNotification*)notification
+{
+    [self.grayView setGray:NO withDuration:[self keyboardAnimationDurationForNotification:notification]];
+}
+
+- (NSTimeInterval)keyboardAnimationDurationForNotification:(NSNotification*)notification
+{
+    NSDictionary *info = [notification userInfo];
+    NSValue *value = [info objectForKey:UIKeyboardAnimationDurationUserInfoKey];
+    NSTimeInterval duration = 0;
+    [value getValue:&duration];
+    return duration;
+}
+
+- (IBAction)grayViewTouched:(UITapGestureRecognizer *)sender {
+    [self.searchBar resignFirstResponder];
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar

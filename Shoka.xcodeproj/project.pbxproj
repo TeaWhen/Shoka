@@ -14,6 +14,7 @@
 		1AC8A1E7173BAF6A00A512A0 /* heart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AC8A1E1173BAF6A00A512A0 /* heart@2x.png */; };
 		1AC8A1EA173BAF6A00A512A0 /* magnify.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AC8A1E4173BAF6A00A512A0 /* magnify.png */; };
 		1AC8A1EB173BAF6A00A512A0 /* magnify@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AC8A1E5173BAF6A00A512A0 /* magnify@2x.png */; };
+		1AC8A1EE173BB8B000A512A0 /* ShokaGrayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC8A1ED173BB8B000A512A0 /* ShokaGrayView.m */; };
 		2E4C1733057E47428147FE57 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 591146B6C9BF46D6B930A9A0 /* libPods.a */; };
 		4F2D96AD173417F90026EE80 /* ShokaWebpacAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D96AC173417F90026EE80 /* ShokaWebpacAPI.m */; };
 		4F2D96B01734182F0026EE80 /* ShokaDoubanAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D96AF1734182F0026EE80 /* ShokaDoubanAPI.m */; };
@@ -46,6 +47,8 @@
 		1AC8A1E1173BAF6A00A512A0 /* heart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heart@2x.png"; sourceTree = "<group>"; };
 		1AC8A1E4173BAF6A00A512A0 /* magnify.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = magnify.png; sourceTree = "<group>"; };
 		1AC8A1E5173BAF6A00A512A0 /* magnify@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "magnify@2x.png"; sourceTree = "<group>"; };
+		1AC8A1EC173BB8B000A512A0 /* ShokaGrayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShokaGrayView.h; sourceTree = "<group>"; };
+		1AC8A1ED173BB8B000A512A0 /* ShokaGrayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShokaGrayView.m; sourceTree = "<group>"; };
 		4F2D96AB173417F90026EE80 /* ShokaWebpacAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShokaWebpacAPI.h; path = API/ShokaWebpacAPI.h; sourceTree = "<group>"; };
 		4F2D96AC173417F90026EE80 /* ShokaWebpacAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShokaWebpacAPI.m; path = API/ShokaWebpacAPI.m; sourceTree = "<group>"; };
 		4F2D96AE1734182F0026EE80 /* ShokaDoubanAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShokaDoubanAPI.h; path = API/ShokaDoubanAPI.h; sourceTree = "<group>"; };
@@ -173,6 +176,8 @@
 				4FEDF5531717B8F400C2CC75 /* MainStoryboard_iPad.storyboard */,
 				4FEDF5561717B8F400C2CC75 /* ShokaViewController.h */,
 				4FEDF5571717B8F400C2CC75 /* ShokaViewController.m */,
+				1AC8A1EC173BB8B000A512A0 /* ShokaGrayView.h */,
+				1AC8A1ED173BB8B000A512A0 /* ShokaGrayView.m */,
 				4FBD69C217366D3900DB98B7 /* ShokaBookDetailViewController.h */,
 				4FBD69C317366D3900DB98B7 /* ShokaBookDetailViewController.m */,
 				1AC8A1DF173BAF6A00A512A0 /* Resources */,
@@ -310,6 +315,7 @@
 				4F2D96B01734182F0026EE80 /* ShokaDoubanAPI.m in Sources */,
 				4FBD69C417366D3900DB98B7 /* ShokaBookDetailViewController.m in Sources */,
 				4FBD69C717368B9700DB98B7 /* ShokaItem.m in Sources */,
+				1AC8A1EE173BB8B000A512A0 /* ShokaGrayView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
