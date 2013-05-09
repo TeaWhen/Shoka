@@ -319,8 +319,8 @@
                         itm.status = @"订购中";
                     }
                     else {
-#warning need log
-                        itm.status = @"";
+                        #warning need log
+                        itm.status = @"未知状态";
                     }
                 }
                 itm.library = [item child:@"sub-library"].text;
