@@ -117,6 +117,10 @@
                                     if ([sf_label isEqualToString:@"a"]) {
                                         [tmpa appendString:sf.text];
                                     }
+                                } else if ([vf_id isEqualToString:@"905"]) {
+                                    if ([sf_label isEqualToString:@"s"]) {
+                                        bk.callNo = sf.text;
+                                    }
                                 }
                             }];
                             if ([vf_id isEqualToString:@"701"]) {
@@ -236,6 +240,10 @@
                                   } else if ([vf_id isEqualToString:@"712"]) {
                                       if ([sf_label isEqualToString:@"a"]) {
                                           [tmpa appendString:sf.text];
+                                      }
+                                  } else if ([vf_id isEqualToString:@"905"]) {
+                                      if ([sf_label isEqualToString:@"s"]) {
+                                          bk.callNo = sf.text;
                                       }
                                   }
                               }];
