@@ -300,11 +300,15 @@
                     itm.status = [NSString stringWithFormat:@"已借出，至 %@", dueDate];
                 }
                 else {
-                    if ([[item child:@"item-status"].text isEqualToString:@"12"]) {
+                    NSString *statusCode = [item child:@"item-status"].text;
+                    if ([statusCode isEqualToString:@"12"]) {
                         itm.status = @"普通外借";
                     }
-                    else if ([[item child:@"item-status"].text isEqualToString:@"21"]) {
+                    else if ([statusCode isEqualToString:@"21"]) {
                         itm.status = @"图书阅览";
+                    }
+                    else if ([statusCode isEqualToString:@"11"]) {
+                        itm.status = @"订购中";
                     }
                     else {
 #warning need log

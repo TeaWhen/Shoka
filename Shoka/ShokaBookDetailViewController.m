@@ -10,6 +10,7 @@
 #import "ShokaResult.h"
 #import "ShokaItem.h"
 #import "ShokaWebpacAPI.h"
+#import "ShokaItemTableViewCell.h"
 
 @interface ShokaBookDetailViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -87,6 +88,14 @@ enum section {
     return 0;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == itemsSection) {
+        return 52;
+    }
+    return 44;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell;
@@ -102,12 +111,15 @@ enum section {
         cell.detailTextLabel.text = [self.book valueForKey:rowName];
     }
     else if (indexPath.section == itemsSection) {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"ItemDetail"];
+        ShokaItemTableViewCell *itemCell;
+        itemCell = [tableView dequeueReusableCellWithIdentifier:@"item"];
         
         ShokaItem *item = [self.result objectAtIndex:indexPath.row];
         
-        cell.textLabel.text = item.library;
-        cell.detailTextLabel.text = item.status;
+        itemCell.statusLabel.text = item.status;
+        itemCell.libraryLabel.text = item.library;
+        
+        cell = itemCell;
     }
     
 	return cell;
