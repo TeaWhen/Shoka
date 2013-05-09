@@ -45,108 +45,111 @@
         {
             // First get set_number
             RXMLElement *rootXML = [RXMLElement elementFromXMLData:responseObject];
-            NSDictionary *extraInfo = @{@"no_records": [rootXML child:@"no_records"].text, @"no_entries": [rootXML child:@"no_entries"].text};
-            NSString *searchSetString = [[NSString stringWithFormat:@"/X?op=present&set_no=%@&set_entry=%@&format=marc", [rootXML child:@"set_number"].text, SETENTRY] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-            AFHTTPRequestOperation *searchSetOP = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:searchSetString relativeToURL:baseURL]]];
-            [searchSetOP setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
-            {
-                RXMLElement *recordsRootXML = [RXMLElement elementFromXMLData:responseObject];
-                [recordsRootXML iterate:@"record" usingBlock:^(RXMLElement *record)
+            NSString *errorText = [rootXML child:@"error"].text;
+            if (!errorText) {
+                NSDictionary *extraInfo = @{@"no_records": [rootXML child:@"no_records"].text, @"no_entries": [rootXML child:@"no_entries"].text};
+                NSString *searchSetString = [[NSString stringWithFormat:@"/X?op=present&set_no=%@&set_entry=%@&format=marc", [rootXML child:@"set_number"].text, SETENTRY] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+                AFHTTPRequestOperation *searchSetOP = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:searchSetString relativeToURL:baseURL]]];
+                [searchSetOP setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
                 {
-                    ShokaBook *bk = [ShokaBook new];
-                    
-                    NSMutableArray *authors = [NSMutableArray new];
-                    NSMutableArray *translators = [NSMutableArray new];
-                    NSMutableArray *subjects = [NSMutableArray new];
-                    NSMutableString *subject = [NSMutableString stringWithString:@""];
-                    
-                    [record iterate:@"metadata.oai_marc.varfield" usingBlock:^(RXMLElement *vf)
+                    RXMLElement *recordsRootXML = [RXMLElement elementFromXMLData:responseObject];
+                    [recordsRootXML iterate:@"record" usingBlock:^(RXMLElement *record)
                     {
-                        NSString *vf_id = [vf attribute:@"id"];
+                        ShokaBook *bk = [ShokaBook new];
                         
-                        NSMutableString *tmpa = [NSMutableString stringWithString:@""];
-                        NSMutableString *tmpb = [NSMutableString stringWithString:@""];
+                        NSMutableArray *authors = [NSMutableArray new];
+                        NSMutableArray *translators = [NSMutableArray new];
+                        NSMutableArray *subjects = [NSMutableArray new];
+                        NSMutableString *subject = [NSMutableString stringWithString:@""];
                         
-                        [vf iterate:@"subfield" usingBlock:^(RXMLElement *sf)
+                        [record iterate:@"metadata.oai_marc.varfield" usingBlock:^(RXMLElement *vf)
                         {
+                            NSString *vf_id = [vf attribute:@"id"];
                             
-                            NSString *sf_label = [sf attribute:@"label"];
+                            NSMutableString *tmpa = [NSMutableString stringWithString:@""];
+                            NSMutableString *tmpb = [NSMutableString stringWithString:@""];
+                            
+                            [vf iterate:@"subfield" usingBlock:^(RXMLElement *sf)
+                            {
+                                
+                                NSString *sf_label = [sf attribute:@"label"];
 
-                            if ([vf_id isEqualToString:@"010"]) {
-                                if ([sf_label isEqualToString:@"a"]) {
-                                    bk.ISBN = sf.text;
+                                if ([vf_id isEqualToString:@"010"]) {
+                                    if ([sf_label isEqualToString:@"a"]) {
+                                        bk.ISBN = sf.text;
+                                    }
+                                } else if ([vf_id isEqualToString:@"200"]) {
+                                    if ([sf_label isEqualToString:@"a"]) {
+                                        bk.title = sf.text;
+                                    } else if ([sf_label isEqualToString:@"f"]) {
+                                        bk.author = sf.text;
+                                    } else if ([sf_label isEqualToString:@"g"]) {
+                                        bk.translator = sf.text;
+                                    }
+                                } else if ([vf_id isEqualToString:@"210"]) {
+                                    if ([sf_label isEqualToString:@"c"]) {
+                                        bk.publisher = sf.text;
+                                    } else if ([sf_label isEqualToString:@"d"]) {
+                                        bk.publishDate = sf.text;
+                                    }
+                                } else if ([vf_id isEqualToString:@"215"]) {
+                                    if ([sf_label isEqualToString:@"a"]) {
+                                        bk.pages = sf.text;
+                                    }
+                                } else if ([vf_id isEqualToString:@"330"]) {
+                                    if ([sf_label isEqualToString:@"a"]) {
+                                        bk.summary = sf.text;
+                                    }
+                                } else if ([vf_id isEqualToString:@"606"]) {
+                                    if ([sf_label isEqualToString:@"a"]) {
+                                        [tmpa appendString:sf.text];
+                                    } else if ([sf_label isEqualToString:@"x"]) {
+                                        [tmpb appendString:[NSString stringWithFormat:@" - %@", sf.text]];
+                                    }
+                                } else if ([vf_id isEqualToString:@"701"]) {
+                                    if ([sf_label isEqualToString:@"a"]) {
+                                        [tmpa appendString:sf.text];
+                                    }
+                                    if ([sf_label isEqualToString:@"g"]) {
+                                        [tmpb appendString:sf.text];
+                                    }
+                                } else if ([vf_id isEqualToString:@"712"]) {
+                                    if ([sf_label isEqualToString:@"a"]) {
+                                        [tmpa appendString:sf.text];
+                                    }
                                 }
-                            } else if ([vf_id isEqualToString:@"200"]) {
-                                if ([sf_label isEqualToString:@"a"]) {
-                                    bk.title = sf.text;
-                                } else if ([sf_label isEqualToString:@"f"]) {
-                                    bk.author = sf.text;
-                                } else if ([sf_label isEqualToString:@"g"]) {
-                                    bk.translator = sf.text;
-                                }
-                            } else if ([vf_id isEqualToString:@"210"]) {
-                                if ([sf_label isEqualToString:@"c"]) {
-                                    bk.publisher = sf.text;
-                                } else if ([sf_label isEqualToString:@"d"]) {
-                                    bk.publishDate = sf.text;
-                                }
-                            } else if ([vf_id isEqualToString:@"215"]) {
-                                if ([sf_label isEqualToString:@"a"]) {
-                                    bk.pages = sf.text;
-                                }
-                            } else if ([vf_id isEqualToString:@"330"]) {
-                                if ([sf_label isEqualToString:@"a"]) {
-                                    bk.summary = sf.text;
-                                }
+                            }];
+                            if ([vf_id isEqualToString:@"701"]) {
+                                [authors addObject:[NSString stringWithFormat:@"%@%@", tmpa, tmpb]];
                             } else if ([vf_id isEqualToString:@"606"]) {
-                                if ([sf_label isEqualToString:@"a"]) {
-                                    [tmpa appendString:sf.text];
-                                } else if ([sf_label isEqualToString:@"x"]) {
-                                    [tmpb appendString:[NSString stringWithFormat:@" - %@", sf.text]];
+                                if ([subjects count] == 0) {
+                                    [subject appendString:[NSString stringWithFormat:@"%@%@", tmpa, tmpb]];
+                                } else {
+                                    [subject appendString:[NSString stringWithFormat:@"; %@%@", tmpa, tmpb]];
                                 }
-                            } else if ([vf_id isEqualToString:@"701"]) {
-                                if ([sf_label isEqualToString:@"a"]) {
-                                    [tmpa appendString:sf.text];
-                                }
-                                if ([sf_label isEqualToString:@"g"]) {
-                                    [tmpb appendString:sf.text];
-                                }
+                                [subjects addObject:[NSString stringWithFormat:@"%@%@", tmpa, tmpb]];
                             } else if ([vf_id isEqualToString:@"712"]) {
-                                if ([sf_label isEqualToString:@"a"]) {
-                                    [tmpa appendString:sf.text];
-                                }
+                                [translators addObject:[NSString stringWithFormat:@"%@%@", tmpa, tmpb]];
                             }
                         }];
-                        if ([vf_id isEqualToString:@"701"]) {
-                            [authors addObject:[NSString stringWithFormat:@"%@%@", tmpa, tmpb]];
-                        } else if ([vf_id isEqualToString:@"606"]) {
-                            if ([subjects count] == 0) {
-                                [subject appendString:[NSString stringWithFormat:@"%@%@", tmpa, tmpb]];
-                            } else {
-                                [subject appendString:[NSString stringWithFormat:@"; %@%@", tmpa, tmpb]];
-                            }
-                            [subjects addObject:[NSString stringWithFormat:@"%@%@", tmpa, tmpb]];
-                        } else if ([vf_id isEqualToString:@"712"]) {
-                            [translators addObject:[NSString stringWithFormat:@"%@%@", tmpa, tmpb]];
-                        }
+                        bk.authors = [authors copy];
+                        bk.translators = [translators copy];
+                        bk.subjects = [subjects copy];
+                        bk.subject = [subject copy];
+                        [bk.extraInfo setValue:record forKey:@"webpac_rawData"];
+                        [bk.extraInfo setValue:[record child:@"doc_number"] forKey:@"webpac_docNumber"];
+                        [bk.extraInfo setValue:@"zju01" forKey:@"webpac_base"];
+                        result.extraInfo = [extraInfo copy];
+                        [result addObject:bk];
                     }];
-                    bk.authors = [authors copy];
-                    bk.translators = [translators copy];
-                    bk.subjects = [subjects copy];
-                    bk.subject = [subject copy];
-                    [bk.extraInfo setValue:record forKey:@"webpac_rawData"];
-                    [bk.extraInfo setValue:[record child:@"doc_number"] forKey:@"webpac_docNumber"];
-                    [bk.extraInfo setValue:@"zju01" forKey:@"webpac_base"];
-                    result.extraInfo = [extraInfo copy];
-                    [result addObject:bk];
+                    success(result);
+                } failure:^(AFHTTPRequestOperation *operation, NSError *error)
+                {
+                    NSLog(@"failure while querying records");
                 }];
-                success(result);
-            } failure:^(AFHTTPRequestOperation *operation, NSError *error)
-            {
-                NSLog(@"failure while querying records");
-            }];
-            
-            [searchSetOP start];
+                
+                [searchSetOP start];
+            }
         } failure:^(AFHTTPRequestOperation *operation, NSError *error)
         {
             NSLog(@"failure while querying set_number");
@@ -167,103 +170,106 @@
         {
             // First get set_number
             RXMLElement *rootXML = [RXMLElement elementFromXMLData:responseObject];
-            NSDictionary *extraInfo = @{@"no_records": [rootXML child:@"no_records"].text, @"no_entries": [rootXML child:@"no_entries"].text};
-            NSString *searchSetString = [[NSString stringWithFormat:@"/X?op=present&set_no=%@&set_entry=%@&format=marc", [rootXML child:@"set_number"].text, SETENTRY] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-            AFHTTPRequestOperation *searchSetOP = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:searchSetString relativeToURL:baseURL]]];
-            [searchSetOP setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
-            {
-                RXMLElement *recordsRootXML = [RXMLElement elementFromXMLData:responseObject];
-                [recordsRootXML iterate:@"record" usingBlock:^(RXMLElement *record)
+            NSString *errorText = [rootXML child:@"error"].text;
+            if (!errorText) {
+                NSDictionary *extraInfo = @{@"no_records": [rootXML child:@"no_records"].text, @"no_entries": [rootXML child:@"no_entries"].text};
+                NSString *searchSetString = [[NSString stringWithFormat:@"/X?op=present&set_no=%@&set_entry=%@&format=marc", [rootXML child:@"set_number"].text, SETENTRY] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+                AFHTTPRequestOperation *searchSetOP = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:searchSetString relativeToURL:baseURL]]];
+                [searchSetOP setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
                 {
-                    ShokaBook *bk = [ShokaBook new];
-                    
-                    NSMutableArray *authors = [NSMutableArray new];
-                    NSMutableArray *translators = [NSMutableArray new];
-                    NSMutableArray *subjects = [NSMutableArray new];
-                    NSMutableString *subject = [NSMutableString stringWithString:@""];
-                    
-                    [record iterate:@"metadata.oai_marc.varfield" usingBlock:^(RXMLElement *vf)
+                    RXMLElement *recordsRootXML = [RXMLElement elementFromXMLData:responseObject];
+                    [recordsRootXML iterate:@"record" usingBlock:^(RXMLElement *record)
                     {
-                         NSString *vf_id = [vf attribute:@"id"];
-                         
-                         NSMutableString *tmpa = [NSMutableString stringWithString:@""];
-                         NSMutableString *tmpb = [NSMutableString stringWithString:@""];
-                         
-                         [vf iterate:@"subfield" usingBlock:^(RXMLElement *sf)
-                         {
-                              NSString *sf_label = [sf attribute:@"label"];
-                              
-                              if ([vf_id isEqualToString:@"020"]) {
-                                  if ([sf_label isEqualToString:@"a"]) {
-                                      bk.ISBN = sf.text;
+                        ShokaBook *bk = [ShokaBook new];
+                        
+                        NSMutableArray *authors = [NSMutableArray new];
+                        NSMutableArray *translators = [NSMutableArray new];
+                        NSMutableArray *subjects = [NSMutableArray new];
+                        NSMutableString *subject = [NSMutableString stringWithString:@""];
+                        
+                        [record iterate:@"metadata.oai_marc.varfield" usingBlock:^(RXMLElement *vf)
+                        {
+                             NSString *vf_id = [vf attribute:@"id"];
+                             
+                             NSMutableString *tmpa = [NSMutableString stringWithString:@""];
+                             NSMutableString *tmpb = [NSMutableString stringWithString:@""];
+                             
+                             [vf iterate:@"subfield" usingBlock:^(RXMLElement *sf)
+                             {
+                                  NSString *sf_label = [sf attribute:@"label"];
+                                  
+                                  if ([vf_id isEqualToString:@"020"]) {
+                                      if ([sf_label isEqualToString:@"a"]) {
+                                          bk.ISBN = sf.text;
+                                      }
+                                  } else if ([vf_id isEqualToString:@"245"]) {
+                                      if ([sf_label isEqualToString:@"a"]) {
+                                          bk.title = [ShokaWebpacAPI cleanupTitle:sf.text];
+                                      } else if ([sf_label isEqualToString:@"c"]) {
+                                          bk.author = sf.text;
+                                      }
+                                  } else if ([vf_id isEqualToString:@"260"]) {
+                                      if ([sf_label isEqualToString:@"b"]) {
+                                          bk.publisher = sf.text;
+                                      } else if ([sf_label isEqualToString:@"c"]) {
+                                          bk.publishDate = sf.text;
+                                      }
+                                  } else if ([vf_id isEqualToString:@"300"]) {
+                                      if ([sf_label isEqualToString:@"a"]) {
+                                          bk.pages = sf.text;
+                                      }
+                                  } else if ([vf_id isEqualToString:@"520"]) {
+                                      if ([sf_label isEqualToString:@"a"]) {
+                                          bk.summary = sf.text;
+                                      }
+                                  } else if ([vf_id isEqualToString:@"650"]) {
+                                      if ([sf_label isEqualToString:@"a"]) {
+                                          [tmpa appendString:sf.text];
+                                      }
+                                  } else if ([vf_id isEqualToString:@"100"]) {
+                                      if ([sf_label isEqualToString:@"a"]) {
+                                          [tmpa appendString:sf.text];
+                                      }
+                                      if ([sf_label isEqualToString:@"g"]) {
+                                          [tmpb appendString:sf.text];
+                                      }
+                                  } else if ([vf_id isEqualToString:@"712"]) {
+                                      if ([sf_label isEqualToString:@"a"]) {
+                                          [tmpa appendString:sf.text];
+                                      }
                                   }
-                              } else if ([vf_id isEqualToString:@"245"]) {
-                                  if ([sf_label isEqualToString:@"a"]) {
-                                      bk.title = [ShokaWebpacAPI cleanupTitle:sf.text];
-                                  } else if ([sf_label isEqualToString:@"c"]) {
-                                      bk.author = sf.text;
-                                  }
-                              } else if ([vf_id isEqualToString:@"260"]) {
-                                  if ([sf_label isEqualToString:@"b"]) {
-                                      bk.publisher = sf.text;
-                                  } else if ([sf_label isEqualToString:@"c"]) {
-                                      bk.publishDate = sf.text;
-                                  }
-                              } else if ([vf_id isEqualToString:@"300"]) {
-                                  if ([sf_label isEqualToString:@"a"]) {
-                                      bk.pages = sf.text;
-                                  }
-                              } else if ([vf_id isEqualToString:@"520"]) {
-                                  if ([sf_label isEqualToString:@"a"]) {
-                                      bk.summary = sf.text;
-                                  }
-                              } else if ([vf_id isEqualToString:@"650"]) {
-                                  if ([sf_label isEqualToString:@"a"]) {
-                                      [tmpa appendString:sf.text];
-                                  }
-                              } else if ([vf_id isEqualToString:@"100"]) {
-                                  if ([sf_label isEqualToString:@"a"]) {
-                                      [tmpa appendString:sf.text];
-                                  }
-                                  if ([sf_label isEqualToString:@"g"]) {
-                                      [tmpb appendString:sf.text];
-                                  }
-                              } else if ([vf_id isEqualToString:@"712"]) {
-                                  if ([sf_label isEqualToString:@"a"]) {
-                                      [tmpa appendString:sf.text];
-                                  }
-                              }
-                          }];
-                         if ([vf_id isEqualToString:@"100"]) {
-                             [authors addObject:[NSString stringWithFormat:@"%@%@", tmpa, tmpb]];
-                         } else if ([vf_id isEqualToString:@"650"]) {
-                             if ([subjects count] == 0) {
-                                 [subject appendString:[NSString stringWithFormat:@"%@%@", tmpa, tmpb]];
-                             } else {
-                                 [subject appendString:[NSString stringWithFormat:@"; %@%@", tmpa, tmpb]];
+                              }];
+                             if ([vf_id isEqualToString:@"100"]) {
+                                 [authors addObject:[NSString stringWithFormat:@"%@%@", tmpa, tmpb]];
+                             } else if ([vf_id isEqualToString:@"650"]) {
+                                 if ([subjects count] == 0) {
+                                     [subject appendString:[NSString stringWithFormat:@"%@%@", tmpa, tmpb]];
+                                 } else {
+                                     [subject appendString:[NSString stringWithFormat:@"; %@%@", tmpa, tmpb]];
+                                 }
+                                 [subjects addObject:[NSString stringWithFormat:@"%@%@", tmpa, tmpb]];
+                             } else if ([vf_id isEqualToString:@"712"]) {
+                                 [translators addObject:[NSString stringWithFormat:@"%@%@", tmpa, tmpb]];
                              }
-                             [subjects addObject:[NSString stringWithFormat:@"%@%@", tmpa, tmpb]];
-                         } else if ([vf_id isEqualToString:@"712"]) {
-                             [translators addObject:[NSString stringWithFormat:@"%@%@", tmpa, tmpb]];
-                         }
-                     }];
-                    bk.authors = [authors copy];
-                    bk.translators = [translators copy];
-                    bk.subjects = [subjects copy];
-                    bk.subject = [subject copy];
-                    [bk.extraInfo setValue:record forKey:@"webpac_rawData"];
-                    [bk.extraInfo setValue:[record child:@"doc_number"] forKey:@"webpac_docNumber"];
-                    [bk.extraInfo setValue:@"zju09" forKey:@"webpac_base"];
-                    [result addObject:bk];
+                         }];
+                        bk.authors = [authors copy];
+                        bk.translators = [translators copy];
+                        bk.subjects = [subjects copy];
+                        bk.subject = [subject copy];
+                        [bk.extraInfo setValue:record forKey:@"webpac_rawData"];
+                        [bk.extraInfo setValue:[record child:@"doc_number"] forKey:@"webpac_docNumber"];
+                        [bk.extraInfo setValue:@"zju09" forKey:@"webpac_base"];
+                        [result addObject:bk];
+                    }];
+                    result.extraInfo = [extraInfo copy];
+                    success(result);
+                } failure:^(AFHTTPRequestOperation *operation, NSError *error)
+                {
+                    NSLog(@"failure while querying records");
                 }];
-                result.extraInfo = [extraInfo copy];
-                success(result);
-            } failure:^(AFHTTPRequestOperation *operation, NSError *error)
-            {
-                NSLog(@"failure while querying records");
-            }];
-            
-            [searchSetOP start];
+                
+                [searchSetOP start];
+            }
         } failure:^(AFHTTPRequestOperation *operation, NSError *error)
         {
             NSLog(@"failure while querying set_number");
