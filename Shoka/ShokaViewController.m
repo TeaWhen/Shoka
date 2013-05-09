@@ -45,12 +45,15 @@
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    [ShokaWebpacAPI searchChineseDepositoryWithKey:searchBar.text success:^(ShokaResult *result) {
+    NSString *searchKey = searchBar.text;
+    [ShokaWebpacAPI searchChineseDepositoryWithKey:searchKey success:^(ShokaResult *result) {
+        [result sortUsingKeyword:searchKey];
         self.cn_result = result;
         [self.tableView reloadData];
     } failure:^(NSError *error) {
     }];
-    [ShokaWebpacAPI searchForeignDepositoryWithKey:searchBar.text success:^(ShokaResult *result) {
+    [ShokaWebpacAPI searchForeignDepositoryWithKey:searchKey success:^(ShokaResult *result) {
+        [result sortUsingKeyword:searchKey];
         self.en_result = result;
         [self.tableView reloadData];
     } failure:^(NSError *error) {

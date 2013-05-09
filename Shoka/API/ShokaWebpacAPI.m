@@ -45,6 +45,7 @@
         {
             // First get set_number
             RXMLElement *rootXML = [RXMLElement elementFromXMLData:responseObject];
+            NSDictionary *extraInfo = @{@"no_records": [rootXML child:@"no_records"].text, @"no_entries": [rootXML child:@"no_entries"].text};
             NSString *searchSetString = [[NSString stringWithFormat:@"/X?op=present&set_no=%@&set_entry=%@&format=marc", [rootXML child:@"set_number"].text, SETENTRY] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
             AFHTTPRequestOperation *searchSetOP = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:searchSetString relativeToURL:baseURL]]];
             [searchSetOP setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
@@ -136,9 +137,9 @@
                     [bk.extraInfo setValue:record forKey:@"webpac_rawData"];
                     [bk.extraInfo setValue:[record child:@"doc_number"] forKey:@"webpac_docNumber"];
                     [bk.extraInfo setValue:@"zju01" forKey:@"webpac_base"];
+                    result.extraInfo = [extraInfo copy];
                     [result addObject:bk];
                 }];
-                [result sortUsingKeyword:searchKey];
                 success(result);
             } failure:^(AFHTTPRequestOperation *operation, NSError *error)
             {
@@ -166,6 +167,7 @@
         {
             // First get set_number
             RXMLElement *rootXML = [RXMLElement elementFromXMLData:responseObject];
+            NSDictionary *extraInfo = @{@"no_records": [rootXML child:@"no_records"].text, @"no_entries": [rootXML child:@"no_entries"].text};
             NSString *searchSetString = [[NSString stringWithFormat:@"/X?op=present&set_no=%@&set_entry=%@&format=marc", [rootXML child:@"set_number"].text, SETENTRY] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
             AFHTTPRequestOperation *searchSetOP = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:searchSetString relativeToURL:baseURL]]];
             [searchSetOP setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
@@ -254,7 +256,7 @@
                     [bk.extraInfo setValue:@"zju09" forKey:@"webpac_base"];
                     [result addObject:bk];
                 }];
-                [result sortUsingKeyword:searchKey];
+                result.extraInfo = [extraInfo copy];
                 success(result);
             } failure:^(AFHTTPRequestOperation *operation, NSError *error)
             {

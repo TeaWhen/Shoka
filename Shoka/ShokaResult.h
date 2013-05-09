@@ -11,6 +11,8 @@
 
 @interface ShokaResult : NSObject
 
+@property (strong, nonatomic) NSDictionary *extraInfo;
+
 - (void)addObject:(id)book;
 - (NSInteger)count;
 - (id)objectAtIndex:(NSInteger)index;
