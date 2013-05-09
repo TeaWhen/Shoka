@@ -12,6 +12,7 @@
 
 @property (strong, nonatomic) NSString *title;
 @property (strong, nonatomic) NSString *ISBN;
+@property (strong, nonatomic) NSString *callNo;
 @property (strong, nonatomic) NSString *pages;
 @property (strong, nonatomic) NSString *publisher;
 @property (strong, nonatomic) NSString *publishDate;

@@ -33,7 +33,7 @@
 {
     [super viewDidLoad];
     
-    self.rowsInBasic = @[@"author", @"translator", @"publisher", @"publishDate", @"ISBN"];
+    self.rowsInBasic = @[@"author", @"translator", @"publisher", @"publishDate", @"ISBN", @"callNo"];
     self.rowsInMore = @[@"subject", @"summary"];
     
     NSLog(@"view detail: %@", self.book);
