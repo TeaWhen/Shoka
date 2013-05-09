@@ -90,10 +90,16 @@ enum section {
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSString *CellIdentifier;
     if (indexPath.section == itemsSection) {
-        return 52;
+        CellIdentifier = @"item";
     }
-    return 44;
+    else {
+        CellIdentifier = @"cellWithDefaultHeight";
+    }
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    return cell.bounds.size.height;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
