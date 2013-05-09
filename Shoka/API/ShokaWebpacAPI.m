@@ -297,13 +297,18 @@
                 ShokaItem *itm = [ShokaItem new];
                 NSString *dueDate = [item child:@"loan-due-date"].text;
                 if (dueDate) {
-                    itm.status = [NSString stringWithFormat:@"已借出, %@", dueDate];
+                    itm.status = [NSString stringWithFormat:@"已借出，至 %@", dueDate];
                 }
                 else {
                     if ([[item child:@"item-status"].text isEqualToString:@"12"]) {
                         itm.status = @"普通外借";
-                    } else {
-                        itm.status = @"图书借阅";
+                    }
+                    else if ([[item child:@"item-status"].text isEqualToString:@"21"]) {
+                        itm.status = @"图书阅览";
+                    }
+                    else {
+#warning need log
+                        itm.status = @"";
                     }
                 }
                 itm.library = [item child:@"sub-library"].text;
