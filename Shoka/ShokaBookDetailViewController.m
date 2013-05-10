@@ -34,7 +34,7 @@
 {
     [super viewDidLoad];
     
-    self.rowsInBasic = @[@"author", @"translator", @"publisher", @"publishDate", @"ISBN", @"callNo"];
+    self.rowsInBasic = @[@"author", @"translator", @"publisher", @"publishDate", @"ISBN"];
     self.rowsInMore = @[@"subject", @"summary"];
     
     NSLog(@"view detail: %@", self.book);
@@ -89,7 +89,10 @@ enum section {
         return self.availableRowsInMore.count;
     }
     else if (section == itemsSection) {
-        return [self.result count];
+        if (self.book.callNo.length > 0) {
+            return self.result.count + 1;
+        }
+        return self.result.count;
     }
     
     return 0;
@@ -99,7 +102,12 @@ enum section {
 {
     NSString *CellIdentifier;
     if (indexPath.section == itemsSection) {
-        CellIdentifier = @"item";
+        if (self.book.callNo.length > 0 && indexPath.row == 0) {
+            CellIdentifier = @"cellWithDefaultHeight";
+        }
+        else {
+            CellIdentifier = @"item";
+        }
     }
     else {
         CellIdentifier = @"cellWithDefaultHeight";
@@ -124,15 +132,26 @@ enum section {
         cell.detailTextLabel.text = [self.book valueForKey:rowName];
     }
     else if (indexPath.section == itemsSection) {
-        ShokaItemTableViewCell *itemCell;
-        itemCell = [tableView dequeueReusableCellWithIdentifier:@"item"];
+        NSInteger index = indexPath.row;
+        if (self.book.callNo.length > 0) {
+            index = index - 1;
+        }
         
-        ShokaItem *item = [self.result objectAtIndex:indexPath.row];
-        
-        itemCell.statusLabel.text = item.status;
-        itemCell.libraryLabel.text = item.library;
-        
-        cell = itemCell;
+        if (index == -1) {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"callNo"];
+            cell.detailTextLabel.text = self.book.callNo;
+        }
+        else {
+            ShokaItemTableViewCell *itemCell;
+            itemCell = [tableView dequeueReusableCellWithIdentifier:@"item"];
+            
+            ShokaItem *item = [self.result objectAtIndex:index];
+            
+            itemCell.statusLabel.text = item.status;
+            itemCell.libraryLabel.text = item.library;
+            
+            cell = itemCell;
+        }
     }
     
 	return cell;
