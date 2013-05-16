@@ -48,6 +48,9 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [self.navigationController setNavigationBarHidden:YES animated:animated];
+    NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
     [super viewWillAppear:animated];
 }
 
@@ -160,8 +163,6 @@ enum Language {
             [segue.destinationViewController setBook:[self.cn_result objectAtIndex:indexPath.row]];
         else
             [segue.destinationViewController setBook:[self.en_result objectAtIndex:indexPath.row]];
-        
-        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
 }
 
