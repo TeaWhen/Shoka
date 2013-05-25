@@ -11,14 +11,17 @@
 #import "ShokaItem.h"
 #import "ShokaWebpacAPI.h"
 #import "ShokaItemTableViewCell.h"
+#import "ShokaFavorites.h"
 
 @interface ShokaBookDetailViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) ShokaResult *result;
-@property NSArray *rowsInBasic;
-@property NSMutableArray *availableRowsInBasic;
-@property NSArray *rowsInMore;
-@property NSMutableArray *availableRowsInMore;
+@property (strong, nonatomic) NSArray *rowsInBasic;
+@property (strong, nonatomic) NSMutableArray *availableRowsInBasic;
+@property (strong, nonatomic) NSArray *rowsInMore;
+@property (strong, nonatomic) NSMutableArray *availableRowsInMore;
+
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *favoriteButton;
 
 @end
 
@@ -40,6 +43,7 @@
     NSLog(@"view detail: %@", self.book);
     
     self.title = self.book.title;
+    [self updateFavoriteButton];
     
     [ShokaWebpacAPI fetchItemDataOfDocNumber:[self.book.extraInfo valueForKey:@"webpac_docNumber"] inBase:[self.book.extraInfo valueForKey:@"webpac_base"] success:^(ShokaResult *api_result) {
         self.result = api_result;
@@ -155,6 +159,31 @@ enum section {
     }
     
 	return cell;
+}
+
+- (IBAction)favoriteClicked:(UIBarButtonItem *)sender
+{
+    NSString *docNumber = self.book.extraInfo[@"webpac_docNumber"];
+    NSString *base = self.book.extraInfo[@"webpac_base"];
+    if ([ShokaFavorites hasBookWithDocNumber:docNumber andBase:base]) {
+        [ShokaFavorites removeBookWithDocNumber:docNumber andBase:base];
+    }
+    else {
+        [ShokaFavorites addBookWithDocNumber:docNumber andBase:base];
+    }
+    [self updateFavoriteButton];
+}
+
+- (void)updateFavoriteButton
+{
+    NSString *docNumber = self.book.extraInfo[@"webpac_docNumber"];
+    NSString *base = self.book.extraInfo[@"webpac_base"];
+    if ([ShokaFavorites hasBookWithDocNumber:docNumber andBase:base]) {
+        self.favoriteButton.title = @"取消收藏";
+    }
+    else {
+        self.favoriteButton.title = @"收藏";
+    }
 }
 
 - (void)didReceiveMemoryWarning

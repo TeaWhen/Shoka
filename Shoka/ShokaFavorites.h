@@ -10,4 +10,9 @@
 
 @interface ShokaFavorites : NSObject
 
++ (void)addBookWithDocNumber:(NSString *)number andBase:(NSString *)base;
++ (void)removeBookWithDocNumber:(NSString *)number andBase:(NSString *)base;
++ (BOOL)hasBookWithDocNumber:(NSString *)number andBase:(NSString *)base;
++ (NSArray *)list;
+
 @end
