@@ -481,6 +481,7 @@
         <class className="ShokaViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ShokaViewController.h"/>
             <relationships>
+                <relationship kind="action" name="grayViewTouched:" candidateClass="UITapGestureRecognizer"/>
                 <relationship kind="outlet" name="grayView" candidateClass="ShokaGrayView"/>
                 <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
