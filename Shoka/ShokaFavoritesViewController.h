@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#define kShokaReloadFavoritesNotification @"ShokaReloadFavorites"
+
 @interface ShokaFavoritesViewController : UIViewController
 
 @end

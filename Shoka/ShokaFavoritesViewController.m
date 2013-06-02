@@ -24,6 +24,8 @@
 {
     self.favorites = [ShokaFavorites list];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleReload:) name:kShokaReloadFavoritesNotification object:nil];
+    
     [super viewDidLoad];
 }
 
@@ -33,6 +35,12 @@
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     [super viewWillAppear:animated];
+}
+
+- (void)handleReload:(NSNotification *)note
+{
+    self.favorites = [ShokaFavorites list];
+    [self.tableView reloadData];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

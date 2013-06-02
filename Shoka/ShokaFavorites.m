@@ -7,15 +7,14 @@
 //
 
 #import "ShokaFavorites.h"
+#import "ShokaFavoritesViewController.h"
 
 static NSString * const kFavoritesKey = @"Favorites";
-static NSString * const kFavoriteStorageFormat = @"%@|%@";
 
 @implementation ShokaFavorites
 
 + (void)addBook:(ShokaBook *)book
 {
-#warning Need reload table view
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSData *data = [defaults objectForKey:kFavoritesKey];
     NSMutableArray *favorites = [[NSKeyedUnarchiver unarchiveObjectWithData:data] mutableCopy];
@@ -26,11 +25,12 @@ static NSString * const kFavoriteStorageFormat = @"%@|%@";
     data = [NSKeyedArchiver archivedDataWithRootObject:favorites];
     [defaults setObject:data forKey:kFavoritesKey];
     [defaults synchronize];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kShokaReloadFavoritesNotification object:self userInfo:nil];
 }
 
 + (void)removeBook:(ShokaBook *)book
 {
-#warning Need reload table view
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSData *data = [defaults objectForKey:kFavoritesKey];
     NSMutableArray *favorites = [[NSKeyedUnarchiver unarchiveObjectWithData:data] mutableCopy];
@@ -38,6 +38,8 @@ static NSString * const kFavoriteStorageFormat = @"%@|%@";
     data = [NSKeyedArchiver archivedDataWithRootObject:favorites];
     [defaults setObject:data forKey:kFavoritesKey];
     [defaults synchronize];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kShokaReloadFavoritesNotification object:self userInfo:nil];
 }
 
 + (BOOL)hasBook:(ShokaBook *)book
