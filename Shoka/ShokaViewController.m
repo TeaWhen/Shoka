@@ -88,6 +88,7 @@
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     NSString *searchKey = searchBar.text;
+    [SVProgressHUD show];
     [SVProgressHUD showWithStatus:@"载入中…" maskType:SVProgressHUDMaskTypeGradient];
     [ShokaWebpacAPI searchChineseDepositoryWithKey:searchKey success:^(ShokaResult *result) {
         [result sortUsingKeyword:searchKey];
@@ -96,8 +97,10 @@
             [self.tableView reloadData];
             [self.tableView setContentOffset:CGPointZero];
         }
-        [SVProgressHUD dismiss];
+        [SVProgressHUD popActivity];
     } failure:^(NSError *error) {
+        [SVProgressHUD showErrorWithStatus:@"载入失败"];
+        [SVProgressHUD popActivity];
     }];
     [ShokaWebpacAPI searchForeignDepositoryWithKey:searchKey success:^(ShokaResult *result) {
         [result sortUsingKeyword:searchKey];
@@ -106,7 +109,10 @@
             [self.tableView reloadData];
             [self.tableView setContentOffset:CGPointZero];
         }
+        [SVProgressHUD popActivity];
     } failure:^(NSError *error) {
+        [SVProgressHUD showErrorWithStatus:@"载入失败"];
+        [SVProgressHUD popActivity];
     }];
     [searchBar resignFirstResponder];
 }
