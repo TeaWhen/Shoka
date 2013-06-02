@@ -128,10 +128,10 @@
             </objects>
             <point key="canvasLocation" x="285" y="449"/>
         </scene>
-        <!--View Controller-->
+        <!--Shoka Favorites View Controller-->
         <scene sceneID="Sou-O7-pd7">
             <objects>
-                <viewController id="p5W-h9-j8f" sceneMemberID="viewController">
+                <viewController id="p5W-h9-j8f" customClass="ShokaFavoritesViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sW3-Cv-Xua">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -156,6 +156,10 @@
                                         </view>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="p5W-h9-j8f" id="q8I-TR-XkK"/>
+                                    <outlet property="delegate" destination="p5W-h9-j8f" id="Cqw-NY-rrJ"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -169,6 +173,10 @@
                     <navigationItem key="navigationItem" id="XOg-1I-Uxa">
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="VF8-Ts-enU"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="v4T-k3-2HH" id="eK2-vR-Sdp"/>
+                        <segue destination="0d9-VL-UdF" kind="push" identifier="book" id="Egz-85-Kgb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5gd-3U-kmR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -464,8 +472,13 @@
         <class className="ShokaBookDetailViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ShokaBookDetailViewController.h"/>
             <relationships>
-                <relationship kind="action" name="favoriteClicked:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="favoriteButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="ShokaFavoritesViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ShokaFavoritesViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
             </relationships>
         </class>
         <class className="ShokaGrayView" superclassName="UIView">
@@ -481,7 +494,6 @@
         <class className="ShokaViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ShokaViewController.h"/>
             <relationships>
-                <relationship kind="action" name="grayViewTouched:" candidateClass="UITapGestureRecognizer"/>
                 <relationship kind="outlet" name="grayView" candidateClass="ShokaGrayView"/>
                 <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
@@ -493,4 +505,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="Egz-85-Kgb"/>
+    </inferredMetricsTieBreakers>
 </document>

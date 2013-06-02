@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Mantle.h"
 
-@interface ShokaBook : NSObject
+@interface ShokaBook : MTLModel <MTLJSONSerializing>
 
 @property (strong, nonatomic) NSString *title;
 @property (strong, nonatomic) NSString *ISBN;

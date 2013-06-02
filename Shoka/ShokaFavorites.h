@@ -7,12 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ShokaBook.h"
 
 @interface ShokaFavorites : NSObject
 
-+ (void)addBookWithDocNumber:(NSString *)number andBase:(NSString *)base;
-+ (void)removeBookWithDocNumber:(NSString *)number andBase:(NSString *)base;
-+ (BOOL)hasBookWithDocNumber:(NSString *)number andBase:(NSString *)base;
++ (void)addBook:(ShokaBook *)book;
++ (void)removeBook:(ShokaBook *)book;
++ (BOOL)hasBook:(ShokaBook *)book;
 + (NSArray *)list;
 
 @end

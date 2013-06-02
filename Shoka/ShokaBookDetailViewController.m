@@ -40,8 +40,6 @@
     self.rowsInBasic = @[@"author", @"translator", @"publisher", @"publishDate", @"ISBN"];
     self.rowsInMore = @[@"subject", @"summary"];
     
-    NSLog(@"view detail: %@", self.book);
-    
     self.title = self.book.title;
     [self updateFavoriteButton];
     
@@ -49,6 +47,7 @@
         self.result = api_result;
         [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:itemsSection] withRowAnimation:UITableViewRowAnimationAutomatic];
     } failure:^(NSError *err) {
+        NSLog(@"Failed fetch item data.");
     }];
 }
 
@@ -163,22 +162,18 @@ enum section {
 
 - (IBAction)favoriteClicked:(UIBarButtonItem *)sender
 {
-    NSString *docNumber = self.book.extraInfo[@"webpac_docNumber"];
-    NSString *base = self.book.extraInfo[@"webpac_base"];
-    if ([ShokaFavorites hasBookWithDocNumber:docNumber andBase:base]) {
-        [ShokaFavorites removeBookWithDocNumber:docNumber andBase:base];
+    if ([ShokaFavorites hasBook:self.book]) {
+        [ShokaFavorites removeBook:self.book];
     }
     else {
-        [ShokaFavorites addBookWithDocNumber:docNumber andBase:base];
+        [ShokaFavorites addBook:self.book];
     }
     [self updateFavoriteButton];
 }
 
 - (void)updateFavoriteButton
 {
-    NSString *docNumber = self.book.extraInfo[@"webpac_docNumber"];
-    NSString *base = self.book.extraInfo[@"webpac_base"];
-    if ([ShokaFavorites hasBookWithDocNumber:docNumber andBase:base]) {
+    if ([ShokaFavorites hasBook:self.book]) {
         self.favoriteButton.title = @"取消收藏";
     }
     else {
