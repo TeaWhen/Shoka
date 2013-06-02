@@ -1,1 +1,8 @@
 language: objective-c
+notifications:
+  email:
+    recipients:
+      - aquarhead@gmail.com
+      - liu.dongyuan@gmail.com
+    on_success: change
+    on_failure: always
