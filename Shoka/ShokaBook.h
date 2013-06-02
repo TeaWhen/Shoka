@@ -22,7 +22,6 @@
 @property (strong, nonatomic) NSString *translator;
 @property (strong, nonatomic) NSString *subject;
 
-#warning Arrays are not serialized
 @property (strong, nonatomic) NSArray *authors;
 @property (strong, nonatomic) NSArray *translators;
 @property (strong, nonatomic) NSArray *subjects;

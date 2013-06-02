@@ -47,6 +47,7 @@
         self.result = api_result;
         [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:itemsSection] withRowAnimation:UITableViewRowAnimationAutomatic];
     } failure:^(NSError *err) {
+        NSLog(@"Failed fetch item data.");
     }];
 }
 
