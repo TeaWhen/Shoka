@@ -15,27 +15,36 @@ static NSString * const kFavoriteStorageFormat = @"%@|%@";
 
 + (void)addBook:(ShokaBook *)book
 {
+#warning Need reload table view
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSMutableArray *favorites = [[defaults arrayForKey:kFavoritesKey] mutableCopy];
+    NSData *data = [defaults objectForKey:kFavoritesKey];
+    NSMutableArray *favorites = [[NSKeyedUnarchiver unarchiveObjectWithData:data] mutableCopy];
     if (!favorites) {
         favorites = [[NSMutableArray alloc] init];
     }
     [favorites addObject:book];
-    [defaults setObject:favorites forKey:kFavoritesKey];
+    data = [NSKeyedArchiver archivedDataWithRootObject:favorites];
+    [defaults setObject:data forKey:kFavoritesKey];
+    [defaults synchronize];
 }
 
 + (void)removeBook:(ShokaBook *)book
 {
+#warning Need reload table view
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSMutableArray *favorites = [[defaults arrayForKey:kFavoritesKey] mutableCopy];
+    NSData *data = [defaults objectForKey:kFavoritesKey];
+    NSMutableArray *favorites = [[NSKeyedUnarchiver unarchiveObjectWithData:data] mutableCopy];
     [favorites removeObject:book];
-    [defaults setObject:favorites forKey:kFavoritesKey];    
+    data = [NSKeyedArchiver archivedDataWithRootObject:favorites];
+    [defaults setObject:data forKey:kFavoritesKey];
+    [defaults synchronize];
 }
 
 + (BOOL)hasBook:(ShokaBook *)book
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSArray *favorites = [defaults arrayForKey:kFavoritesKey];
+    NSData *data = [defaults objectForKey:kFavoritesKey];
+    NSArray *favorites = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     if (!favorites || [favorites indexOfObject:book] == NSNotFound) {
         return NO;
     }
@@ -46,7 +55,10 @@ static NSString * const kFavoriteStorageFormat = @"%@|%@";
 
 + (NSArray *)list
 {
-    return [[NSUserDefaults standardUserDefaults] arrayForKey:kFavoritesKey];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSData *data = [defaults objectForKey:kFavoritesKey];
+    NSArray *favorites = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    return favorites;
 }
 
 @end

@@ -40,8 +40,6 @@
     self.rowsInBasic = @[@"author", @"translator", @"publisher", @"publishDate", @"ISBN"];
     self.rowsInMore = @[@"subject", @"summary"];
     
-    NSLog(@"view detail: %@", self.book);
-    
     self.title = self.book.title;
     [self updateFavoriteButton];
     

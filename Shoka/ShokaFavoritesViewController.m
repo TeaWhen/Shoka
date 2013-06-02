@@ -8,6 +8,7 @@
 
 #import "ShokaFavoritesViewController.h"
 #import "ShokaFavorites.h"
+#import "ShokaBookDetailViewController.h"
 
 @interface ShokaFavoritesViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -30,7 +31,7 @@
 {
     NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-
+    
     [super viewWillAppear:animated];
 }
 
@@ -51,7 +52,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    cell.textLabel.text = [self.favorites[indexPath.row] name];
+    cell.textLabel.text = [self.favorites[indexPath.row] title];
     return cell;
 }
 
@@ -59,7 +60,7 @@
 {
     if ([segue.identifier isEqualToString:@"book"]) {
         NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
-//        [segue.destinationViewController setBook:self.favorites[indexPath.row]];
+        ((ShokaBookDetailViewController *)segue.destinationViewController).book = self.favorites[indexPath.row];
     }
 }
 
