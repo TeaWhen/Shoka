@@ -42,6 +42,17 @@ static NSString * const kFavoritesKey = @"Favorites";
     [[NSNotificationCenter defaultCenter] postNotificationName:kShokaReloadFavoritesNotification object:self userInfo:nil];
 }
 
++ (void)removeBookAtRow:(NSUInteger)row
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSData *data = [defaults objectForKey:kFavoritesKey];
+    NSMutableArray *favorites = [[NSKeyedUnarchiver unarchiveObjectWithData:data] mutableCopy];
+    [favorites removeObjectAtIndex:row];
+    data = [NSKeyedArchiver archivedDataWithRootObject:favorites];
+    [defaults setObject:data forKey:kFavoritesKey];
+    [defaults synchronize];
+}
+
 + (BOOL)hasBook:(ShokaBook *)book
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

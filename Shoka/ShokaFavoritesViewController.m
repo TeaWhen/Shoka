@@ -12,7 +12,7 @@
 
 @interface ShokaFavoritesViewController () <UITableViewDataSource, UITableViewDelegate>
 
-@property (strong, nonatomic) NSArray *favorites;
+@property (strong, nonatomic) NSMutableArray *favorites;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -22,7 +22,7 @@
 
 - (void)viewDidLoad
 {
-    self.favorites = [ShokaFavorites list];
+    self.favorites = [[ShokaFavorites list] mutableCopy];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleReload:) name:kShokaReloadFavoritesNotification object:nil];
     
@@ -39,7 +39,7 @@
 
 - (void)handleReload:(NSNotification *)note
 {
-    self.favorites = [ShokaFavorites list];
+    self.favorites = [[ShokaFavorites list] mutableCopy];
     [self.tableView reloadData];
 }
 
@@ -76,6 +76,49 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark Table view editing
+
+- (IBAction)editClicked:(UIBarButtonItem *)sender {
+    if ([self.tableView isEditing]) {
+        [sender setStyle:UIBarButtonItemStyleBordered];
+        sender.title = @"编辑";
+        [self.tableView setEditing:NO animated:YES];
+    }
+    else
+    {
+        [sender setStyle:UIBarButtonItemStyleDone];
+        sender.title = @"完成";
+        [self.tableView setEditing:YES animated:YES];
+    }
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return UITableViewCellEditingStyleDelete;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return NO;
+}
+
+//- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)
+//sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
+//{
+//    if (sourceIndexPath == destinationIndexPath) {
+//        return;
+//    }
+//    
+//    [ShokaFavorites moveRow:sourceIndexPath.row toRow:destinationIndexPath.row];
+//}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle) editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [ShokaFavorites removeBookAtRow:indexPath.row];
+    [self.favorites removeObjectAtIndex:indexPath.row];
+    [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 @end

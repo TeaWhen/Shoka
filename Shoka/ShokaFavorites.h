@@ -13,6 +13,7 @@
 
 + (void)addBook:(ShokaBook *)book;
 + (void)removeBook:(ShokaBook *)book;
++ (void)removeBookAtRow:(NSUInteger)row;
 + (BOOL)hasBook:(ShokaBook *)book;
 + (NSArray *)list;
 
