@@ -13,30 +13,30 @@ static NSString * const kFavoriteStorageFormat = @"%@|%@";
 
 @implementation ShokaFavorites
 
-+ (void)addBookWithDocNumber:(NSString *)number andBase:(NSString *)base
++ (void)addBook:(ShokaBook *)book
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSMutableArray *favorites = [[defaults arrayForKey:kFavoritesKey] mutableCopy];
     if (!favorites) {
         favorites = [[NSMutableArray alloc] init];
     }
-    [favorites addObject:[NSString stringWithFormat:kFavoriteStorageFormat, number, base]];
+    [favorites addObject:book];
     [defaults setObject:favorites forKey:kFavoritesKey];
 }
 
-+ (void)removeBookWithDocNumber:(NSString *)number andBase:(NSString *)base
++ (void)removeBook:(ShokaBook *)book
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSMutableArray *favorites = [[defaults arrayForKey:kFavoritesKey] mutableCopy];
-    [favorites removeObject:[NSString stringWithFormat:kFavoriteStorageFormat, number, base]];
+    [favorites removeObject:book];
     [defaults setObject:favorites forKey:kFavoritesKey];    
 }
 
-+ (BOOL)hasBookWithDocNumber:(NSString *)number andBase:(NSString *)base
++ (BOOL)hasBook:(ShokaBook *)book
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSArray *favorites = [defaults arrayForKey:kFavoritesKey];
-    if (!favorites || [favorites indexOfObject:[NSString stringWithFormat:kFavoriteStorageFormat, number, base]] == NSNotFound) {
+    if (!favorites || [favorites indexOfObject:book] == NSNotFound) {
         return NO;
     }
     else {
