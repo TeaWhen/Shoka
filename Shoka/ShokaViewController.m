@@ -99,6 +99,7 @@
         }
         [SVProgressHUD popActivity];
     } failure:^(NSError *error) {
+        self.cn_result = [ShokaResult new];
         [SVProgressHUD showErrorWithStatus:@"载入失败"];
         [SVProgressHUD popActivity];
     }];
@@ -111,6 +112,7 @@
         }
         [SVProgressHUD popActivity];
     } failure:^(NSError *error) {
+        self.en_result = [ShokaResult new];
         [SVProgressHUD showErrorWithStatus:@"载入失败"];
         [SVProgressHUD popActivity];
     }];
