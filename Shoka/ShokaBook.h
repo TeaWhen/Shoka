@@ -26,6 +26,6 @@
 @property (strong, nonatomic) NSArray *translators;
 @property (strong, nonatomic) NSArray *subjects;
 
-@property (strong, nonatomic) NSMutableDictionary *extraInfo;
+@property (strong, nonatomic) NSDictionary *extraInfo;
 
 @end

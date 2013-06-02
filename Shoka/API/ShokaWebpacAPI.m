@@ -142,9 +142,7 @@
                         bk.translators = [translators copy];
                         bk.subjects = [subjects copy];
                         bk.subject = [subject copy];
-                        [bk.extraInfo setValue:record forKey:@"webpac_rawData"];
-                        [bk.extraInfo setValue:[record child:@"doc_number"] forKey:@"webpac_docNumber"];
-                        [bk.extraInfo setValue:@"zju01" forKey:@"webpac_base"];
+                        bk.extraInfo = @{@"webpac_rawData": [record copy], @"webpac_docNumber": [[record child:@"doc_number"] copy], @"webpac_base": @"zju01"};
                         [result addObject:bk];
                     }];
                     result.extraInfo = [extraInfo copy];
