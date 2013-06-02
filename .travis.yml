@@ -6,4 +6,8 @@ notifications:
       - liu.dongyuan@gmail.com
     on_success: change
     on_failure: always
-  irc: "chat.freenode.net#TeaWhen"
+  irc:
+    channels:
+      - "chat.freenode.net#TeaWhen"
+    template:
+      - "%{repository} :: %{commit} by %{author} on %{branch}, %{message}"

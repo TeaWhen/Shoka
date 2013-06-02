@@ -145,9 +145,9 @@
                         [bk.extraInfo setValue:record forKey:@"webpac_rawData"];
                         [bk.extraInfo setValue:[record child:@"doc_number"] forKey:@"webpac_docNumber"];
                         [bk.extraInfo setValue:@"zju01" forKey:@"webpac_base"];
-                        result.extraInfo = [extraInfo copy];
                         [result addObject:bk];
                     }];
+                    result.extraInfo = [extraInfo copy];
                     success(result);
                 } failure:^(AFHTTPRequestOperation *operation, NSError *error)
                 {
