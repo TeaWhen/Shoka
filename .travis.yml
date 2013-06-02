@@ -6,3 +6,4 @@ notifications:
       - liu.dongyuan@gmail.com
     on_success: change
     on_failure: always
+  irc: "chat.freenode.net#TeaWhen"
