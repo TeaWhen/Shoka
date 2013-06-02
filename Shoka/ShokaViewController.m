@@ -12,6 +12,8 @@
 #import "ShokaBookDetailViewController.h"
 #import "ShokaGrayView.h"
 
+#import "SVProgressHUD.h"
+
 @interface ShokaViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
 @property ShokaResult *cn_result, *en_result;
@@ -86,6 +88,7 @@
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     NSString *searchKey = searchBar.text;
+    [SVProgressHUD showWithStatus:@"Loading..."];
     [ShokaWebpacAPI searchChineseDepositoryWithKey:searchKey success:^(ShokaResult *result) {
         [result sortUsingKeyword:searchKey];
         self.cn_result = result;
@@ -93,6 +96,7 @@
             [self.tableView reloadData];
             [self.tableView setContentOffset:CGPointZero];
         }
+        [SVProgressHUD showSuccessWithStatus:@"Done!"];
     } failure:^(NSError *error) {
     }];
     [ShokaWebpacAPI searchForeignDepositoryWithKey:searchKey success:^(ShokaResult *result) {
