@@ -88,7 +88,7 @@
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     NSString *searchKey = searchBar.text;
-    [SVProgressHUD showWithStatus:@"Loading..."];
+    [SVProgressHUD showWithStatus:@"载入中…" maskType:SVProgressHUDMaskTypeGradient];
     [ShokaWebpacAPI searchChineseDepositoryWithKey:searchKey success:^(ShokaResult *result) {
         [result sortUsingKeyword:searchKey];
         self.cn_result = result;
@@ -96,7 +96,7 @@
             [self.tableView reloadData];
             [self.tableView setContentOffset:CGPointZero];
         }
-        [SVProgressHUD showSuccessWithStatus:@"Done!"];
+        [SVProgressHUD dismiss];
     } failure:^(NSError *error) {
     }];
     [ShokaWebpacAPI searchForeignDepositoryWithKey:searchKey success:^(ShokaResult *result) {
