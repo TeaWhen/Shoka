@@ -54,6 +54,21 @@
     self.title = self.book.title;
     [self updateFavoriteButton];
     
+    UILabel *titleLabel=[[UILabel alloc] initWithFrame:CGRectMake(0,0, 300, 40)];
+    titleLabel.text = self.title;
+    titleLabel.textColor=[UIColor whiteColor];
+    titleLabel.font = [UIFont boldSystemFontOfSize:19.0];
+    titleLabel.shadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5];
+    titleLabel.shadowOffset = CGSizeMake(0.0, -1.0);
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    titleLabel.backgroundColor =[UIColor clearColor];
+    titleLabel.adjustsFontSizeToFitWidth = YES;
+    titleLabel.adjustsLetterSpacingToFitWidth = YES;
+    titleLabel.minimumScaleFactor = 0.8;
+//    titleLabel.lineBreakMode = NSLineBreakByCharWrapping;
+//    titleLabel.numberOfLines = 2;
+    self.navigationItem.titleView = titleLabel;
+    
     [ShokaWebpacAPI fetchItemDataOfDocNumber:[self.book.extraInfo valueForKey:@"webpac_docNumber"] inBase:[self.book.extraInfo valueForKey:@"webpac_base"] success:^(ShokaResult *api_result) {
         self.result = api_result;
         [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:itemsSection] withRowAnimation:UITableViewRowAnimationAutomatic];
