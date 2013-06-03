@@ -4,11 +4,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller - 检索-->
+        <!--Navigation Controller-->
         <scene sceneID="G8z-gv-5zn">
             <objects>
                 <navigationController definesPresentationContext="YES" id="MxO-IV-ZXm" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="检索" image="magnify.png" id="mF9-Cm-eH7"/>
+                    <tabBarItem key="tabBarItem" systemItem="search" id="mF9-Cm-eH7"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="eDb-Wc-jjA">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -112,11 +112,11 @@
             </objects>
             <point key="canvasLocation" x="708" y="-247"/>
         </scene>
-        <!--Navigation Controller - 收藏-->
+        <!--Navigation Controller-->
         <scene sceneID="mYO-dW-fYW">
             <objects>
                 <navigationController definesPresentationContext="YES" id="6PK-MU-AhI" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="收藏" image="heart.png" id="3GK-2Z-4iu"/>
+                    <tabBarItem key="tabBarItem" systemItem="favorites" id="3GK-2Z-4iu"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="LG8-m1-Qi4">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -429,17 +429,8 @@
                             <outlet property="delegate" destination="0d9-VL-UdF" id="UtV-IA-i58"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="21 天公司上市" id="UZQ-2Q-KZj">
-                        <barButtonItem key="rightBarButtonItem" title="收藏" id="L3i-KU-1wl">
-                            <connections>
-                                <action selector="favoriteClicked:" destination="0d9-VL-UdF" id="3fh-eg-bZw"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="21 天公司上市" id="UZQ-2Q-KZj"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <connections>
-                        <outlet property="favoriteButton" destination="L3i-KU-1wl" id="jdt-er-kfB"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LJo-w5-dQP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -465,24 +456,16 @@
             <point key="canvasLocation" x="-249" y="137"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="heart.png" width="24" height="21"/>
-        <image name="magnify.png" width="24" height="24"/>
-    </resources>
     <classes>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
         </class>
         <class className="ShokaBookDetailViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ShokaBookDetailViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="favoriteButton" candidateClass="UIBarButtonItem"/>
-            </relationships>
         </class>
         <class className="ShokaFavoritesViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ShokaFavoritesViewController.h"/>
             <relationships>
-                <relationship kind="action" name="editClicked:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
             </relationships>
         </class>

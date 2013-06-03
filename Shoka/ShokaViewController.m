@@ -89,7 +89,7 @@
 {
     NSString *searchKey = searchBar.text;
     [SVProgressHUD show];
-    [SVProgressHUD showWithStatus:@"载入中…" maskType:SVProgressHUDMaskTypeGradient];
+    [SVProgressHUD showWithStatus:@"载入中…" maskType:SVProgressHUDMaskTypeClear];
     [ShokaWebpacAPI searchChineseDepositoryWithKey:searchKey success:^(ShokaResult *result) {
         [result sortUsingKeyword:searchKey];
         self.cn_result = result;

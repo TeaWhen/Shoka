@@ -13,6 +13,10 @@
 #import "ShokaItemTableViewCell.h"
 #import "ShokaFavorites.h"
 
+#define kShokaBackIconName @"back"
+#define kShokaFavorite0IconName @"favorite-0"
+#define kShokaFavorite1IconName @"favorite-1"
+
 @interface ShokaBookDetailViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) ShokaResult *result;
@@ -20,22 +24,29 @@
 @property (strong, nonatomic) NSMutableArray *availableRowsInBasic;
 @property (strong, nonatomic) NSArray *rowsInMore;
 @property (strong, nonatomic) NSMutableArray *availableRowsInMore;
-
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *favoriteButton;
+@property (strong, nonatomic) UIButton *favoriteButton;
 
 @end
 
 @implementation ShokaBookDetailViewController
 
-- (ShokaResult *)result
-{
-    if (!_result) _result = [ShokaResult new];
-    return _result;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+    [backButton setImage:[UIImage imageNamed:kShokaBackIconName] forState:UIControlStateNormal];
+    [backButton addTarget:self.navigationController action:@selector(popViewControllerAnimated:) forControlEvents:UIControlEventTouchUpInside];
+    backButton.adjustsImageWhenHighlighted = NO;
+    backButton.showsTouchWhenHighlighted = YES;
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+    
+    self.favoriteButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+    [self.favoriteButton setImage:[UIImage imageNamed:kShokaFavorite0IconName] forState:UIControlStateNormal];
+    [self.favoriteButton addTarget:self action:@selector(favoriteClicked) forControlEvents:UIControlEventTouchUpInside];
+    self.favoriteButton.adjustsImageWhenHighlighted = NO;
+    self.favoriteButton.showsTouchWhenHighlighted = YES;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.favoriteButton];
     
     self.rowsInBasic = @[@"author", @"translator", @"publisher", @"publishDate", @"ISBN"];
     self.rowsInMore = @[@"subject", @"summary"];
@@ -160,7 +171,7 @@ enum section {
 	return cell;
 }
 
-- (IBAction)favoriteClicked:(UIBarButtonItem *)sender
+- (void)favoriteClicked
 {
     if ([ShokaFavorites hasBook:self.book]) {
         [ShokaFavorites removeBook:self.book];
@@ -174,10 +185,10 @@ enum section {
 - (void)updateFavoriteButton
 {
     if ([ShokaFavorites hasBook:self.book]) {
-        self.favoriteButton.title = @"取消收藏";
+        [self.favoriteButton setImage:[UIImage imageNamed:kShokaFavorite1IconName] forState:UIControlStateNormal];
     }
     else {
-        self.favoriteButton.title = @"收藏";
+        [self.favoriteButton setImage:[UIImage imageNamed:kShokaFavorite0IconName] forState:UIControlStateNormal];
     }
 }
 

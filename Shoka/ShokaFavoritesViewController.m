@@ -68,7 +68,8 @@
 {
     if ([segue.identifier isEqualToString:@"book"]) {
         NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
-        ((ShokaBookDetailViewController *)segue.destinationViewController).book = self.favorites[indexPath.row];
+        ShokaBookDetailViewController *destination = (ShokaBookDetailViewController *)segue.destinationViewController;
+        destination.book = self.favorites[indexPath.row];
     }
 }
 
