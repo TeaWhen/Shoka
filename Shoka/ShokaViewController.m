@@ -17,6 +17,7 @@
 @interface ShokaViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
 @property ShokaResult *cn_result, *en_result;
+@property bool cn_done, en_done, search_failure;
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -30,6 +31,11 @@
 
 @implementation ShokaViewController
 
+enum Language {
+    Chinese = 0,
+    Western
+};
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -37,14 +43,24 @@
     
     self.cn_result = [ShokaResult new];
     self.en_result = [ShokaResult new];
+    self.cn_done = false;
+    self.en_done = false;
+    self.search_failure = false;
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillShow:)
-                                                 name:UIKeyboardWillShowNotification object:nil];
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillHide:)
-                                                 name:UIKeyboardWillHideNotification object:nil];
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(dismissHUD:)
+                                                 name:@"SearchDone"
+                                               object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -88,8 +104,7 @@
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     NSString *searchKey = searchBar.text;
-    [SVProgressHUD show];
-    [SVProgressHUD showWithStatus:@"载入中…" maskType:SVProgressHUDMaskTypeClear];
+    [SVProgressHUD showWithStatus:@"载入中…" maskType:SVProgressHUDMaskTypeGradient];
     [ShokaWebpacAPI searchChineseDepositoryWithKey:searchKey success:^(ShokaResult *result) {
         [result sortUsingKeyword:searchKey];
         self.cn_result = result;
@@ -97,11 +112,11 @@
             [self.tableView reloadData];
             [self.tableView setContentOffset:CGPointZero];
         }
-        [SVProgressHUD popActivity];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"SearchDone" object:self userInfo:@{@"status": @"success", @"repo": @"CN"}];
     } failure:^(NSError *error) {
         self.cn_result = [ShokaResult new];
-        [SVProgressHUD showErrorWithStatus:@"载入失败"];
-        [SVProgressHUD popActivity];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"SearchDone" object:self userInfo:@{@"status": @"failure", @"repo": @"CN"}];
+        
     }];
     [ShokaWebpacAPI searchForeignDepositoryWithKey:searchKey success:^(ShokaResult *result) {
         [result sortUsingKeyword:searchKey];
@@ -110,13 +125,48 @@
             [self.tableView reloadData];
             [self.tableView setContentOffset:CGPointZero];
         }
-        [SVProgressHUD popActivity];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"SearchDone" object:self userInfo:@{@"status": @"success", @"repo": @"EN"}];
     } failure:^(NSError *error) {
         self.en_result = [ShokaResult new];
-        [SVProgressHUD showErrorWithStatus:@"载入失败"];
-        [SVProgressHUD popActivity];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"SearchDone" object:self userInfo:@{@"status": @"failure", @"repo": @"EN"}];
     }];
     [searchBar resignFirstResponder];
+}
+
+- (void)dismissHUD:(NSNotification*)notification
+{
+    if ([[[notification userInfo] valueForKey:@"repo"] isEqualToString:@"CN"]) {
+        if ([[[notification userInfo] valueForKey:@"status"] isEqualToString:@"failure"]) {
+            if (self.searchBar.selectedScopeButtonIndex == Chinese) {
+                [SVProgressHUD showErrorWithStatus:@"载入失败"];
+            }
+            self.search_failure = true;
+        }
+        self.cn_done = true;
+    }
+    else {
+        if ([[[notification userInfo] valueForKey:@"status"] isEqualToString:@"failure"]) {
+            if (self.searchBar.selectedScopeButtonIndex == Western) {
+                [SVProgressHUD showErrorWithStatus:@"载入失败"];
+            }
+            self.search_failure = true;
+        }
+        self.en_done = true;
+    }
+    
+    if (self.cn_done && self.en_done) {
+        if (self.search_failure) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC), dispatch_get_current_queue(), ^{
+                [SVProgressHUD dismiss];
+            });
+        }
+        else {
+            [SVProgressHUD dismiss];
+        }
+        self.cn_done = false;
+        self.en_done = false;
+        self.search_failure = false;
+    }
 }
 
 - (void)searchBar:(UISearchBar *)searchBar selectedScopeButtonIndexDidChange:(NSInteger)selectedScope
@@ -128,11 +178,6 @@
 {
     return 1;
 }
-
-enum Language {
-    Chinese = 0,
-    Western
-};
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
