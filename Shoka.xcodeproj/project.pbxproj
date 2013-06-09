@@ -12,6 +12,8 @@
 		1A4011461750A6AE00359440 /* ShokaFavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A4011451750A6AE00359440 /* ShokaFavoritesViewController.m */; };
 		1A42E6DD1764A8D9009D70EA /* icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A42E6DB1764A8D9009D70EA /* icon-72.png */; };
 		1A42E6DE1764A8D9009D70EA /* icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A42E6DC1764A8D9009D70EA /* icon-72@2x.png */; };
+		1A42E6E11764B0F2009D70EA /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 1A42E6DF1764B0F2009D70EA /* iTunesArtwork */; };
+		1A42E6E21764B0F2009D70EA /* iTunesArtwork@2x in Resources */ = {isa = PBXBuildFile; fileRef = 1A42E6E01764B0F2009D70EA /* iTunesArtwork@2x */; };
 		1A6508B4173404F000F0100C /* ShokaFavorites.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6508B3173404F000F0100C /* ShokaFavorites.m */; };
 		1A6508B81734053600F0100C /* ShokaResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6508B71734053600F0100C /* ShokaResult.m */; };
 		1A6508BB1734054D00F0100C /* ShokaBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6508BA1734054D00F0100C /* ShokaBook.m */; };
@@ -51,6 +53,8 @@
 		1A4011451750A6AE00359440 /* ShokaFavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShokaFavoritesViewController.m; sourceTree = "<group>"; };
 		1A42E6DB1764A8D9009D70EA /* icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-72.png"; path = "../../icon-72.png"; sourceTree = "<group>"; };
 		1A42E6DC1764A8D9009D70EA /* icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-72@2x.png"; path = "../../icon-72@2x.png"; sourceTree = "<group>"; };
+		1A42E6DF1764B0F2009D70EA /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = SOURCE_ROOT; };
+		1A42E6E01764B0F2009D70EA /* iTunesArtwork@2x */ = {isa = PBXFileReference; lastKnownFileType = file; path = "iTunesArtwork@2x"; sourceTree = SOURCE_ROOT; };
 		1A6508B2173404F000F0100C /* ShokaFavorites.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShokaFavorites.h; sourceTree = "<group>"; };
 		1A6508B3173404F000F0100C /* ShokaFavorites.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShokaFavorites.m; sourceTree = "<group>"; };
 		1A6508B61734053600F0100C /* ShokaResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShokaResult.h; sourceTree = "<group>"; };
@@ -167,6 +171,19 @@
 			name = Controller;
 			sourceTree = "<group>";
 		};
+		1A42E6E31764B0FA009D70EA /* App Icon */ = {
+			isa = PBXGroup;
+			children = (
+				1A2A56EF173DECCB0022F7AE /* icon-57@2x.png */,
+				1A2A56ED173DECC70022F7AE /* icon-57.png */,
+				1A42E6DB1764A8D9009D70EA /* icon-72.png */,
+				1A42E6DC1764A8D9009D70EA /* icon-72@2x.png */,
+				1A42E6DF1764B0F2009D70EA /* iTunesArtwork */,
+				1A42E6E01764B0F2009D70EA /* iTunesArtwork@2x */,
+			);
+			name = "App Icon";
+			sourceTree = "<group>";
+		};
 		1A6508B51734051800F0100C /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -185,10 +202,7 @@
 		1AC8A1DF173BAF6A00A512A0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				1A2A56EF173DECCB0022F7AE /* icon-57@2x.png */,
-				1A2A56ED173DECC70022F7AE /* icon-57.png */,
-				1A42E6DB1764A8D9009D70EA /* icon-72.png */,
-				1A42E6DC1764A8D9009D70EA /* icon-72@2x.png */,
+				1A42E6E31764B0FA009D70EA /* App Icon */,
 				1A7BD7A0175C947100D867CB /* favorite-0.png */,
 				1A7BD7A1175C947100D867CB /* favorite-0@2x.png */,
 				1A7BD7A8175C957300D867CB /* favorite-1.png */,
@@ -338,6 +352,8 @@
 				1A7BD7AF175C99A900D867CB /* back@2x.png in Resources */,
 				1A42E6DD1764A8D9009D70EA /* icon-72.png in Resources */,
 				1A42E6DE1764A8D9009D70EA /* icon-72@2x.png in Resources */,
+				1A42E6E11764B0F2009D70EA /* iTunesArtwork in Resources */,
+				1A42E6E21764B0F2009D70EA /* iTunesArtwork@2x in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
