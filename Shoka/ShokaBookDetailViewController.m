@@ -54,7 +54,7 @@
     self.title = self.book.title;
     [self updateFavoriteButton];
     
-    UILabel *titleLabel=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 260, 40)];
+    UILabel *titleLabel=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 240, 40)];
     titleLabel.text = self.title;
     titleLabel.textColor = [UIColor whiteColor];
     titleLabel.font = [UIFont boldSystemFontOfSize:19.0];
@@ -69,7 +69,6 @@
     [titleLabel sizeToFit];
     NSInteger numLines = (NSInteger)(titleLabel.frame.size.height / titleLabel.font.leading);
     if (numLines > 1) {
-        titleLabel.frame = CGRectMake(0, 0, 100, 40);
         titleLabel.font = [UIFont boldSystemFontOfSize:15.0];
     }
     self.navigationItem.titleView = titleLabel;
