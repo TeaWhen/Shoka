@@ -142,8 +142,23 @@ enum section {
             CellIdentifier = @"item";
         }
     }
-    else {
-        CellIdentifier = @"cellWithDefaultHeight";
+    else if (indexPath.section == basicInfoSection) {
+        NSString *rowName = self.availableRowsInBasic[indexPath.row];
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:rowName];
+        NSString *text = [self.book valueForKey:rowName];
+        CGSize size = [text sizeWithFont:cell.detailTextLabel.font
+                       constrainedToSize:CGSizeMake(73, FLT_MAX)
+                           lineBreakMode:cell.detailTextLabel.lineBreakMode];
+        return size.height + 26;
+    }
+    else if (indexPath.section == moreInfoSection) {
+        NSString *rowName = self.availableRowsInMore[indexPath.row];
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:rowName];
+        NSString *text = [self.book valueForKey:rowName];
+        CGSize size = [text sizeWithFont:cell.detailTextLabel.font
+                       constrainedToSize:CGSizeMake(73, FLT_MAX)
+                           lineBreakMode:cell.detailTextLabel.lineBreakMode];
+        return size.height + 26;
     }
     UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
