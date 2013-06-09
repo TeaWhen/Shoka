@@ -10,6 +10,8 @@
 		1A2A56EE173DECC70022F7AE /* icon-57.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A2A56ED173DECC70022F7AE /* icon-57.png */; };
 		1A2A56F0173DECCB0022F7AE /* icon-57@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A2A56EF173DECCB0022F7AE /* icon-57@2x.png */; };
 		1A4011461750A6AE00359440 /* ShokaFavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A4011451750A6AE00359440 /* ShokaFavoritesViewController.m */; };
+		1A42E6DD1764A8D9009D70EA /* icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A42E6DB1764A8D9009D70EA /* icon-72.png */; };
+		1A42E6DE1764A8D9009D70EA /* icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A42E6DC1764A8D9009D70EA /* icon-72@2x.png */; };
 		1A6508B4173404F000F0100C /* ShokaFavorites.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6508B3173404F000F0100C /* ShokaFavorites.m */; };
 		1A6508B81734053600F0100C /* ShokaResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6508B71734053600F0100C /* ShokaResult.m */; };
 		1A6508BB1734054D00F0100C /* ShokaBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6508BA1734054D00F0100C /* ShokaBook.m */; };
@@ -43,10 +45,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1A2A56ED173DECC70022F7AE /* icon-57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-57.png"; sourceTree = "<group>"; };
-		1A2A56EF173DECCB0022F7AE /* icon-57@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-57@2x.png"; sourceTree = "<group>"; };
+		1A2A56ED173DECC70022F7AE /* icon-57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-57.png"; path = "../../icon-57.png"; sourceTree = "<group>"; };
+		1A2A56EF173DECCB0022F7AE /* icon-57@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-57@2x.png"; path = "../../icon-57@2x.png"; sourceTree = "<group>"; };
 		1A4011441750A6AE00359440 /* ShokaFavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShokaFavoritesViewController.h; sourceTree = "<group>"; };
 		1A4011451750A6AE00359440 /* ShokaFavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShokaFavoritesViewController.m; sourceTree = "<group>"; };
+		1A42E6DB1764A8D9009D70EA /* icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-72.png"; path = "../../icon-72.png"; sourceTree = "<group>"; };
+		1A42E6DC1764A8D9009D70EA /* icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-72@2x.png"; path = "../../icon-72@2x.png"; sourceTree = "<group>"; };
 		1A6508B2173404F000F0100C /* ShokaFavorites.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShokaFavorites.h; sourceTree = "<group>"; };
 		1A6508B3173404F000F0100C /* ShokaFavorites.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShokaFavorites.m; sourceTree = "<group>"; };
 		1A6508B61734053600F0100C /* ShokaResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShokaResult.h; sourceTree = "<group>"; };
@@ -181,6 +185,10 @@
 		1AC8A1DF173BAF6A00A512A0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1A2A56EF173DECCB0022F7AE /* icon-57@2x.png */,
+				1A2A56ED173DECC70022F7AE /* icon-57.png */,
+				1A42E6DB1764A8D9009D70EA /* icon-72.png */,
+				1A42E6DC1764A8D9009D70EA /* icon-72@2x.png */,
 				1A7BD7A0175C947100D867CB /* favorite-0.png */,
 				1A7BD7A1175C947100D867CB /* favorite-0@2x.png */,
 				1A7BD7A8175C957300D867CB /* favorite-1.png */,
@@ -205,8 +213,6 @@
 		4FEDF52C1717B8F300C2CC75 = {
 			isa = PBXGroup;
 			children = (
-				1A2A56EF173DECCB0022F7AE /* icon-57@2x.png */,
-				1A2A56ED173DECC70022F7AE /* icon-57.png */,
 				4FEDF53E1717B8F300C2CC75 /* Shoka */,
 				4FEDF5371717B8F300C2CC75 /* Frameworks */,
 				4FEDF5361717B8F300C2CC75 /* Products */,
@@ -330,6 +336,8 @@
 				1A7BD7AB175C957300D867CB /* favorite-1@2x.png in Resources */,
 				1A7BD7AE175C99A900D867CB /* back.png in Resources */,
 				1A7BD7AF175C99A900D867CB /* back@2x.png in Resources */,
+				1A42E6DD1764A8D9009D70EA /* icon-72.png in Resources */,
+				1A42E6DE1764A8D9009D70EA /* icon-72@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,7 +450,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -467,7 +475,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
