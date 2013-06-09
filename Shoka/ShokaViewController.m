@@ -156,7 +156,7 @@ enum Language {
     
     if (self.cn_done && self.en_done) {
         if (self.search_failure) {
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC), dispatch_get_current_queue(), ^{
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^(void){
                 [SVProgressHUD dismiss];
             });
         }
