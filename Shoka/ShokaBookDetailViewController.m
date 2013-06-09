@@ -17,6 +17,9 @@
 #define kShokaFavorite0IconName @"favorite-0"
 #define kShokaFavorite1IconName @"favorite-1"
 
+const NSInteger kShokaCellLabelWidth = 207;
+const NSInteger kShokaCellLabelExtraHeight = 26;
+
 @interface ShokaBookDetailViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) ShokaResult *result;
@@ -142,23 +145,20 @@ enum section {
             CellIdentifier = @"item";
         }
     }
-    else if (indexPath.section == basicInfoSection) {
-        NSString *rowName = self.availableRowsInBasic[indexPath.row];
+    else {
+        NSString *rowName;
+        if (indexPath.section == basicInfoSection) {
+            rowName = self.availableRowsInBasic[indexPath.row];
+        }
+        else if (indexPath.section == moreInfoSection) {
+            rowName = self.availableRowsInMore[indexPath.row];
+        }
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:rowName];
         NSString *text = [self.book valueForKey:rowName];
         CGSize size = [text sizeWithFont:cell.detailTextLabel.font
-                       constrainedToSize:CGSizeMake(73, FLT_MAX)
+                       constrainedToSize:CGSizeMake(kShokaCellLabelWidth, FLT_MAX)
                            lineBreakMode:cell.detailTextLabel.lineBreakMode];
-        return size.height + 26;
-    }
-    else if (indexPath.section == moreInfoSection) {
-        NSString *rowName = self.availableRowsInMore[indexPath.row];
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:rowName];
-        NSString *text = [self.book valueForKey:rowName];
-        CGSize size = [text sizeWithFont:cell.detailTextLabel.font
-                       constrainedToSize:CGSizeMake(73, FLT_MAX)
-                           lineBreakMode:cell.detailTextLabel.lineBreakMode];
-        return size.height + 26;
+        return size.height + kShokaCellLabelExtraHeight;
     }
     UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
