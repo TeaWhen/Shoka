@@ -43,6 +43,7 @@
     {
         NSString *requestString = [[NSString stringWithFormat:@"/X?op=find&base=zju01&code=wrd&request=%@", searchKey] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         AFHTTPRequestOperation *searchOP = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:requestString relativeToURL:baseURL] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:API_TIMEOUT]];
+        searchOP.responseSerializer = [AFHTTPResponseSerializer serializer];
         [searchOP setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
         {
             // First get set_number
@@ -52,6 +53,7 @@
                 NSDictionary *extraInfo = @{@"no_records": [rootXML child:@"no_records"].text, @"no_entries": [rootXML child:@"no_entries"].text};
                 NSString *searchSetString = [[NSString stringWithFormat:@"/X?op=present&set_no=%@&set_entry=%@&format=marc", [rootXML child:@"set_number"].text, SETENTRY] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
                 AFHTTPRequestOperation *searchSetOP = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:searchSetString relativeToURL:baseURL] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:API_TIMEOUT]];
+                searchSetOP.responseSerializer = [AFHTTPResponseSerializer serializer];
                 [searchSetOP setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
                 {
                     RXMLElement *recordsRootXML = [RXMLElement elementFromXMLData:responseObject];
@@ -173,6 +175,7 @@
     {
         NSString *requestString = [[NSString stringWithFormat:@"/X?op=find&base=zju09&code=wrd&request=%@", searchKey] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         AFHTTPRequestOperation *searchOP = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:requestString relativeToURL:baseURL] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:API_TIMEOUT]];
+        searchOP.responseSerializer = [AFHTTPResponseSerializer serializer];
         [searchOP setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
         {
             // First get set_number
@@ -181,7 +184,8 @@
             if ([errorText length] == 0) {
                 NSDictionary *extraInfo = @{@"no_records": [rootXML child:@"no_records"].text, @"no_entries": [rootXML child:@"no_entries"].text};
                 NSString *searchSetString = [[NSString stringWithFormat:@"/X?op=present&set_no=%@&set_entry=%@&format=marc", [rootXML child:@"set_number"].text, SETENTRY] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-                AFHTTPRequestOperation *searchSetOP = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:searchSetString relativeToURL:baseURL] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:API_TIMEOUT]];
+                AFHTTPRequestOperation *searchSetOP = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:searchSetString relativeToURL:baseURL] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:API_TIMEOUT]];\
+                searchSetOP.responseSerializer = [AFHTTPResponseSerializer serializer];
                 [searchSetOP setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
                 {
                     RXMLElement *recordsRootXML = [RXMLElement elementFromXMLData:responseObject];
