@@ -153,11 +153,13 @@ enum section {
         else if (indexPath.section == moreInfoSection) {
             rowName = self.availableRowsInMore[indexPath.row];
         }
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:rowName];
+#pragma warning update these code
+//        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:rowName];
         NSString *text = [self.book valueForKey:rowName];
-        CGSize size = [text sizeWithFont:cell.detailTextLabel.font
-                       constrainedToSize:CGSizeMake(kShokaCellLabelWidth, FLT_MAX)
-                           lineBreakMode:cell.detailTextLabel.lineBreakMode];
+//        CGSize size = [text sizeWithFont:cell.detailTextLabel.font
+//                       constrainedToSize:CGSizeMake(kShokaCellLabelWidth, FLT_MAX)
+//                           lineBreakMode:cell.detailTextLabel.lineBreakMode];
+        CGSize size = [text boundingRectWithSize:CGSizeMake(kShokaCellLabelWidth, FLT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:nil context:nil].size;
         return size.height + kShokaCellLabelExtraHeight;
     }
     UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
