@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A094F5217F9C8A400894CCC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A094F5117F9C8A400894CCC /* Images.xcassets */; };
 		1A2A56EE173DECC70022F7AE /* icon-57.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A2A56ED173DECC70022F7AE /* icon-57.png */; };
 		1A2A56F0173DECCB0022F7AE /* icon-57@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A2A56EF173DECCB0022F7AE /* icon-57@2x.png */; };
 		1A4011461750A6AE00359440 /* ShokaFavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A4011451750A6AE00359440 /* ShokaFavoritesViewController.m */; };
@@ -47,6 +48,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1A094F5117F9C8A400894CCC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1A2A56ED173DECC70022F7AE /* icon-57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-57.png"; path = "../../icon-57.png"; sourceTree = "<group>"; };
 		1A2A56EF173DECCB0022F7AE /* icon-57@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-57@2x.png"; path = "../../icon-57@2x.png"; sourceTree = "<group>"; };
 		1A4011441750A6AE00359440 /* ShokaFavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShokaFavoritesViewController.h; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 				1A4011431750A60100359440 /* View */,
 				1A4011481750A87700359440 /* Controller */,
 				1AC8A1DF173BAF6A00A512A0 /* Resources */,
+				1A094F5117F9C8A400894CCC /* Images.xcassets */,
 				4FEDF53F1717B8F300C2CC75 /* Supporting Files */,
 			);
 			path = Shoka;
@@ -351,6 +354,7 @@
 				1A7BD7AE175C99A900D867CB /* back.png in Resources */,
 				1A7BD7AF175C99A900D867CB /* back@2x.png in Resources */,
 				1A42E6DD1764A8D9009D70EA /* icon-72.png in Resources */,
+				1A094F5217F9C8A400894CCC /* Images.xcassets in Resources */,
 				1A42E6DE1764A8D9009D70EA /* icon-72@2x.png in Resources */,
 				1A42E6E11764B0F2009D70EA /* iTunesArtwork in Resources */,
 				1A42E6E21764B0F2009D70EA /* iTunesArtwork@2x in Resources */,
@@ -503,6 +507,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 68C59F1202C041A0917BEDBA /* Pods.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Shoka/Shoka-Prefix.pch";
 				INFOPLIST_FILE = "Shoka/Shoka-Info.plist";
@@ -516,6 +522,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 68C59F1202C041A0917BEDBA /* Pods.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
