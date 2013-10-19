@@ -305,6 +305,7 @@
     [ShokaWebpacAPI detectBaseURLFor:^(NSURL *baseURL) {
         NSString *requestString = [[NSString stringWithFormat:@"/X?op=item-data&base=%@&doc_number=%@", base, docNumber] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:requestString relativeToURL:baseURL] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:API_TIMEOUT]];
+        operation.responseSerializer = [AFHTTPResponseSerializer serializer];
         [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
         {
             RXMLElement *itemData = [RXMLElement elementFromXMLData:responseObject];
