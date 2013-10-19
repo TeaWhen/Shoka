@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12F37" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="PpV-Ui-JTt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4511" systemVersion="13A598" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="PpV-Ui-JTt">
     <dependencies>
-        <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+        <deployment defaultVersion="1792" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3745"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -30,11 +30,12 @@
                         <viewControllerLayoutGuide type="bottom" id="2Lj-0B-4ha"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Aju-mb-lPV">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" showsScopeBar="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UIP-b9-gZL">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="88"/>
+                                <rect key="frame" x="0.0" y="24" width="320" height="88"/>
+                                <color key="barTintColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <scopeButtonTitles>
                                     <string>中文文献库</string>
@@ -44,8 +45,14 @@
                                     <outlet property="delegate" destination="kNI-rg-laD" id="vcb-vh-4Kc"/>
                                 </connections>
                             </searchBar>
+                            <navigationBar alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WsK-ym-gqL">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <items>
+                                    <navigationItem title="Title" id="6cU-Hs-Ok0"/>
+                                </items>
+                            </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="nFg-Fa-iN1">
-                                <rect key="frame" x="0.0" y="88" width="320" height="480"/>
+                                <rect key="frame" x="0.0" y="112" width="320" height="368"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" textLabel="MBj-do-72X" style="IBUITableViewCellStyleDefault" id="ssu-X0-J4C">
@@ -70,14 +77,8 @@
                                     <outlet property="delegate" destination="kNI-rg-laD" id="awV-Ox-xdp"/>
                                 </connections>
                             </tableView>
-                            <navigationBar alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WsK-ym-gqL">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <items>
-                                    <navigationItem title="Title" id="6cU-Hs-Ok0"/>
-                                </items>
-                            </navigationBar>
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bmq-VX-1cm" customClass="ShokaGrayView">
-                                <rect key="frame" x="0.0" y="88" width="320" height="480"/>
+                                <rect key="frame" x="0.0" y="112" width="320" height="368"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <connections>
@@ -100,7 +101,7 @@
                             <constraint firstItem="bmq-VX-1cm" firstAttribute="trailing" secondItem="Aju-mb-lPV" secondAttribute="trailing" id="pNh-KK-PvJ"/>
                             <constraint firstItem="WsK-ym-gqL" firstAttribute="leading" secondItem="Aju-mb-lPV" secondAttribute="leading" id="qBt-tg-WYD"/>
                             <constraint firstItem="nFg-Fa-iN1" firstAttribute="top" secondItem="UIP-b9-gZL" secondAttribute="bottom" id="rdj-dB-jkl"/>
-                            <constraint firstItem="UIP-b9-gZL" firstAttribute="top" secondItem="Aju-mb-lPV" secondAttribute="top" id="wMq-g3-CDY"/>
+                            <constraint firstItem="UIP-b9-gZL" firstAttribute="top" secondItem="Aju-mb-lPV" secondAttribute="top" constant="24" id="wMq-g3-CDY"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="zlb-Fa-V9G"/>
@@ -146,11 +147,11 @@
                         <viewControllerLayoutGuide type="bottom" id="Trg-Tm-9a7"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="sW3-Cv-Xua">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="v4T-k3-2HH">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" textLabel="Xo6-pa-XYV" style="IBUITableViewCellStyleDefault" id="kVT-Sv-CoG">
@@ -205,7 +206,7 @@
             <objects>
                 <tableViewController id="0d9-VL-UdF" customClass="ShokaBookDetailViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="bhl-Aa-t2l">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
@@ -471,9 +472,9 @@
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
+        <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Egz-85-Kgb"/>
+        <segue reference="C1a-qC-Q0E"/>
     </inferredMetricsTieBreakers>
 </document>
