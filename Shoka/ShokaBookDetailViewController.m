@@ -59,9 +59,9 @@ const NSInteger kShokaCellLabelExtraHeight = 26;
     
     UILabel *titleLabel=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 240, 40)];
     titleLabel.text = self.title;
-    titleLabel.textColor = [UIColor whiteColor];
+    titleLabel.textColor = [UIColor blackColor];
     titleLabel.font = [UIFont boldSystemFontOfSize:19.0];
-    titleLabel.shadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5];
+    titleLabel.shadowColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5];
     titleLabel.shadowOffset = CGSizeMake(0.0, -1.0);
     titleLabel.backgroundColor =[UIColor clearColor];
     titleLabel.adjustsFontSizeToFitWidth = YES;
