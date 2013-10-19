@@ -10,4 +10,6 @@
 
 @interface ShokaDoubanAPI : NSObject
 
++ (void)searchBookWithISBN:(NSString *)isbn success:(void (^)(NSDictionary *))success failure:(void (^)(NSError *))failure;
+
 @end

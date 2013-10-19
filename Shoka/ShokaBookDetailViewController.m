@@ -12,6 +12,7 @@
 #import "ShokaWebpacAPI.h"
 #import "ShokaItemTableViewCell.h"
 #import "ShokaFavorites.h"
+#import "ShokaDoubanAPI.h"
 
 #define kShokaBackIconName @"back"
 #define kShokaFavorite0IconName @"favorite-0"
@@ -80,7 +81,13 @@ const NSInteger kShokaCellLabelExtraHeight = 26;
         self.result = api_result;
         [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:itemsSection] withRowAnimation:UITableViewRowAnimationAutomatic];
     } failure:^(NSError *err) {
-        NSLog(@"Failed fetch item data.");
+        NSLog(@"%@", err.userInfo[@"status"]);
+    }];
+
+    [ShokaDoubanAPI searchBookWithISBN:self.book.ISBN success:^(NSDictionary *doubanInfo) {
+        NSLog(@"%@", doubanInfo);
+    } failure:^(NSError *err) {
+        NSLog(@"%@", err.userInfo[@"status"]);
     }];
 }
 
