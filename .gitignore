@@ -17,5 +17,5 @@ profile
 DerivedData
 .idea/
 
-Podfile.lock
+# CocoaPods
 Pods/

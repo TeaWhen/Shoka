@@ -1,8 +1,8 @@
 platform :ios, '7.0'
 
-pod 'AFNetworking', '2.0.0-RC3'
+pod 'AFNetworking', '~> 2.0'
 pod 'TestFlightSDK'
-pod 'SVProgressHUD'
+pod 'SVProgressHUD', '~> 1.0'
 pod 'RaptureXML'
 pod 'StringScore', :git => 'https://github.com/xhacker/StringScore.git'
 pod 'Mantle', '~> 1.1'
