@@ -28,7 +28,8 @@ const NSInteger kShokaCellLabelExtraHeight = 26;
 @property (strong, nonatomic) NSMutableArray *availableRowsInBasic;
 @property (strong, nonatomic) NSArray *rowsInMore;
 @property (strong, nonatomic) NSMutableArray *availableRowsInMore;
-@property (strong, nonatomic) UIButton *favoriteButton;
+
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *favoriteButton;
 
 @end
 
@@ -38,26 +39,17 @@ const NSInteger kShokaCellLabelExtraHeight = 26;
 {
     [super viewDidLoad];
     
-    self.favoriteButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-    [self.favoriteButton setImage:[UIImage imageNamed:kShokaFavorite0IconName] forState:UIControlStateNormal];
-    [self.favoriteButton addTarget:self action:@selector(favoriteClicked) forControlEvents:UIControlEventTouchUpInside];
-    self.favoriteButton.adjustsImageWhenHighlighted = NO;
-    self.favoriteButton.showsTouchWhenHighlighted = YES;
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.favoriteButton];
-    
     self.rowsInBasic = @[@"author", @"translator", @"publisher", @"publishDate", @"ISBN"];
     self.rowsInMore = @[@"subject", @"summary"];
     
     self.title = self.book.title;
     [self updateFavoriteButton];
     
-    UILabel *titleLabel=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 240, 40)];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 240, 40)];
     titleLabel.text = self.title;
     titleLabel.textColor = [UIColor blackColor];
     titleLabel.font = [UIFont boldSystemFontOfSize:19.0];
-    titleLabel.shadowColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5];
-    titleLabel.shadowOffset = CGSizeMake(0.0, -1.0);
-    titleLabel.backgroundColor =[UIColor clearColor];
+    titleLabel.backgroundColor = [UIColor clearColor];
     titleLabel.adjustsFontSizeToFitWidth = YES;
     titleLabel.minimumScaleFactor = 0.7;
     titleLabel.numberOfLines = 0;
@@ -207,7 +199,8 @@ enum section {
 	return cell;
 }
 
-- (void)favoriteClicked
+
+- (IBAction)favoriteClicked:(UIBarButtonItem *)sender
 {
     if ([ShokaFavorites hasBook:self.book]) {
         [ShokaFavorites removeBook:self.book];
@@ -221,17 +214,11 @@ enum section {
 - (void)updateFavoriteButton
 {
     if ([ShokaFavorites hasBook:self.book]) {
-        [self.favoriteButton setImage:[UIImage imageNamed:kShokaFavorite1IconName] forState:UIControlStateNormal];
+        self.favoriteButton.image = [UIImage imageNamed:kShokaFavorite1IconName];
     }
     else {
-        [self.favoriteButton setImage:[UIImage imageNamed:kShokaFavorite0IconName] forState:UIControlStateNormal];
+        self.favoriteButton.image = [UIImage imageNamed:kShokaFavorite0IconName];
     }
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

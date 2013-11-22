@@ -442,9 +442,18 @@
                             <outlet property="delegate" destination="0d9-VL-UdF" id="UtV-IA-i58"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="21 天公司上市" id="UZQ-2Q-KZj"/>
+                    <navigationItem key="navigationItem" title="21 天公司上市" id="UZQ-2Q-KZj">
+                        <barButtonItem key="rightBarButtonItem" image="favorite-0" id="3eD-KH-IH4">
+                            <connections>
+                                <action selector="favoriteClicked:" destination="0d9-VL-UdF" id="qEQ-FK-G0k"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="favoriteButton" destination="3eD-KH-IH4" id="j4f-p8-dF3"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LJo-w5-dQP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -470,6 +479,9 @@
             <point key="canvasLocation" x="-249" y="137"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="favorite-0" width="30" height="30"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

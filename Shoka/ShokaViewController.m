@@ -191,13 +191,13 @@ enum Language {
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     
-    ShokaBook *bk;
+    ShokaBook *book;
     if (self.searchBar.selectedScopeButtonIndex == Chinese)
-        bk = [self.cn_result objectAtIndex:indexPath.row];
+        book = [self.cn_result objectAtIndex:indexPath.row];
     else
-        bk = [self.en_result objectAtIndex:indexPath.row];
+        book = [self.en_result objectAtIndex:indexPath.row];
     
-    cell.textLabel.text = bk.title;
+    cell.textLabel.text = book.title;
     
 	return cell;
 }
