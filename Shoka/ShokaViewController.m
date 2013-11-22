@@ -220,6 +220,9 @@ enum Language {
             [segue.destinationViewController setBook:[self.cn_result objectAtIndex:indexPath.row]];
         else
             [segue.destinationViewController setBook:[self.en_result objectAtIndex:indexPath.row]];
+        
+        self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+
     }
 }
 

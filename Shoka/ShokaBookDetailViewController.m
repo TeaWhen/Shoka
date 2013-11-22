@@ -38,13 +38,6 @@ const NSInteger kShokaCellLabelExtraHeight = 26;
 {
     [super viewDidLoad];
     
-    UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-    [backButton setImage:[UIImage imageNamed:kShokaBackIconName] forState:UIControlStateNormal];
-    [backButton addTarget:self.navigationController action:@selector(popViewControllerAnimated:) forControlEvents:UIControlEventTouchUpInside];
-    backButton.adjustsImageWhenHighlighted = NO;
-    backButton.showsTouchWhenHighlighted = YES;
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
-    
     self.favoriteButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
     [self.favoriteButton setImage:[UIImage imageNamed:kShokaFavorite0IconName] forState:UIControlStateNormal];
     [self.favoriteButton addTarget:self action:@selector(favoriteClicked) forControlEvents:UIControlEventTouchUpInside];

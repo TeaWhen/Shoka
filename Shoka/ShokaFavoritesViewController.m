@@ -70,6 +70,8 @@
         NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
         ShokaBookDetailViewController *destination = (ShokaBookDetailViewController *)segue.destinationViewController;
         destination.book = self.favorites[indexPath.row];
+        
+        self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     }
 }
 
