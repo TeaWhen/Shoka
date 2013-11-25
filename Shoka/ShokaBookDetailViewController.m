@@ -18,8 +18,8 @@
 #define kShokaFavorite0IconName @"favorite-0"
 #define kShokaFavorite1IconName @"favorite-1"
 
-const NSInteger kShokaCellLabelWidth = 207;
-const NSInteger kShokaCellLabelExtraHeight = 26;
+const NSInteger kShokaCellLabelWidth = 250;
+const NSInteger kShokaCellLabelExtraHeight = 24;
 
 @interface ShokaBookDetailViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -47,9 +47,7 @@ const NSInteger kShokaCellLabelExtraHeight = 26;
     
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 240, 40)];
     titleLabel.text = self.title;
-    titleLabel.textColor = [UIColor blackColor];
     titleLabel.font = [UIFont boldSystemFontOfSize:19.0];
-    titleLabel.backgroundColor = [UIColor clearColor];
     titleLabel.adjustsFontSizeToFitWidth = YES;
     titleLabel.minimumScaleFactor = 0.7;
     titleLabel.numberOfLines = 0;
@@ -145,13 +143,11 @@ enum section {
         else if (indexPath.section == moreInfoSection) {
             rowName = self.availableRowsInMore[indexPath.row];
         }
-#warning update these code
-//        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:rowName];
+
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:rowName];
         NSString *text = [self.book valueForKey:rowName];
-//        CGSize size = [text sizeWithFont:cell.detailTextLabel.font
-//                       constrainedToSize:CGSizeMake(kShokaCellLabelWidth, FLT_MAX)
-//                           lineBreakMode:cell.detailTextLabel.lineBreakMode];
-        CGSize size = [text boundingRectWithSize:CGSizeMake(kShokaCellLabelWidth, FLT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:nil context:nil].size;
+        CGSize size = [text boundingRectWithSize:CGSizeMake(kShokaCellLabelWidth, FLT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: cell.detailTextLabel.font} context:nil].size;
+        
         return size.height + kShokaCellLabelExtraHeight;
     }
     UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
