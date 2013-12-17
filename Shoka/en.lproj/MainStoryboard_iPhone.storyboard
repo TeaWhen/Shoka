@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="PpV-Ui-JTt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A598" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="PpV-Ui-JTt">
     <dependencies>
         <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
@@ -200,6 +200,41 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5gd-3U-kmR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="708" y="449"/>
+        </scene>
+        <!--Navigation Controller - Scan-->
+        <scene sceneID="Mqc-VI-JW2">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="sj7-5e-t6e" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Scan" id="UL7-qb-Ynu"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Mfz-O1-T51">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="A38-T0-NiK" kind="relationship" relationship="rootViewController" id="g5r-Ms-AX4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x31-nR-bxF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="285" y="1122"/>
+        </scene>
+        <!--Shoka Scan View Controller-->
+        <scene sceneID="kv4-tu-u4D">
+            <objects>
+                <viewController id="A38-T0-NiK" customClass="ShokaScanViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5oM-3S-v1F"/>
+                        <viewControllerLayoutGuide type="bottom" id="Hue-EP-mJg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="30r-8K-abf">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Q6W-u0-8Kp"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kEb-wg-FzR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="708" y="1122"/>
         </scene>
         <!--Shoka Book Detail View Controller - 21 天公司上市-->
         <scene sceneID="GRN-77-tdF">
@@ -486,6 +521,7 @@
                     <connections>
                         <segue destination="MxO-IV-ZXm" kind="relationship" relationship="viewControllers" id="PaI-WR-NiI"/>
                         <segue destination="6PK-MU-AhI" kind="relationship" relationship="viewControllers" id="5Xl-Am-ttE"/>
+                        <segue destination="sj7-5e-t6e" kind="relationship" relationship="viewControllers" id="DAw-gA-sdX"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6p9-Qf-qi5" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -21,6 +21,8 @@
 		4F2D96B01734182F0026EE80 /* ShokaDoubanAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D96AF1734182F0026EE80 /* ShokaDoubanAPI.m */; };
 		4FBD69C417366D3900DB98B7 /* ShokaBookDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FBD69C317366D3900DB98B7 /* ShokaBookDetailViewController.m */; };
 		4FBD69C717368B9700DB98B7 /* ShokaItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FBD69C617368B9700DB98B7 /* ShokaItem.m */; };
+		4FCC62E218601B7C00A958DE /* ShokaScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FCC62E118601B7C00A958DE /* ShokaScanViewController.m */; };
+		4FCC62E418601BB000A958DE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FCC62E318601BB000A958DE /* AVFoundation.framework */; };
 		4FEDF5391717B8F300C2CC75 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FEDF5381717B8F300C2CC75 /* UIKit.framework */; };
 		4FEDF53B1717B8F300C2CC75 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FEDF53A1717B8F300C2CC75 /* Foundation.framework */; };
 		4FEDF53D1717B8F300C2CC75 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FEDF53C1717B8F300C2CC75 /* CoreGraphics.framework */; };
@@ -30,8 +32,6 @@
 		4FEDF5521717B8F400C2CC75 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FEDF5501717B8F400C2CC75 /* MainStoryboard_iPhone.storyboard */; };
 		4FEDF5551717B8F400C2CC75 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FEDF5531717B8F400C2CC75 /* MainStoryboard_iPad.storyboard */; };
 		4FEDF5581717B8F400C2CC75 /* ShokaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FEDF5571717B8F400C2CC75 /* ShokaViewController.m */; };
-		4FFEDBE41738DCCF008D87FA /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FFEDBE21738DCCF008D87FA /* MobileCoreServices.framework */; };
-		4FFEDBE51738DCCF008D87FA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FFEDBE31738DCCF008D87FA /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +58,9 @@
 		4FBD69C317366D3900DB98B7 /* ShokaBookDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShokaBookDetailViewController.m; sourceTree = "<group>"; };
 		4FBD69C517368B9700DB98B7 /* ShokaItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShokaItem.h; path = Model/ShokaItem.h; sourceTree = "<group>"; };
 		4FBD69C617368B9700DB98B7 /* ShokaItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShokaItem.m; path = Model/ShokaItem.m; sourceTree = "<group>"; };
+		4FCC62E018601B7C00A958DE /* ShokaScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShokaScanViewController.h; sourceTree = "<group>"; };
+		4FCC62E118601B7C00A958DE /* ShokaScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShokaScanViewController.m; sourceTree = "<group>"; };
+		4FCC62E318601BB000A958DE /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		4FEDF5351717B8F300C2CC75 /* Shoka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shoka.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FEDF5381717B8F300C2CC75 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4FEDF53A1717B8F300C2CC75 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -86,12 +89,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FCC62E418601BB000A958DE /* AVFoundation.framework in Frameworks */,
 				4FEDF5391717B8F300C2CC75 /* UIKit.framework in Frameworks */,
 				4FEDF53B1717B8F300C2CC75 /* Foundation.framework in Frameworks */,
 				4FEDF53D1717B8F300C2CC75 /* CoreGraphics.framework in Frameworks */,
 				2E4C1733057E47428147FE57 /* libPods.a in Frameworks */,
-				4FFEDBE41738DCCF008D87FA /* MobileCoreServices.framework in Frameworks */,
-				4FFEDBE51738DCCF008D87FA /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,6 +147,7 @@
 				4FEDF5481717B8F300C2CC75 /* ShokaAppDelegate.m */,
 				1A4011421750A5FA00359440 /* Search */,
 				1A4011471750A86A00359440 /* Favorites */,
+				4FCC62DF18601AE400A958DE /* Scan */,
 				1A4011411750A5F100359440 /* Book Detail */,
 			);
 			name = Controller;
@@ -193,6 +196,15 @@
 			name = API;
 			sourceTree = "<group>";
 		};
+		4FCC62DF18601AE400A958DE /* Scan */ = {
+			isa = PBXGroup;
+			children = (
+				4FCC62E018601B7C00A958DE /* ShokaScanViewController.h */,
+				4FCC62E118601B7C00A958DE /* ShokaScanViewController.m */,
+			);
+			name = Scan;
+			sourceTree = "<group>";
+		};
 		4FEDF52C1717B8F300C2CC75 = {
 			isa = PBXGroup;
 			children = (
@@ -214,6 +226,7 @@
 		4FEDF5371717B8F300C2CC75 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4FCC62E318601BB000A958DE /* AVFoundation.framework */,
 				4FFEDBE21738DCCF008D87FA /* MobileCoreServices.framework */,
 				4FFEDBE31738DCCF008D87FA /* SystemConfiguration.framework */,
 				4FEDF5381717B8F300C2CC75 /* UIKit.framework */,
@@ -365,6 +378,7 @@
 				4FBD69C717368B9700DB98B7 /* ShokaItem.m in Sources */,
 				1AC8A1EE173BB8B000A512A0 /* ShokaGrayView.m in Sources */,
 				1AC8A1F1173BFCD800A512A0 /* ShokaItemTableViewCell.m in Sources */,
+				4FCC62E218601B7C00A958DE /* ShokaScanViewController.m in Sources */,
 				1A4011461750A6AE00359440 /* ShokaFavoritesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
