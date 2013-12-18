@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A598" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="PpV-Ui-JTt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="PpV-Ui-JTt">
     <dependencies>
         <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
@@ -33,9 +33,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" showsScopeBar="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UIP-b9-gZL">
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" showsScopeBar="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UIP-b9-gZL">
                                 <rect key="frame" x="0.0" y="24" width="320" height="88"/>
-                                <color key="barTintColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <scopeButtonTitles>
                                     <string>中文文献库</string>
@@ -52,7 +52,7 @@
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="nFg-Fa-iN1">
-                                <rect key="frame" x="0.0" y="112" width="320" height="368"/>
+                                <rect key="frame" x="0.0" y="111" width="320" height="369"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" textLabel="MBj-do-72X" style="IBUITableViewCellStyleDefault" id="ssu-X0-J4C">
@@ -78,30 +78,38 @@
                                 </connections>
                             </tableView>
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bmq-VX-1cm" customClass="ShokaGrayView">
-                                <rect key="frame" x="0.0" y="112" width="320" height="368"/>
+                                <rect key="frame" x="0.0" y="111" width="320" height="369"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="Qrv-2p-TLg" appends="YES" id="Jvw-ET-01q"/>
                                 </connections>
                             </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kDK-bd-ecx" userLabel="Border View">
+                                <rect key="frame" x="0.0" y="111" width="320" height="0.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="nFg-Fa-iN1" firstAttribute="leading" secondItem="Aju-mb-lPV" secondAttribute="leading" id="8t4-K0-84U"/>
-                            <constraint firstItem="nFg-Fa-iN1" firstAttribute="top" secondItem="bmq-VX-1cm" secondAttribute="top" id="BJo-kn-xUw"/>
-                            <constraint firstItem="nFg-Fa-iN1" firstAttribute="bottom" secondItem="Aju-mb-lPV" secondAttribute="bottom" id="IQV-DM-syS"/>
+                            <constraint firstItem="nFg-Fa-iN1" firstAttribute="leading" secondItem="Aju-mb-lPV" secondAttribute="leading" id="7qw-JH-Kvo"/>
+                            <constraint firstItem="bmq-VX-1cm" firstAttribute="leading" secondItem="Aju-mb-lPV" secondAttribute="leading" id="Es9-zd-aPm"/>
                             <constraint firstItem="WsK-ym-gqL" firstAttribute="top" secondItem="Aju-mb-lPV" secondAttribute="top" id="IZf-7O-B3e"/>
-                            <constraint firstItem="nFg-Fa-iN1" firstAttribute="trailing" secondItem="Aju-mb-lPV" secondAttribute="trailing" id="Ltv-te-U6P"/>
                             <constraint firstItem="UIP-b9-gZL" firstAttribute="leading" secondItem="Aju-mb-lPV" secondAttribute="leading" id="O3L-Tv-8g0"/>
                             <constraint firstItem="UIP-b9-gZL" firstAttribute="trailing" secondItem="Aju-mb-lPV" secondAttribute="trailing" id="RaO-bb-XH2"/>
                             <constraint firstItem="bmq-VX-1cm" firstAttribute="leading" secondItem="Aju-mb-lPV" secondAttribute="leading" id="Rnq-xF-pWq"/>
+                            <constraint firstItem="bmq-VX-1cm" firstAttribute="top" secondItem="UIP-b9-gZL" secondAttribute="bottom" constant="-1" id="YMc-9l-tLo"/>
+                            <constraint firstAttribute="bottom" secondItem="nFg-Fa-iN1" secondAttribute="bottom" id="Z0F-GE-oQP"/>
                             <constraint firstItem="WsK-ym-gqL" firstAttribute="trailing" secondItem="Aju-mb-lPV" secondAttribute="trailing" id="ka3-gw-eHx"/>
+                            <constraint firstAttribute="trailing" secondItem="nFg-Fa-iN1" secondAttribute="trailing" id="lAx-d8-YrB"/>
+                            <constraint firstAttribute="bottom" secondItem="bmq-VX-1cm" secondAttribute="bottom" id="mRO-R4-OJf"/>
+                            <constraint firstItem="nFg-Fa-iN1" firstAttribute="top" secondItem="UIP-b9-gZL" secondAttribute="bottom" constant="-1" id="nl6-ch-CFc"/>
                             <constraint firstItem="bmq-VX-1cm" firstAttribute="bottom" secondItem="Aju-mb-lPV" secondAttribute="bottom" id="nsd-WI-qFZ"/>
                             <constraint firstItem="bmq-VX-1cm" firstAttribute="trailing" secondItem="Aju-mb-lPV" secondAttribute="trailing" id="pNh-KK-PvJ"/>
                             <constraint firstItem="WsK-ym-gqL" firstAttribute="leading" secondItem="Aju-mb-lPV" secondAttribute="leading" id="qBt-tg-WYD"/>
-                            <constraint firstItem="nFg-Fa-iN1" firstAttribute="top" secondItem="UIP-b9-gZL" secondAttribute="bottom" id="rdj-dB-jkl"/>
                             <constraint firstItem="UIP-b9-gZL" firstAttribute="top" secondItem="Aju-mb-lPV" secondAttribute="top" constant="24" id="wMq-g3-CDY"/>
+                            <constraint firstAttribute="trailing" secondItem="bmq-VX-1cm" secondAttribute="trailing" id="zJK-qC-3fC"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="zlb-Fa-V9G"/>
@@ -538,6 +546,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Egz-85-Kgb"/>
+        <segue reference="C1a-qC-Q0E"/>
     </inferredMetricsTieBreakers>
 </document>

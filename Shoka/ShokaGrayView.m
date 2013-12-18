@@ -23,7 +23,7 @@
 {
     if (gray) {
         [UIView animateWithDuration:duration delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            self.alpha = 0.5;
+            self.alpha = 0.3;
         } completion:nil];
     }
     else {

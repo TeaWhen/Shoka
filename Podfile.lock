@@ -23,7 +23,7 @@ PODS:
   - RaptureXML (1.0.1)
   - StringScore (0.0.2)
   - SVProgressHUD (1.0)
-  - TestFlightSDK (2.1.1-beta)
+  - TestFlightSDK (2.1.3-noadid-beta)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
@@ -43,6 +43,6 @@ SPEC CHECKSUMS:
   RaptureXML: ef017fda62eb95c60300108366d1f0cd0c28cbd4
   StringScore: 6d8ecb1c54265ebe0d993b13dcbd71e73ead5258
   SVProgressHUD: 5e10939a296debf5fe5a5895eda9539b8b2114f1
-  TestFlightSDK: dea28c16f0bf65c49c4ed8939b2ae0b0ed9bf8b0
+  TestFlightSDK: 8f8941d0dd990508e127480b06cc6c36379c1b49
 
 COCOAPODS: 0.28.0
