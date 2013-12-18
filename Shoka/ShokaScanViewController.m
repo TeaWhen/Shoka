@@ -7,11 +7,17 @@
 //
 
 #import "ShokaScanViewController.h"
+#import "ShokaResult.h"
+#import "ShokaWebpacAPI.h"
+#import "ShokaBookDetailViewController.h"
 #import <AVFoundation/AVFoundation.h>
+#import <SVProgressHUD.h>
 
 @interface ShokaScanViewController () <AVCaptureMetadataOutputObjectsDelegate>
 
 @property (nonatomic, strong) AVCaptureSession *captureSession;
+@property (nonatomic) BOOL cn_done, en_done;
+@property (nonatomic) ShokaResult *result;
 
 @end
 
@@ -20,6 +26,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.cn_done = NO;
+    self.en_done = NO;
+
     self.captureSession = [[AVCaptureSession alloc] init];
     AVCaptureDevice *videoCaptureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
     NSError *error = nil;
@@ -41,6 +50,14 @@
     [self.captureSession startRunning];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.cn_done = NO;
+    self.en_done = NO;
+    [self.captureSession startRunning];
+}
+
 #pragma mark - AVCaptureMetadataOutputObjectsDelegate
 
 - (void)captureOutput:(AVCaptureOutput *)captureOutput
@@ -51,9 +68,56 @@ didOutputMetadataObjects:(NSArray *)metadataObjects
         AVMetadataMachineReadableCodeObject *readableObject = (AVMetadataMachineReadableCodeObject *)metadata;
         if ([metadata.type isEqualToString:AVMetadataObjectTypeEAN13Code]) {
             NSLog(@"EAN 13 = %@", readableObject.stringValue);
-            break;
+            NSString *isbn = readableObject.stringValue;
+            [self.captureSession stopRunning];
+            [SVProgressHUD showWithStatus:@"载入中…" maskType:SVProgressHUDMaskTypeClear];
+            [ShokaWebpacAPI searchChineseDepositoryWithKey:isbn success:^(ShokaResult *result) {
+                self.cn_done = YES;
+                if (result.count > 0) {
+                    self.result = result;
+                }
+                [self dealWithResult];
+            } failure:^(NSError *error) {
+                NSLog(@"%@", error);
+            }];
+            [ShokaWebpacAPI searchForeignDepositoryWithKey:isbn success:^(ShokaResult *result) {
+                self.en_done = YES;
+                if (result.count > 0) {
+                    self.result = result;
+                }
+                [self dealWithResult];
+            } failure:^(NSError *error) {
+                NSLog(@"%@", error);
+            }];
+
+            [self dealWithResult];
         }
     }
+}
+
+- (void)dealWithResult
+{
+    if (!(self.cn_done && self.en_done)) {
+        return;
+    }
+    if (self.result == nil || self.result.count == 0) {
+        [SVProgressHUD dismiss];
+        self.cn_done = NO;
+        self.en_done = NO;
+        [self.captureSession startRunning];
+        return;
+    }
+    NSLog(@"wow, find a book via scan!");
+    [self performSegueWithIdentifier:@"scanToDetail" sender:self];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"scanToDetail"]) {
+        [segue.destinationViewController setBook:[self.result objectAtIndex:0]];
+        self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    }
+    [SVProgressHUD dismiss];
 }
 
 @end

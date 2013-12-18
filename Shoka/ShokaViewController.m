@@ -119,7 +119,6 @@ enum Language {
     } failure:^(NSError *error) {
         self.cn_result = [ShokaResult new];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"SearchDone" object:self userInfo:@{@"status": @"failure", @"repo": @"CN"}];
-        
     }];
     [ShokaWebpacAPI searchForeignDepositoryWithKey:searchKey success:^(ShokaResult *result) {
         [result sortUsingKeyword:searchKey];
@@ -207,12 +206,6 @@ enum Language {
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self performSegueWithIdentifier:@"book" sender:self];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
