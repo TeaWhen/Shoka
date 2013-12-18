@@ -1,7 +1,7 @@
 Shoka - 浙大图书馆书目检索客户端
 =====
 
-[![Build Status](https://travis-ci.org/TeaWhen/shoka.png?branch=master)](https://travis-ci.org/TeaWhen/shoka)
+[![Build Status](https://travis-ci.org/TeaWhen/Shoka.png?branch=master)](https://travis-ci.org/TeaWhen/Shoka)
 
 ## ideas
 
