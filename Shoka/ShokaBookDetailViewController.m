@@ -24,6 +24,7 @@ const NSInteger kShokaCellLabelExtraHeight = 24;
 @interface ShokaBookDetailViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) ShokaResult *result;
+@property (strong, nonatomic) NSDictionary *doubanInfo;
 @property (strong, nonatomic) NSArray *rowsInBasic;
 @property (strong, nonatomic) NSMutableArray *availableRowsInBasic;
 @property (strong, nonatomic) NSArray *rowsInMore;
@@ -68,7 +69,7 @@ const NSInteger kShokaCellLabelExtraHeight = 24;
     }];
 
     [ShokaDoubanAPI searchBookWithISBN:self.book.ISBN success:^(NSDictionary *doubanInfo) {
-        NSLog(@"%@", doubanInfo);
+        self.doubanInfo = doubanInfo;
     } failure:^(NSError *err) {
         NSLog(@"%@", err.userInfo[@"status"]);
     }];
