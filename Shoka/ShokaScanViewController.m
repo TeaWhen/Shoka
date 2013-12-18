@@ -12,6 +12,7 @@
 #import "ShokaBookDetailViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import <SVProgressHUD.h>
+#import <DLAVAlertView.h>
 
 @interface ShokaScanViewController () <AVCaptureMetadataOutputObjectsDelegate>
 
@@ -26,8 +27,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.cn_done = NO;
-    self.en_done = NO;
 
     self.captureSession = [[AVCaptureSession alloc] init];
     AVCaptureDevice *videoCaptureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
@@ -55,6 +54,7 @@
     [super viewWillAppear:animated];
     self.cn_done = NO;
     self.en_done = NO;
+    self.result = nil;
     [self.captureSession startRunning];
 }
 
@@ -102,9 +102,12 @@ didOutputMetadataObjects:(NSArray *)metadataObjects
     }
     if (self.result == nil || self.result.count == 0) {
         [SVProgressHUD dismiss];
-        self.cn_done = NO;
-        self.en_done = NO;
-        [self.captureSession startRunning];
+        DLAVAlertView *alertView = [[DLAVAlertView alloc] initWithTitle:@"图书馆里没有这本书喔 T_T" message:nil delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
+        [alertView showWithCompletion:^(DLAVAlertView *alertView, NSInteger buttonIndex) {
+            self.cn_done = NO;
+            self.en_done = NO;
+            [self.captureSession startRunning];
+        }];
         return;
     }
     NSLog(@"wow, find a book via scan!");
