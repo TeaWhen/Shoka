@@ -71,9 +71,6 @@
 		4FEDF5461717B8F300C2CC75 /* Shoka-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Shoka-Prefix.pch"; sourceTree = "<group>"; };
 		4FEDF5471717B8F300C2CC75 /* ShokaAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShokaAppDelegate.h; sourceTree = "<group>"; };
 		4FEDF5481717B8F300C2CC75 /* ShokaAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShokaAppDelegate.m; sourceTree = "<group>"; };
-		4FEDF54A1717B8F300C2CC75 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		4FEDF54C1717B8F300C2CC75 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		4FEDF54E1717B8F300C2CC75 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		4FEDF5511717B8F400C2CC75 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		4FEDF5541717B8F400C2CC75 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		4FEDF5561717B8F400C2CC75 /* ShokaViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShokaViewController.h; sourceTree = "<group>"; };
@@ -258,9 +255,6 @@
 				4FEDF5411717B8F300C2CC75 /* InfoPlist.strings */,
 				4FEDF5441717B8F300C2CC75 /* main.m */,
 				4FEDF5461717B8F300C2CC75 /* Shoka-Prefix.pch */,
-				4FEDF54A1717B8F300C2CC75 /* Default.png */,
-				4FEDF54C1717B8F300C2CC75 /* Default@2x.png */,
-				4FEDF54E1717B8F300C2CC75 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
