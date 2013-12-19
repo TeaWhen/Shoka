@@ -44,6 +44,7 @@
 
     AVCaptureVideoPreviewLayer *previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:self.captureSession];
     previewLayer.frame = self.view.layer.bounds;
+    previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
     [self.view.layer addSublayer:previewLayer];
 
     [self.captureSession startRunning];
