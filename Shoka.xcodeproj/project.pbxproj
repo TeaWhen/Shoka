@@ -75,8 +75,6 @@
 		4FEDF5541717B8F400C2CC75 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		4FEDF5561717B8F400C2CC75 /* ShokaViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShokaViewController.h; sourceTree = "<group>"; };
 		4FEDF5571717B8F400C2CC75 /* ShokaViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShokaViewController.m; sourceTree = "<group>"; };
-		4FFEDBE21738DCCF008D87FA /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/MobileCoreServices.framework; sourceTree = DEVELOPER_DIR; };
-		4FFEDBE31738DCCF008D87FA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		591146B6C9BF46D6B930A9A0 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		68C59F1202C041A0917BEDBA /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -225,8 +223,6 @@
 			isa = PBXGroup;
 			children = (
 				4FCC62E318601BB000A958DE /* AVFoundation.framework */,
-				4FFEDBE21738DCCF008D87FA /* MobileCoreServices.framework */,
-				4FFEDBE31738DCCF008D87FA /* SystemConfiguration.framework */,
 				4FEDF5381717B8F300C2CC75 /* UIKit.framework */,
 				4FEDF53A1717B8F300C2CC75 /* Foundation.framework */,
 				4FEDF53C1717B8F300C2CC75 /* CoreGraphics.framework */,
