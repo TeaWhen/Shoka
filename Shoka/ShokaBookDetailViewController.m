@@ -51,7 +51,7 @@ const NSInteger kShokaCellLabelExtraHeight = 24;
     titleLabel.font = [UIFont boldSystemFontOfSize:19.0];
     titleLabel.adjustsFontSizeToFitWidth = YES;
     titleLabel.minimumScaleFactor = 0.7;
-    titleLabel.numberOfLines = 0;
+    titleLabel.numberOfLines = 2;
     titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
     titleLabel.textAlignment = NSTextAlignmentCenter;
     [titleLabel sizeToFit];
