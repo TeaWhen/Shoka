@@ -111,7 +111,7 @@ didOutputMetadataObjects:(NSArray *)metadataObjects
         }];
         return;
     }
-    NSLog(@"wow, find a book via scan!");
+    NSLog(@"wow, found a book via scan!");
     [self performSegueWithIdentifier:@"scanToDetail" sender:self];
 }
 
