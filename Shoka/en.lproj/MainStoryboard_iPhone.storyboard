@@ -213,7 +213,7 @@
         <scene sceneID="Mqc-VI-JW2">
             <objects>
                 <navigationController definesPresentationContext="YES" id="sj7-5e-t6e" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Scan" id="UL7-qb-Ynu"/>
+                    <tabBarItem key="tabBarItem" title="Scan" image="barcode" id="UL7-qb-Ynu"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Mfz-O1-T51">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -542,6 +542,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="barcode" width="24" height="18"/>
         <image name="favorite-0" width="30" height="30"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
