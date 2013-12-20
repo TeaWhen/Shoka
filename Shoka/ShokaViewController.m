@@ -13,6 +13,7 @@
 #import "ShokaGrayView.h"
 
 #import "SVProgressHUD.h"
+#import <DLAVAlertView.h>
 
 @interface ShokaViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
@@ -116,6 +117,10 @@ enum Language {
             [self.tableView setContentOffset:CGPointZero];
         }
         [[NSNotificationCenter defaultCenter] postNotificationName:@"SearchDone" object:self userInfo:@{@"status": @"success", @"repo": @"CN"}];
+        if ([result.extraInfo[@"no_records"] intValue] > [result.extraInfo[@"no_entries"] intValue]) {
+            DLAVAlertView *alertView = [[DLAVAlertView alloc] initWithTitle:@"返回结果过多" message:@"请填写更精确的搜索条件喔" delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
+            [alertView show];
+        }
     } failure:^(NSError *error) {
         self.cn_result = [ShokaResult new];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"SearchDone" object:self userInfo:@{@"status": @"failure", @"repo": @"CN"}];
