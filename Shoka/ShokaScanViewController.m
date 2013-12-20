@@ -103,7 +103,7 @@ didOutputMetadataObjects:(NSArray *)metadataObjects
     }
     if (self.result == nil || self.result.count == 0) {
         [SVProgressHUD dismiss];
-        DLAVAlertView *alertView = [[DLAVAlertView alloc] initWithTitle:@"图书馆里没有这本书喔 T_T" message:nil delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
+        DLAVAlertView *alertView = [[DLAVAlertView alloc] initWithTitle:@"图书馆里没有找到这本书" message:nil delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
         [alertView showWithCompletion:^(DLAVAlertView *alertView, NSInteger buttonIndex) {
             self.cn_done = NO;
             self.en_done = NO;

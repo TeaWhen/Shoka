@@ -118,7 +118,7 @@ enum Language {
         }
         [[NSNotificationCenter defaultCenter] postNotificationName:@"SearchDone" object:self userInfo:@{@"status": @"success", @"repo": @"CN"}];
         if ([result.extraInfo[@"no_records"] intValue] > [result.extraInfo[@"no_entries"] intValue]) {
-            DLAVAlertView *alertView = [[DLAVAlertView alloc] initWithTitle:@"返回结果过多" message:@"请填写更精确的搜索条件喔" delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"返回结果过多" message:@"仅显示了前 100 条，请尝试更精确的关键词" delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
             [alertView show];
         }
     } failure:^(NSError *error) {

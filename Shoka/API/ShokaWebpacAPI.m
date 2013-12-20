@@ -21,13 +21,9 @@
 {
     NSURLRequest *detectRequest = [NSURLRequest requestWithURL: [NSURL URLWithString:@"http://10.10.16.94/X?op=find&base=zju01&code=wrd&request=teawhen"] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:0.5];
     AFHTTPRequestOperation *detectOP = [[AFHTTPRequestOperation alloc] initWithRequest:detectRequest];
-    [detectOP setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
-    {
-        NSLog(@"in zju");
+    [detectOP setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         func([NSURL URLWithString:@"http://10.10.16.94"]);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error)
-    {
-        NSLog(@"out zju");
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         func([NSURL URLWithString:@"http://webpac.zju.edu.cn"]);
     }];
     
