@@ -182,10 +182,10 @@ Shoka - 浙大图书馆书目检索客户端
 <rec-key>000016487000020</rec-key>
 <barcode>000001272347</barcode>
 <sub-library>紫金港基础流通书库</sub-library> 分馆
-<collection>BL101</collection> 索书号
+<collection>BL101</collection>
 <item-status>12</item-status> 是否可借还的状态：12可借
 <note>ZJU01ZULB CC</note>
-<call-no-1>C91-091/CA1</call-no-1>
+<call-no-1>C91-091/CA1</call-no-1> 索书号
 <call-no-2/>
 <description/>
 <chronological-i/>
