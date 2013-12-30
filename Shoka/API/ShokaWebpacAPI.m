@@ -34,10 +34,20 @@
 
 + (void)searchChineseDepositoryWithKey:(NSString *)searchKey success:(void (^)(ShokaResult *))success failure:(void (^)(NSError *))failure
 {
+    [ShokaWebpacAPI searchChineseDepositoryWithKey:searchKey andCode:@"wrd" success:success failure:failure];
+}
+
++ (void)searchChineseDepositoryWithISBN:(NSString *)isbn success:(void (^)(ShokaResult *))success failure:(void (^)(NSError *))failure
+{
+    [ShokaWebpacAPI searchChineseDepositoryWithKey:isbn andCode:@"ISB" success:success failure:failure];
+}
+
++ (void)searchChineseDepositoryWithKey:(NSString *)searchKey andCode:(NSString *)code success:(void (^)(ShokaResult *))success failure:(void (^)(NSError *))failure
+{
     ShokaResult *result = [ShokaResult new];
     [ShokaWebpacAPI detectBaseURLFor:^(NSURL *baseURL)
     {
-        NSString *requestString = [[NSString stringWithFormat:@"/X?op=find&base=zju01&code=wrd&request=%@", searchKey] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSString *requestString = [[NSString stringWithFormat:@"/X?op=find&base=zju01&code=%@&request=%@", code, searchKey] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         AFHTTPRequestOperation *searchOP = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:requestString relativeToURL:baseURL] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:API_TIMEOUT]];
         searchOP.responseSerializer = [AFHTTPResponseSerializer serializer];
         [searchOP setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
@@ -166,10 +176,20 @@
 
 + (void)searchForeignDepositoryWithKey:(NSString *)searchKey success:(void (^)(ShokaResult *))success failure:(void (^)(NSError *))failure
 {
+    [ShokaWebpacAPI searchForeignDepositoryWithKey:searchKey andCode:@"wrd" success:success failure:failure];
+}
+
++ (void)searchForeignDepositoryWithISBN:(NSString *)isbn success:(void (^)(ShokaResult *))success failure:(void (^)(NSError *))failure
+{
+    [ShokaWebpacAPI searchForeignDepositoryWithKey:isbn andCode:@"ISB" success:success failure:failure];
+}
+
++ (void)searchForeignDepositoryWithKey:(NSString *)searchKey andCode:(NSString *)code success:(void (^)(ShokaResult *))success failure:(void (^)(NSError *))failure
+{
     ShokaResult *result = [ShokaResult new];
     [ShokaWebpacAPI detectBaseURLFor:^(NSURL *baseURL)
     {
-        NSString *requestString = [[NSString stringWithFormat:@"/X?op=find&base=zju09&code=wrd&request=%@", searchKey] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSString *requestString = [[NSString stringWithFormat:@"/X?op=find&base=zju09&code=%@&request=%@", code, searchKey] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         AFHTTPRequestOperation *searchOP = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:requestString relativeToURL:baseURL] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:API_TIMEOUT]];
         searchOP.responseSerializer = [AFHTTPResponseSerializer serializer];
         [searchOP setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)

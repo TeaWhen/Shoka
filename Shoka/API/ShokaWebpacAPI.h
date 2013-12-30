@@ -11,9 +11,12 @@
 
 @interface ShokaWebpacAPI : NSObject
 
-+ (void)searchDepositoryWithKey:(NSString *)searchKey success:(void (^)(ShokaResult *))success failure:(void (^)(NSError *))failure;
 + (void)searchChineseDepositoryWithKey:(NSString *)searchKey success:(void (^)(ShokaResult *))success failure:(void (^)(NSError *))failure;
 + (void)searchForeignDepositoryWithKey:(NSString *)searchKey success:(void (^)(ShokaResult *))success failure:(void (^)(NSError *))failure;
+
++ (void)searchChineseDepositoryWithISBN:(NSString *)isbn success:(void (^)(ShokaResult *))success failure:(void (^)(NSError *))failure;
++ (void)searchForeignDepositoryWithISBN:(NSString *)isbn success:(void (^)(ShokaResult *))success failure:(void (^)(NSError *))failure;
+
 
 + (void)fetchItemDataOfDocNumber:(NSString *)docNumber inBase:(NSString *)base success:(void (^)(ShokaResult *))success failure:(void (^)(NSError *))failure;
 

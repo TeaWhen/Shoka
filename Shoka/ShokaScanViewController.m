@@ -9,6 +9,7 @@
 #import "ShokaScanViewController.h"
 #import "ShokaResult.h"
 #import "ShokaWebpacAPI.h"
+#import "ShokaDoubanAPI.h"
 #import "ShokaBookDetailViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import <SVProgressHUD.h>
@@ -68,11 +69,10 @@ didOutputMetadataObjects:(NSArray *)metadataObjects
     for (AVMetadataObject *metadata in metadataObjects) {
         AVMetadataMachineReadableCodeObject *readableObject = (AVMetadataMachineReadableCodeObject *)metadata;
         if ([metadata.type isEqualToString:AVMetadataObjectTypeEAN13Code]) {
-            NSLog(@"EAN 13 = %@", readableObject.stringValue);
             NSString *isbn = readableObject.stringValue;
             [self.captureSession stopRunning];
             [SVProgressHUD showWithStatus:@"载入中…" maskType:SVProgressHUDMaskTypeClear];
-            [ShokaWebpacAPI searchChineseDepositoryWithKey:isbn success:^(ShokaResult *result) {
+            [ShokaWebpacAPI searchChineseDepositoryWithISBN:isbn success:^(ShokaResult *result) {
                 self.cn_done = YES;
                 if (result.count > 0) {
                     self.result = result;
@@ -81,7 +81,8 @@ didOutputMetadataObjects:(NSArray *)metadataObjects
             } failure:^(NSError *error) {
                 NSLog(@"%@", error);
             }];
-            [ShokaWebpacAPI searchForeignDepositoryWithKey:isbn success:^(ShokaResult *result) {
+
+            [ShokaWebpacAPI searchForeignDepositoryWithISBN:isbn success:^(ShokaResult *result) {
                 self.en_done = YES;
                 if (result.count > 0) {
                     self.result = result;
@@ -90,8 +91,6 @@ didOutputMetadataObjects:(NSArray *)metadataObjects
             } failure:^(NSError *error) {
                 NSLog(@"%@", error);
             }];
-
-            [self dealWithResult];
         }
     }
 }
@@ -111,7 +110,6 @@ didOutputMetadataObjects:(NSArray *)metadataObjects
         }];
         return;
     }
-    NSLog(@"wow, found a book via scan!");
     [self performSegueWithIdentifier:@"scanToDetail" sender:self];
 }
 
