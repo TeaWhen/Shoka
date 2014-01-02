@@ -46,12 +46,12 @@ const NSInteger kShokaCellLabelExtraHeight = 24;
     self.title = self.book.title;
     [self updateFavoriteButton];
     
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 240, 40)];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 212, 40)];
     titleLabel.text = self.title;
     titleLabel.font = [UIFont boldSystemFontOfSize:19.0];
     titleLabel.adjustsFontSizeToFitWidth = YES;
     titleLabel.minimumScaleFactor = 0.7;
-    titleLabel.numberOfLines = 2;
+    titleLabel.numberOfLines = 0;
     titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
     titleLabel.textAlignment = NSTextAlignmentCenter;
     [titleLabel sizeToFit];

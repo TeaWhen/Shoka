@@ -542,7 +542,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="barcode" width="24" height="18"/>
+        <image name="barcode" width="24" height="20"/>
         <image name="favorite-0" width="30" height="30"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

@@ -286,6 +286,11 @@
 				CLASSPREFIX = Shoka;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = Team.TeaWhen;
+				TargetAttributes = {
+					4FEDF5341717B8F300C2CC75 = {
+						DevelopmentTeam = 7676B49VAW;
+					};
+				};
 			};
 			buildConfigurationList = 4FEDF5301717B8F300C2CC75 /* Build configuration list for PBXProject "Shoka" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -467,6 +472,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Shoka/Shoka-Prefix.pch";
 				INFOPLIST_FILE = "Shoka/Shoka-Info.plist";
@@ -482,7 +488,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Shoka/Shoka-Prefix.pch";
