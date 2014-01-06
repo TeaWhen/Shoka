@@ -40,7 +40,6 @@ enum Language {
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
     
     self.cn_result = [ShokaResult new];
     self.en_result = [ShokaResult new];

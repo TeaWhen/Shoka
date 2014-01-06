@@ -4,15 +4,23 @@ Shoka - 浙大图书馆书目检索客户端
 [![Build Status](https://travis-ci.org/TeaWhen/Shoka.png?branch=master)](https://travis-ci.org/TeaWhen/Shoka)
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/TeaWhen/shoka/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
-## ideas
+<a href="https://itunes.apple.com/cn/app/shoka-zhe-da-tu-shu-guan-ke/id660291962?ls=1&mt=8"><img src="Shoka/Images.xcassets/AppIcon.appiconset/icon-ipad@2x.png" width="76"></a>
 
-整合豆瓣评价/评论/网上书店售价信息
+[Available on the App Store](https://itunes.apple.com/cn/app/shoka-zhe-da-tu-shu-guan-ke/id660291962?ls=1&mt=8)
 
-## 初代文档
+## 截图
 
-`base=zju01`为中文文献库
+<img src="Screenshots/iPhone-1.png" width="320" style="margin-right: 16px;">
+<img src="Screenshots/iPhone-2.png" width="320">
 
-`base=zju09`为西文文献库
+## 更多创意
+
+* 整合豆瓣评价/评论/网上书店售价信息
+
+## 文档
+
+* `base=zju01`为中文文献库
+* `base=zju09`为西文文献库
 
 ### Step 1 
 
