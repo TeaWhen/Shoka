@@ -13,9 +13,8 @@
 #import "ShokaBookDetailViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import <SVProgressHUD.h>
-#import <DLAVAlertView.h>
 
-@interface ShokaScanViewController () <AVCaptureMetadataOutputObjectsDelegate>
+@interface ShokaScanViewController () <AVCaptureMetadataOutputObjectsDelegate, UIAlertViewDelegate>
 
 @property (nonatomic, strong) AVCaptureSession *captureSession;
 @property (nonatomic) BOOL cn_done, en_done;
@@ -102,15 +101,18 @@ didOutputMetadataObjects:(NSArray *)metadataObjects
     }
     if (self.result == nil || self.result.count == 0) {
         [SVProgressHUD dismiss];
-        DLAVAlertView *alertView = [[DLAVAlertView alloc] initWithTitle:@"图书馆里没有找到这本书" message:nil delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
-        [alertView showWithCompletion:^(DLAVAlertView *alertView, NSInteger buttonIndex) {
-            self.cn_done = NO;
-            self.en_done = NO;
-            [self.captureSession startRunning];
-        }];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"图书馆里没有找到这本书" message:nil delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil, nil];
+        [alertView show];
         return;
     }
     [self performSegueWithIdentifier:@"scanToDetail" sender:self];
+}
+
+- (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    self.cn_done = NO;
+    self.en_done = NO;
+    [self.captureSession startRunning];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

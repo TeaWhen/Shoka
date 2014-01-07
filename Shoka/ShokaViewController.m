@@ -13,7 +13,6 @@
 #import "ShokaGrayView.h"
 
 #import "SVProgressHUD.h"
-#import <DLAVAlertView.h>
 
 @interface ShokaViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
