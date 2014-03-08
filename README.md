@@ -1,8 +1,7 @@
 Shoka - 浙大图书馆书目检索客户端
 =====
 
-[![Build Status](https://travis-ci.org/TeaWhen/Shoka.png?branch=master)](https://travis-ci.org/TeaWhen/Shoka)
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/TeaWhen/shoka/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+[![Build Status](http://img.shields.io/travis/TeaWhen/Shoka.svg)](https://travis-ci.org/TeaWhen/Shoka)
 
 <a href="https://itunes.apple.com/cn/app/shoka-zhe-da-tu-shu-guan-ke/id660291962?ls=1&mt=8"><img src="Shoka/Images.xcassets/AppIcon.appiconset/icon-ipad@2x.png" width="76"></a>
 
