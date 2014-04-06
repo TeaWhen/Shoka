@@ -40,7 +40,7 @@ const NSInteger kShokaCellLabelExtraHeight = 24;
 {
     [super viewDidLoad];
     
-    self.rowsInBasic = @[@"author", @"translator", @"publisher", @"publishDate", @"ISBN"];
+    self.rowsInBasic = @[@"author", @"translator", @"publisher", @"doubanAvgRating", @"publishDate", @"ISBN"];
     self.rowsInMore = @[@"subject", @"summary"];
     
     self.title = self.book.title;
@@ -70,6 +70,7 @@ const NSInteger kShokaCellLabelExtraHeight = 24;
 
     [ShokaDoubanAPI searchBookWithISBN:self.book.ISBN success:^(NSDictionary *doubanInfo) {
         self.doubanInfo = doubanInfo;
+        [self.tableView reloadData];
     } failure:^(NSError *err) {
         NSLog(@"%@", err.userInfo[@"status"]);
     }];
@@ -100,7 +101,7 @@ enum section {
     if (section == basicInfoSection) {
         self.availableRowsInBasic = [NSMutableArray new];
         for (NSString *rowName in self.rowsInBasic) {
-            if ([[self.book valueForKey:rowName] length] > 0) {
+            if ([rowName isEqualToString:@"doubanAvgRating"] || [[self.book valueForKey:rowName] length] > 0) {
                 [self.availableRowsInBasic addObject:rowName];
             }
         }
@@ -146,7 +147,13 @@ enum section {
         }
 
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:rowName];
-        NSString *text = [self.book valueForKey:rowName];
+        NSString *text = nil;
+        if ([rowName isEqualToString:@"doubanAvgRating"]) {
+            text = @"N/A";
+        }
+        else {
+            text = [self.book valueForKey:rowName];
+        }
         CGSize size = [text boundingRectWithSize:CGSizeMake(kShokaCellLabelWidth, FLT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: cell.detailTextLabel.font} context:nil].size;
         
         return size.height + kShokaCellLabelExtraHeight;
@@ -163,7 +170,14 @@ enum section {
     if (indexPath.section == basicInfoSection) {
         NSString *rowName = self.availableRowsInBasic[indexPath.row];
         cell = [tableView dequeueReusableCellWithIdentifier:rowName];
-        cell.detailTextLabel.text = [self.book valueForKey:rowName];
+        if ([rowName isEqualToString:@"doubanAvgRating"]) {
+            if (self.doubanInfo) {
+                cell.detailTextLabel.text = [self.doubanInfo[@"rating"][@"average"] isEqualToString:@"0.0"] ? @"N/A" : self.doubanInfo[@"rating"][@"average"];
+            }
+        }
+        else {
+            cell.detailTextLabel.text = [self.book valueForKey:rowName];
+        }
     }
     else if (indexPath.section == moreInfoSection) {
         NSString *rowName = self.availableRowsInMore[indexPath.row];
