@@ -1,26 +1,27 @@
 PODS:
-  - AFNetworking (2.2.0):
+  - AFNetworking (2.2.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
     - AFNetworking/UIKit
-  - AFNetworking/NSURLConnection (2.2.0):
+  - AFNetworking/NSURLConnection (2.2.1):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.2.0):
+  - AFNetworking/NSURLSession (2.2.1):
     - AFNetworking/NSURLConnection
-  - AFNetworking/Reachability (2.2.0)
-  - AFNetworking/Security (2.2.0)
-  - AFNetworking/Serialization (2.2.0)
-  - AFNetworking/UIKit (2.2.0):
+  - AFNetworking/Reachability (2.2.1)
+  - AFNetworking/Security (2.2.1)
+  - AFNetworking/Serialization (2.2.1)
+  - AFNetworking/UIKit (2.2.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - Mantle (1.4):
+  - Mantle (1.4.1):
     - Mantle/extobjc
-  - Mantle/extobjc (1.4)
+  - Mantle/extobjc (1.4.1)
+  - Ono (0.0.5)
   - RaptureXML (1.0.1)
   - StringScore (0.0.2)
   - SVProgressHUD (1.0)
@@ -29,6 +30,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
   - Mantle (~> 1.1)
+  - Ono
   - RaptureXML (~> 1.0)
   - StringScore (from `https://github.com/xhacker/StringScore.git`)
   - SVProgressHUD (~> 1.0)
@@ -39,11 +41,12 @@ EXTERNAL SOURCES:
     :git: https://github.com/xhacker/StringScore.git
 
 SPEC CHECKSUMS:
-  AFNetworking: e8cfd8f3fe3bfe19124a0cc63f4d45752d892a56
-  Mantle: de026e86c183c5adfd453c1d8419babb787fea97
+  AFNetworking: 0121f4b69be3fa58d1ab317866e036e12ac9651d
+  Mantle: 0714cdb2b8559d9e6c2410d6a8529e3307bff189
+  Ono: 52d5cdee9ee3006d0852033f9ac9fd0c32f037ec
   RaptureXML: ef017fda62eb95c60300108366d1f0cd0c28cbd4
   StringScore: 6d8ecb1c54265ebe0d993b13dcbd71e73ead5258
   SVProgressHUD: 5e10939a296debf5fe5a5895eda9539b8b2114f1
   TestFlightSDK: 71e3e78d3a46144dbad975a4bf80a14dae6a818a
 
-COCOAPODS: 0.29.0
+COCOAPODS: 0.31.1

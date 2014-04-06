@@ -14,6 +14,6 @@
 @property (strong, nonatomic) NSString *library;
 @property (strong, nonatomic) NSString *status;
 @property (strong, nonatomic) NSString *callNo;
-@property (strong, nonatomic) RXMLElement *rawData;
+@property (strong, nonatomic) id rawData;
 
 @end

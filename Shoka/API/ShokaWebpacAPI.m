@@ -9,6 +9,7 @@
 #import "ShokaWebpacAPI.h"
 #import "AFNetworking.h"
 #import "RXMLElement.h"
+#import <Ono.h>
 
 #import "ShokaBook.h"
 #import "ShokaItem.h"
@@ -325,16 +326,15 @@
         operation.responseSerializer = [AFHTTPResponseSerializer serializer];
         [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
         {
-            RXMLElement *itemData = [RXMLElement elementFromXMLData:responseObject];
-            [itemData iterate:@"item" usingBlock:^(RXMLElement *item)
-            {
+            ONOXMLDocument *onoItemsData = [ONOXMLDocument XMLDocumentWithData:responseObject error:nil];
+            for (ONOXMLElement *item in [onoItemsData.rootElement childrenWithTag:@"item"]) {
                 ShokaItem *itm = [ShokaItem new];
-                NSString *dueDate = [item child:@"loan-due-date"].text;
+                NSString *dueDate = [[item firstChildWithTag:@"loan-due-date"] stringValue];
                 if (dueDate) {
                     itm.status = [NSString stringWithFormat:@"已借出，至 %@", dueDate];
                 }
                 else {
-                    NSString *statusCode = [item child:@"item-status"].text;
+                    NSString *statusCode = [[item firstChildWithTag:@"item-status"] stringValue];
                     if ([statusCode isEqualToString:@"12"]) {
                         itm.status = @"普通外借";
                     }
@@ -348,12 +348,13 @@
                         // should log to external server.
                         itm.status = @"未知状态";
                     }
+                    itm.library = [[item firstChildWithTag:@"sub-library"] stringValue];
+                    itm.callNo = [[item firstChildWithTag:@"call-no-1"] stringValue];
+                    itm.rawData = item;
+                    [result addObject:itm];
                 }
-                itm.library = [item child:@"sub-library"].text;
-                itm.callNo = [item child:@"call-no-1"].text;
-                itm.rawData = item;
-                [result addObject:itm];
-            }];
+            }
+
             success(result);
         } failure:^(AFHTTPRequestOperation *operation, NSError *error)
         {
