@@ -7,6 +7,12 @@ Shoka - 浙大图书馆书目检索客户端
 
 [Available on the App Store](https://itunes.apple.com/cn/app/shoka-zhe-da-tu-shu-guan-ke/id660291962?ls=1&mt=8)
 
+## Disclaimer / 免责声明
+
+Our code for this App is pretty ugly, copy with caution.
+
+代码很捉急, 拷贝需谨慎.
+
 ## 截图
 
 <img src="Screenshots/iPhone-1.png" width="320" style="margin-right: 16px;">
