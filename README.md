@@ -43,7 +43,7 @@ Our code for this App is pretty ugly, copy with caution.
 </find>
 ```
 
-其中set_number是结果集合?(cache的?), no_entries是结果数量
+其中set_number是结果代码, no_entries是结果数量
 
 ### Step 2
 
