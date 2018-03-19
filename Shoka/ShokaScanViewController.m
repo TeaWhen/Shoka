@@ -12,7 +12,7 @@
 #import "ShokaDoubanAPI.h"
 #import "ShokaBookDetailViewController.h"
 #import <AVFoundation/AVFoundation.h>
-#import <SVProgressHUD.h>
+#import "SVProgressHUD.h"
 
 @interface ShokaScanViewController () <AVCaptureMetadataOutputObjectsDelegate, UIAlertViewDelegate>
 

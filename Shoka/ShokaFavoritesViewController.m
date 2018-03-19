@@ -85,7 +85,7 @@
 
 - (IBAction)editClicked:(UIBarButtonItem *)sender {
     if ([self.tableView isEditing]) {
-        [sender setStyle:UIBarButtonItemStyleBordered];
+        [sender setStyle:UIBarButtonItemStylePlain];
         sender.title = @"编辑";
         [self.tableView setEditing:NO animated:YES];
     }

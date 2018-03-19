@@ -9,7 +9,7 @@
 #import "ShokaWebpacAPI.h"
 #import "AFNetworking.h"
 #import "RXMLElement.h"
-#import <Ono.h>
+#import "Ono.h"
 
 #import "ShokaBook.h"
 #import "ShokaItem.h"

@@ -7,7 +7,7 @@
 //
 
 #import "ShokaDoubanAPI.h"
-#import <AFNetworking.h>
+#import "AFNetworking.h"
 
 @implementation ShokaDoubanAPI
 
