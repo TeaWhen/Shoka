@@ -16,7 +16,6 @@
 		1A6508BB1734054D00F0100C /* ShokaBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6508BA1734054D00F0100C /* ShokaBook.m */; };
 		1AC8A1EE173BB8B000A512A0 /* ShokaGrayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC8A1ED173BB8B000A512A0 /* ShokaGrayView.m */; };
 		1AC8A1F1173BFCD800A512A0 /* ShokaItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC8A1F0173BFCD800A512A0 /* ShokaItemTableViewCell.m */; };
-		2E4C1733057E47428147FE57 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 591146B6C9BF46D6B930A9A0 /* libPods.a */; };
 		4F2D96AD173417F90026EE80 /* ShokaWebpacAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D96AC173417F90026EE80 /* ShokaWebpacAPI.m */; };
 		4F2D96B01734182F0026EE80 /* ShokaDoubanAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2D96AF1734182F0026EE80 /* ShokaDoubanAPI.m */; };
 		4FBD69C417366D3900DB98B7 /* ShokaBookDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FBD69C317366D3900DB98B7 /* ShokaBookDetailViewController.m */; };
@@ -32,6 +31,7 @@
 		4FEDF5521717B8F400C2CC75 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FEDF5501717B8F400C2CC75 /* MainStoryboard_iPhone.storyboard */; };
 		4FEDF5551717B8F400C2CC75 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FEDF5531717B8F400C2CC75 /* MainStoryboard_iPad.storyboard */; };
 		4FEDF5581717B8F400C2CC75 /* ShokaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FEDF5571717B8F400C2CC75 /* ShokaViewController.m */; };
+		9D4164590CDA7558B4E26303 /* Pods_Shoka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A12C72D51A7441B382C9BF31 /* Pods_Shoka.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,8 +75,9 @@
 		4FEDF5541717B8F400C2CC75 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		4FEDF5561717B8F400C2CC75 /* ShokaViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShokaViewController.h; sourceTree = "<group>"; };
 		4FEDF5571717B8F400C2CC75 /* ShokaViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShokaViewController.m; sourceTree = "<group>"; };
-		591146B6C9BF46D6B930A9A0 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		68C59F1202C041A0917BEDBA /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		A12C72D51A7441B382C9BF31 /* Pods_Shoka.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shoka.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C41B05972AFB40FDB75E005A /* Pods-Shoka.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shoka.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Shoka/Pods-Shoka.debug.xcconfig"; sourceTree = "<group>"; };
+		D72A2E375B881E0322D896E8 /* Pods-Shoka.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shoka.release.xcconfig"; path = "Pods/Target Support Files/Pods-Shoka/Pods-Shoka.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,7 +89,7 @@
 				4FEDF5391717B8F300C2CC75 /* UIKit.framework in Frameworks */,
 				4FEDF53B1717B8F300C2CC75 /* Foundation.framework in Frameworks */,
 				4FEDF53D1717B8F300C2CC75 /* CoreGraphics.framework in Frameworks */,
-				2E4C1733057E47428147FE57 /* libPods.a in Frameworks */,
+				9D4164590CDA7558B4E26303 /* Pods_Shoka.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,7 +208,7 @@
 				4FEDF53E1717B8F300C2CC75 /* Shoka */,
 				4FEDF5371717B8F300C2CC75 /* Frameworks */,
 				4FEDF5361717B8F300C2CC75 /* Products */,
-				68C59F1202C041A0917BEDBA /* Pods.xcconfig */,
+				580DE3C3D05FB73FD771605A /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -226,7 +227,7 @@
 				4FEDF5381717B8F300C2CC75 /* UIKit.framework */,
 				4FEDF53A1717B8F300C2CC75 /* Foundation.framework */,
 				4FEDF53C1717B8F300C2CC75 /* CoreGraphics.framework */,
-				591146B6C9BF46D6B930A9A0 /* libPods.a */,
+				A12C72D51A7441B382C9BF31 /* Pods_Shoka.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -255,6 +256,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		580DE3C3D05FB73FD771605A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C41B05972AFB40FDB75E005A /* Pods-Shoka.debug.xcconfig */,
+				D72A2E375B881E0322D896E8 /* Pods-Shoka.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -262,11 +272,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4FEDF55B1717B8F400C2CC75 /* Build configuration list for PBXNativeTarget "Shoka" */;
 			buildPhases = (
-				1902A431B61D44878DD752D8 /* Check Pods Manifest.lock */,
+				9A0D0E81542BA82D073AFAED /* [CP] Check Pods Manifest.lock */,
 				4FEDF5311717B8F300C2CC75 /* Sources */,
 				4FEDF5321717B8F300C2CC75 /* Frameworks */,
 				4FEDF5331717B8F300C2CC75 /* Resources */,
-				1F23A6CD8F5F45D8926F308C /* Copy Pods Resources */,
+				5CB123DA42662F1ECA4248C1 /* [CP] Embed Pods Frameworks */,
+				E7EDD7A5C3222A19A47A8EA5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -326,33 +337,66 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1902A431B61D44878DD752D8 /* Check Pods Manifest.lock */ = {
+		5CB123DA42662F1ECA4248C1 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Shoka/Pods-Shoka-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/Mantle/Mantle.framework",
+				"${BUILT_PRODUCTS_DIR}/Ono/Ono.framework",
+				"${BUILT_PRODUCTS_DIR}/RaptureXML/RaptureXML.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/StringScore/StringScore.framework",
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mantle.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Ono.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RaptureXML.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StringScore.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sanbox is not in sync with the Podfile.lock. Run 'pod install'.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Shoka/Pods-Shoka-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
-		1F23A6CD8F5F45D8926F308C /* Copy Pods Resources */ = {
+		9A0D0E81542BA82D073AFAED /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Shoka-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E7EDD7A5C3222A19A47A8EA5 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Shoka/Pods-Shoka-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -468,7 +512,7 @@
 		};
 		4FEDF55C1717B8F400C2CC75 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 68C59F1202C041A0917BEDBA /* Pods.xcconfig */;
+			baseConfigurationReference = C41B05972AFB40FDB75E005A /* Pods-Shoka.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -486,7 +530,7 @@
 		};
 		4FEDF55D1717B8F400C2CC75 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 68C59F1202C041A0917BEDBA /* Pods.xcconfig */;
+			baseConfigurationReference = D72A2E375B881E0322D896E8 /* Pods-Shoka.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;

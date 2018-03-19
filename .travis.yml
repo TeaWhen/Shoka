@@ -1,14 +1,9 @@
 language: objective-c
-before_install: gem install cocoapods
+osx_image: xcode9.2
 notifications:
   email:
     recipients:
-      - aquarhead@gmail.com
+      - aquarhead@ela.build
       - liu.dongyuan@gmail.com
     on_success: change
     on_failure: always
-  irc:
-    channels:
-      - "chat.freenode.net#TeaWhen"
-    template:
-      - "%{repository} :: %{commit} by %{author} on %{branch}, %{message}"
