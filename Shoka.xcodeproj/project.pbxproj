@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 48;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -296,7 +296,7 @@
 			attributes = {
 				CLASSPREFIX = Shoka;
 				LastUpgradeCheck = 0820;
-				ORGANIZATIONNAME = Team.TeaWhen;
+				ORGANIZATIONNAME = ElaWorkshop;
 				TargetAttributes = {
 					4FEDF5341717B8F300C2CC75 = {
 						DevelopmentTeam = 7676B49VAW;
@@ -304,7 +304,7 @@
 				};
 			};
 			buildConfigurationList = 4FEDF5301717B8F300C2CC75 /* Build configuration list for PBXProject "Shoka" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
