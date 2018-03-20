@@ -1,5 +1,5 @@
 language: objective-c
-xcode_workspace: Shoka.xcodeworkspace
+xcode_workspace: Shoka.xcworkspace
 xcode_scheme: Shoka
 osx_image: xcode8
 notifications:
