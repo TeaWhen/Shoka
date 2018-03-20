@@ -297,11 +297,6 @@
 				CLASSPREFIX = Shoka;
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = ElaWorkshop;
-				TargetAttributes = {
-					4FEDF5341717B8F300C2CC75 = {
-						DevelopmentTeam = 7676B49VAW;
-					};
-				};
 			};
 			buildConfigurationList = 4FEDF5301717B8F300C2CC75 /* Build configuration list for PBXProject "Shoka" */;
 			compatibilityVersion = "Xcode 8.0";
@@ -540,10 +535,11 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Shoka/Shoka-Prefix.pch";
 				INFOPLIST_FILE = "Shoka/Shoka-Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.team.teawhen.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_BUNDLE_IDENTIFIER = build.ela.Shoka;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -559,10 +555,11 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Shoka/Shoka-Prefix.pch";
 				INFOPLIST_FILE = "Shoka/Shoka-Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.team.teawhen.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_BUNDLE_IDENTIFIER = build.ela.Shoka;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
