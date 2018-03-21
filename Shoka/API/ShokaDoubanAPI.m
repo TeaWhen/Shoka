@@ -15,7 +15,7 @@
 
 + (void)searchBookWithISBN:(NSString *)isbn success:(void (^)(NSDictionary *))success failure:(void (^)(NSError *))failure
 {
-    NSString *requestString = [[NSString stringWithFormat:@"http://api.douban.com/v2/book/isbn/%@", isbn] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *requestString = [[NSString stringWithFormat:@"https://api.douban.com/v2/book/isbn/%@", isbn] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     AFHTTPRequestOperation *searchOP = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:requestString] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:API_TIMEOUT]];
     searchOP.responseSerializer = [AFJSONResponseSerializer serializer];
     [searchOP setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
