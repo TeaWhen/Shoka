@@ -18,7 +18,7 @@
 
 @implementation ShokaWebpacAPI
 
-+ (void)detectBaseURLFor: (void (^)(NSURL *baseURL))func
++ (void)detectBaseURLAndRun: (void (^)(NSURL *baseURL))func
 {
     NSURLRequest *detectRequest = [NSURLRequest requestWithURL: [NSURL URLWithString:@"http://10.10.16.94/X?op=find&base=zju01&code=wrd&request=teawhen"] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:0.5];
     AFHTTPRequestOperation *detectOP = [[AFHTTPRequestOperation alloc] initWithRequest:detectRequest];
@@ -47,7 +47,7 @@
 + (void)searchChineseDepositoryWithKey:(NSString *)searchKey andCode:(NSString *)code success:(void (^)(ShokaResult *))success failure:(void (^)(NSError *))failure
 {
     ShokaResult *result = [ShokaResult new];
-    [ShokaWebpacAPI detectBaseURLFor:^(NSURL *baseURL)
+    [ShokaWebpacAPI detectBaseURLAndRun:^(NSURL *baseURL)
     {
         NSString *requestString = [[NSString stringWithFormat:@"/X?op=find&base=zju01&code=%@&request=%@", code, searchKey] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         AFHTTPRequestOperation *searchOP = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:requestString relativeToURL:baseURL] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:API_TIMEOUT]];
@@ -55,11 +55,20 @@
         [searchOP setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
         {
             // First get set_number
-            RXMLElement *rootXML = [RXMLElement elementFromXMLData:responseObject];
-            NSString *errorText = [rootXML child:@"error"].text;
-            if ([errorText length] == 0) {
-                NSDictionary *extraInfo = @{@"no_records": [rootXML child:@"no_records"].text, @"no_entries": [rootXML child:@"no_entries"].text};
-                NSString *searchSetString = [[NSString stringWithFormat:@"/X?op=present&set_no=%@&set_entry=%@&format=marc", [rootXML child:@"set_number"].text, SETENTRY] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            NSError *error;
+            ONOXMLDocument *document = [ONOXMLDocument XMLDocumentWithData:responseObject error:&error];
+            if (error) {
+                failure([NSError errorWithDomain:@"WebpacAPI" code:4 userInfo:@{@"status": @"failure while querying set_number"}]);
+            }
+
+            NSString *resultError = [[document.rootElement firstChildWithTag:@"error"] stringValue];
+            if ([resultError length] == 0) {
+                NSString *numRecords = [[document.rootElement firstChildWithTag:@"no_records"] stringValue];
+                NSString *numEntries = [[document.rootElement firstChildWithTag:@"no_entries"] stringValue];
+                NSString *setNumber = [[document.rootElement firstChildWithTag:@"set_number"] stringValue];
+
+                NSDictionary *extraInfo = @{@"no_records": numRecords, @"no_entries": numEntries};
+                NSString *searchSetString = [[NSString stringWithFormat:@"/X?op=present&set_no=%@&set_entry=%@&format=marc", setNumber, SETENTRY] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
                 AFHTTPRequestOperation *searchSetOP = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:searchSetString relativeToURL:baseURL] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:API_TIMEOUT]];
                 searchSetOP.responseSerializer = [AFHTTPResponseSerializer serializer];
                 [searchSetOP setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject)
@@ -189,7 +198,7 @@
 + (void)searchForeignDepositoryWithKey:(NSString *)searchKey andCode:(NSString *)code success:(void (^)(ShokaResult *))success failure:(void (^)(NSError *))failure
 {
     ShokaResult *result = [ShokaResult new];
-    [ShokaWebpacAPI detectBaseURLFor:^(NSURL *baseURL)
+    [ShokaWebpacAPI detectBaseURLAndRun:^(NSURL *baseURL)
     {
         NSString *requestString = [[NSString stringWithFormat:@"/X?op=find&base=zju09&code=%@&request=%@", code, searchKey] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         AFHTTPRequestOperation *searchOP = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:requestString relativeToURL:baseURL] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:API_TIMEOUT]];
@@ -320,7 +329,7 @@
 + (void)fetchItemDataOfDocNumber:(NSString *)docNumber inBase:(NSString *)base success:(void (^)(ShokaResult *))success failure:(void (^)(NSError *))failure
 {
     ShokaResult *result = [ShokaResult new];
-    [ShokaWebpacAPI detectBaseURLFor:^(NSURL *baseURL) {
+    [ShokaWebpacAPI detectBaseURLAndRun:^(NSURL *baseURL) {
         NSString *requestString = [[NSString stringWithFormat:@"/X?op=item-data&base=%@&doc_number=%@", base, docNumber] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:requestString relativeToURL:baseURL] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:API_TIMEOUT]];
         operation.responseSerializer = [AFHTTPResponseSerializer serializer];
