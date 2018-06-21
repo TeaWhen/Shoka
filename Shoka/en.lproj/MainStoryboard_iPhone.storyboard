@@ -58,7 +58,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="nFg-Fa-iN1">
-                                <rect key="frame" x="0.0" y="128" width="320" height="440"/>
+                                <rect key="frame" x="0.0" y="121" width="320" height="447"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" textLabel="MBj-do-72X" style="IBUITableViewCellStyleDefault" id="ssu-X0-J4C">
@@ -98,7 +98,7 @@
                             <constraint firstAttribute="trailing" secondItem="kDK-bd-ecx" secondAttribute="trailing" id="5cw-1w-hCm"/>
                             <constraint firstItem="nFg-Fa-iN1" firstAttribute="leading" secondItem="Aju-mb-lPV" secondAttribute="leading" id="7qw-JH-Kvo"/>
                             <constraint firstItem="UIP-b9-gZL" firstAttribute="top" secondItem="2X8-Yi-BZd" secondAttribute="bottom" id="836-f6-zUQ"/>
-                            <constraint firstItem="nFg-Fa-iN1" firstAttribute="top" secondItem="kDK-bd-ecx" secondAttribute="bottom" constant="7" id="9uY-Ow-oVF"/>
+                            <constraint firstItem="nFg-Fa-iN1" firstAttribute="top" secondItem="kDK-bd-ecx" secondAttribute="bottom" id="9uY-Ow-oVF"/>
                             <constraint firstItem="bmq-VX-1cm" firstAttribute="leading" secondItem="Aju-mb-lPV" secondAttribute="leading" id="Es9-zd-aPm"/>
                             <constraint firstItem="UIP-b9-gZL" firstAttribute="leading" secondItem="Aju-mb-lPV" secondAttribute="leading" id="O3L-Tv-8g0"/>
                             <constraint firstItem="UIP-b9-gZL" firstAttribute="trailing" secondItem="Aju-mb-lPV" secondAttribute="trailing" id="RaO-bb-XH2"/>
