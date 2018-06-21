@@ -3,7 +3,7 @@ Shoka - 浙大图书馆书目检索客户端
 
 [![Build Status](http://img.shields.io/travis/TeaWhen/Shoka.svg)](https://travis-ci.org/TeaWhen/Shoka)
 
-<a href="https://itunes.apple.com/cn/app/shoka-zhe-da-tu-shu-guan-ke/id660291962?ls=1&mt=8"><img src="Shoka/Images.xcassets/AppIcon.appiconset/icon-ipad@2x.png" width="76"></a>
+<a href="https://itunes.apple.com/cn/app/shoka-zhe-da-tu-shu-guan-ke/id660291962?ls=1&mt=8"><img src="Shoka/Images.xcassets/AppIcon.appiconset/1024.png" width="76"></a>
 
 [Available on the App Store](https://itunes.apple.com/cn/app/shoka-zhe-da-tu-shu-guan-ke/id660291962?ls=1&mt=8)
 
