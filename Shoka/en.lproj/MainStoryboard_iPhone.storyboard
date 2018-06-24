@@ -85,7 +85,7 @@
                                 </connections>
                             </tableView>
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bmq-VX-1cm" customClass="ShokaGrayView">
-                                <rect key="frame" x="0.0" y="119" width="320" height="449"/>
+                                <rect key="frame" x="0.0" y="120" width="320" height="448"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
                                 <connections>
@@ -102,16 +102,13 @@
                             <constraint firstItem="bmq-VX-1cm" firstAttribute="leading" secondItem="Aju-mb-lPV" secondAttribute="leading" id="Es9-zd-aPm"/>
                             <constraint firstItem="UIP-b9-gZL" firstAttribute="leading" secondItem="Aju-mb-lPV" secondAttribute="leading" id="O3L-Tv-8g0"/>
                             <constraint firstItem="UIP-b9-gZL" firstAttribute="trailing" secondItem="Aju-mb-lPV" secondAttribute="trailing" id="RaO-bb-XH2"/>
-                            <constraint firstItem="bmq-VX-1cm" firstAttribute="leading" secondItem="Aju-mb-lPV" secondAttribute="leading" id="Rnq-xF-pWq"/>
-                            <constraint firstItem="bmq-VX-1cm" firstAttribute="top" secondItem="UIP-b9-gZL" secondAttribute="bottom" constant="-1" id="YMc-9l-tLo"/>
+                            <constraint firstItem="bmq-VX-1cm" firstAttribute="top" secondItem="UIP-b9-gZL" secondAttribute="bottom" id="YMc-9l-tLo"/>
                             <constraint firstAttribute="bottom" secondItem="nFg-Fa-iN1" secondAttribute="bottom" id="Z0F-GE-oQP"/>
                             <constraint firstAttribute="trailing" secondItem="nFg-Fa-iN1" secondAttribute="trailing" id="lAx-d8-YrB"/>
                             <constraint firstAttribute="bottom" secondItem="bmq-VX-1cm" secondAttribute="bottom" id="mRO-R4-OJf"/>
-                            <constraint firstItem="bmq-VX-1cm" firstAttribute="bottom" secondItem="Aju-mb-lPV" secondAttribute="bottom" id="nsd-WI-qFZ"/>
                             <constraint firstItem="bmq-VX-1cm" firstAttribute="trailing" secondItem="Aju-mb-lPV" secondAttribute="trailing" id="pNh-KK-PvJ"/>
                             <constraint firstItem="kDK-bd-ecx" firstAttribute="leading" secondItem="Aju-mb-lPV" secondAttribute="leading" id="tiA-hh-jTo"/>
                             <constraint firstItem="kDK-bd-ecx" firstAttribute="top" secondItem="UIP-b9-gZL" secondAttribute="bottom" id="vGr-pf-ONW"/>
-                            <constraint firstAttribute="trailing" secondItem="bmq-VX-1cm" secondAttribute="trailing" id="zJK-qC-3fC"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="zlb-Fa-V9G"/>
