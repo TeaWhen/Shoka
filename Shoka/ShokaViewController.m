@@ -60,12 +60,6 @@ enum Language {
                                              selector:@selector(dismissHUD:)
                                                  name:@"SearchDone"
                                                object:nil];
-    
-    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 49, 0);
-    self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 49, 0);
-    if (@available(iOS 11.0, *)) {
-        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
